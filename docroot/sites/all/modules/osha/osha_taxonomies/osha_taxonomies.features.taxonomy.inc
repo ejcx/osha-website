@@ -284,30 +284,5 @@ function osha_taxonomies_taxonomy_default_vocabularies() {
         ),
       ),
     ),
-    'workflow_status' => array(
-      'name' => 'Workflow status',
-      'machine_name' => 'workflow_status',
-      'description' => 'Content status for translation and publishing workflow',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 2,
-      'language' => 'und',
-      'i18n_mode' => 0,
-      'rdf_mapping' => array(
-        'rdftype' => array(
-          0 => 'skos:ConceptScheme',
-        ),
-        'name' => array(
-          'predicates' => array(
-            0 => 'dc:title',
-          ),
-        ),
-        'description' => array(
-          'predicates' => array(
-            0 => 'rdfs:comment',
-          ),
-        ),
-      ),
-    ),
   );
 }

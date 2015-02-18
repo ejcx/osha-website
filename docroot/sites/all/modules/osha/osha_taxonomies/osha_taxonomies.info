@@ -80,7 +80,6 @@ features[taxonomy][] = nace_codes
 features[taxonomy][] = section
 features[taxonomy][] = thesaurus
 features[taxonomy][] = wiki_categories
-features[taxonomy][] = workflow_status
 features[variable][] = entity_translation_settings_taxonomy_term__activity
 features[variable][] = entity_translation_settings_taxonomy_term__esener
 features[variable][] = entity_translation_settings_taxonomy_term__nace_codes
@@ -100,4 +99,4 @@ features_exclude[field_instance][taxonomy_term-legislation_category-field_guidel
 features_exclude[taxonomy][newsletter_sections] = newsletter_sections
 features_exclude[taxonomy][tags] = tags
 files[] = osha_taxonomies.test
-mtime = 1418381191
+mtime = 1424281335

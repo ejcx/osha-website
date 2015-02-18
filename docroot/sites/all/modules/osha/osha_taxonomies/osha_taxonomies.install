@@ -57,3 +57,11 @@ function osha_taxonomies_update_7001() {
     }
   }
 }
+
+/**
+ * Delete workflow_status taxonomy.
+ */
+function osha_taxonomies_update_7002() {
+  $voc = taxonomy_vocabulary_machine_name_load('workflow_status');
+  taxonomy_vocabulary_delete($voc->vid);
+}
