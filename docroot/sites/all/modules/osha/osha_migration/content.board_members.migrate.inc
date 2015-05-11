@@ -1,7 +1,7 @@
 <?php
 /**
- * Class MigrateOshaBlog migrates blog.txt contents. The data
- * is stored inside the <em>Blog</em> content type.
+ * Class MigrateOshaBoardMembers imports contents from board_members.xml.
+ * The data is stored inside the press_contact
  */
 class MigrateOshaBoardMembers extends OSHADynamicMigration {
 
@@ -35,72 +35,122 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
       MigrateDestinationNode::getKeySchema()
     );
 
-    $voc = taxonomy_vocabulary_machine_name_load('contact_type');
-    $types = array('Board Member');
-    foreach ($types as $type) {
-      $term = taxonomy_get_term_by_name($type, 'contact_type');
-      if (empty($term)) {
-        $term = new stdClass();
-        $term->vid = $voc->vid;
-        $term->name = $type;
-        taxonomy_term_save($term);
-      }
-    }
-
     $node_options = MigrateDestinationNode::options('en', 'full_html');
     $this->destination = new MigrateDestinationNode('press_contact', $node_options);
 
     $this->addFieldMapping('title', 'title');
     $this->addFieldMapping('field_personal_title', 'field_personal_title');
     $this->addFieldMapping('title_field', 'title_field');
+
     $this->addFieldMapping('field_wg_role_1', 'field_wg_role_1');
+    $this->addFieldMapping('field_wg_role_1:create_term')->defaultValue(TRUE);
+    $this->addFieldMapping('field_wg_role_1:ignore_case')->defaultValue(TRUE);
+
     $this->addFieldMapping('field_wg_role_2', 'field_wg_role_2');
+    $this->addFieldMapping('field_wg_role_2:create_term')->defaultValue(TRUE);
+    $this->addFieldMapping('field_wg_role_2:ignore_case')->defaultValue(TRUE);
+
     $this->addFieldMapping('field_wg_category', 'field_wg_category');
+    $this->addFieldMapping('field_wg_category:create_term')->defaultValue(TRUE);
+    $this->addFieldMapping('field_wg_category:ignore_case')->defaultValue(TRUE);
+
+
+
     $this->addFieldMapping('field_press_contact_organization', 'field_press_contact_organization');
     $this->addFieldMapping('field_press_contact_location', 'field_press_contact_location');
     $this->addFieldMapping('field_city', 'field_city');
     $this->addFieldMapping('field_zip_code', 'field_zip_code');
-    $this->addFieldMapping('field_contact_type', 'field_contact_type');
-    $this->addFieldMapping('field_file', 'field_file');
-    $this->addFieldMapping('field_declaration_interests', 'field_declaration_interests');
 
+    $this->addFieldMapping('field_contact_type', 'field_contact_type');
+    $this->addFieldMapping('field_contact_type:create_term')->defaultValue(TRUE);
+    $this->addFieldMapping('field_contact_type:ignore_case')->defaultValue(TRUE);
+
+    $this->addFieldMapping('field_press_contact_cv', 'field_press_contact_cv');
+    $this->addFieldMapping('field_press_contact_declaration', 'field_press_contact_declaration');
     $this->addFieldMapping('uid')->defaultValue(1);
 
-    $this->addUnmigratedSources(array(
-      'path',
-      'language',
-      'workflow_state',
-      'country',
-    ));
+    $this->addFieldMapping('field_country', 'field_country_iso2');
+    $this->addFieldMapping('field_country:source_type')->defaultValue('tid');
+    $this->addFieldMapping('field_country:create_term')->defaultValue(FALSE);
 
     $this->addUnmigratedDestinations(array(
-      'promote',
-      'status',
-      'sticky',
-      'revision',
-      'log',
-      'language',
-      'tnid',
-      'translate',
-      'revision_uid',
-      'is_new',
-      //'body:summary',
-      'field_image:language',
-      'field_image:destination_dir',
-      'field_image:title',
-      'field_image:alt',
-      'field_nace_codes:create_term',
-      'field_nace_codes:ignore_case',
-      'field_publication_date:timezone',
-      'field_publication_date:rrule',
-      'field_publication_date:to',
-      'field_summary',
-      'field_summary:format',
-      'field_tags:create_term',
-      'field_tags:ignore_case',
-      'field_thesaurus:create_term',
-      'field_thesaurus:ignore_case',
+      'created', 'changed', 'status', 'promote', 'sticky', 'revision', 'log',
+      'language', 'tnid', 'translate', 'revision_uid', 'is_new',
+      'field_press_contact_email',
+      'field_press_contact_job_title',
+      'field_press_contact_job_title:language',
+      'field_press_contact_location:language',
+      'field_press_contact_organization:language',
       'field_press_contact_phone',
+      'field_press_contact_phone:language',
+      'title_field:language',
+      'field_city:language',
+      'field_contact_type:source_type',
+      'field_personal_title:language',
+      'field_country:ignore_case',
+      'field_wg_category:source_type',
+      'field_wg_role_1:source_type',
+      'field_wg_role_2:source_type',
+      'field_zip_code:language',
+      'field_website',
+      'field_website:title',
+      'field_website:attributes',
+      'field_website:language',
+
+      'field_press_contact_cv:file_class',
+      'field_press_contact_cv:language',
+      'field_press_contact_cv:destination_dir',
+      'field_press_contact_cv:destination_file',
+      'field_press_contact_cv:file_replace',
+      'field_press_contact_cv:preserve_files',
+      'field_press_contact_cv:source_dir',
+      'field_press_contact_cv:description',
+      'field_press_contact_cv:display',
+
+      'field_press_contact_declaration:file_class',
+      'field_press_contact_declaration:language',
+      'field_press_contact_declaration:destination_dir',
+      'field_press_contact_declaration:destination_file',
+      'field_press_contact_declaration:file_replace',
+      'field_press_contact_declaration:preserve_files',
+      'field_press_contact_declaration:source_dir',
+      'field_press_contact_declaration:description',
+      'field_press_contact_declaration:display',
+
+      'path',
+      'metatag_title',
+      'metatag_description',
+      'metatag_abstract',
+      'metatag_keywords',
+      'metatag_robots',
+      'metatag_news_keywords',
+      'metatag_standout',
+      'metatag_generator',
+      'metatag_rights',
+      'metatag_image_src',
+      'metatag_canonical',
+      'metatag_shortlink',
+      'metatag_publisher',
+      'metatag_author',
+      'metatag_original-source',
+      'metatag_revisit-after',
+      'metatag_content-language',
+      'metatag_dcterms.title',
+      'metatag_dcterms.creator',
+      'metatag_dcterms.subject',
+      'metatag_dcterms.description',
+      'metatag_dcterms.publisher',
+      'metatag_dcterms.contributor',
+      'metatag_dcterms.date',
+      'metatag_dcterms.modified',
+      'metatag_dcterms.type',
+      'metatag_dcterms.format',
+      'metatag_dcterms.identifier',
+      'metatag_dcterms.source',
+      'metatag_dcterms.language',
+      'metatag_dcterms.relation',
+      'metatag_dcterms.coverage',
+      'metatag_dcterms.rights',
       'comment',
     ));
   }
@@ -153,8 +203,7 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
   public function prepare($entity, $row) {
     $country = MigrationUtil::getCountryIso2ByName($row->field_country_iso2);
     if ($country == NULL) {
-      $this->displayMessage('Board member Country '
-        . $row->field_country_iso2 . ' not found', 'warning');
+      $this->displayMessage('Board member Country ' . $row->field_country_iso2 . ' not found', 'warning');
       $row->field_country_iso2 = NULL;
     }
     else {
@@ -172,20 +221,24 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
       $entity->field_country[LANGUAGE_NONE][0] = array('tid' => $tid);
     }
 
-    if (!empty($row->field_file)) {
-      $destination = 'public://contact_cv/' . $row->id . '_' . $row->field_file['filename'];
-      $file = file_save_data(base64_decode($row->field_file['content']), $destination);
-      if (!empty($file)) {
-        $file->display = 1;
-        $entity->field_file[LANGUAGE_NONE][0] = (array) $file;
+    if (!empty($row->field_press_contact_cv)) {
+      $files_dir = 'public://contact_cv';
+      if (file_prepare_directory($files_dir, FILE_CREATE_DIRECTORY)) {
+        $destination = 'public://contact_cv/' . $row->id . '_' . $row->field_press_contact_cv['filename'];
+        if ($file = file_save_data(base64_decode($row->field_press_contact_cv['content']), $destination)) {
+          $file->display = 1;
+          $entity->field_press_contact_cv[LANGUAGE_NONE][0] = (array)$file;
+        }
       }
     }
-    if (!empty($row->field_declaration_interests)) {
-      $destination = 'public://contacts_declarations/' . $row->id . '_' . $row->field_declaration_interests['filename'];
-      $file = file_save_data(base64_decode($row->field_declaration_interests['content']), $destination);
-      if (!empty($file)) {
-        $file->display = 1;
-        $entity->field_declaration_interests[LANGUAGE_NONE][0] = (array) $file;
+    if (!empty($row->field_press_contact_declaration)) {
+      $files_dir = 'public://contacts_declarations';
+      if (file_prepare_directory($files_dir, FILE_CREATE_DIRECTORY)) {
+        $destination = 'public://contacts_declarations/' . $row->id . '_' . $row->field_press_contact_declaration['filename'];
+        if ($file = file_save_data(base64_decode($row->field_press_contact_declaration['content']), $destination)) {
+          $file->display = 1;
+          $entity->field_press_contact_declaration[LANGUAGE_NONE][0] = (array)$file;
+        }
       }
     }
   }
@@ -199,28 +252,24 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
   public function fields() {
     return array(
       'id' => 'Primary Key (URL pattern)',
-      'path' => 'URL pattern without language',
-      'language' => 'Row language',
-      'workflow_state' => '',
-      'creation_date' => '',
-      'modification_date' => '',
-      'publication_date' => '',
-      'creator' => 'Author user id from the old website',
       'title' => '',
-      'description' => '',
-      'text' => 'Body of the blog',
-      'image' => 'Path to image file',
-      'imageCaption' => 'Image tooltip',
-      'subject' => 'Categories/Tags',
-      'country' => '',
-      'subcategory' => 'Merged into categories',
-      'multilingual_thesaurus' => '',
-      'nace' => 'Nace codes taxonomy',
-      'archived' => '',
-      'expiration_date' => '',
+      'title_field' => '',
+      'field_personal_title' => '',
+      'field_wg_role_1' => '',
+      'field_wg_role_2' => '',
+      'field_wg_category' => '',
+      'field_press_contact_organization' => '',
+      'field_press_contact_location' => '',
+      'field_country_iso2' => '',
+      'field_zip_code' => '',
+      'field_city' => '',
+      'field_contact_type' => '',
+      'field_press_contact_declaration' => '',
+      'field_press_contact_cv' => '',
     );
   }
 }
+
 
 class BoardMembersListXML extends MigrateList {
   protected $file = '';
@@ -253,10 +302,6 @@ class BoardMembersListXML extends MigrateList {
     }
     $content = utf8_encode(file_get_contents($this->file));
     if ($xml = simplexml_load_string($content)) {
-      // To be used for board and bureau memebers, to merge the details.
-//    $xml_board = simplexml_load_file($this->file_board);
-
-      // Contact fields are attributes of Detail.
       foreach ($xml->xpath('//Detail') as $member) {
         $data = new stdClass();
         $attributes = $member->attributes();
@@ -271,7 +316,6 @@ class BoardMembersListXML extends MigrateList {
         $data->field_country_iso2 = (string) $attributes['Textbox7'];
         $data->field_zip_code = (string) $attributes['Textbox1'];
         $data->field_city = (string) $attributes['Textbox4'];
-
         $data->field_contact_type = 'Board Member';
         $id = $this->idFromName((string) $data->title);
 
@@ -282,11 +326,19 @@ class BoardMembersListXML extends MigrateList {
             $file_attr = $file_xml->attributes();
             $file_content = (string) $file_xml->Content;
             $destination = (string) $file_attr['Filename'];
-            if (!empty($file_content)) {
-              $data->field_file = array(
-                'content' => $file_content,
-                'filename' => $destination,
-              );
+            if (!empty($file_content) && !empty($destination)) {
+              if ($destination == 'CV.pdf') {
+                $data->field_press_contact_cv = array(
+                  'content' => $file_content,
+                  'filename' => $destination,
+                );
+              }
+              else {
+                $data->field_press_contact_cv = array(
+                  'content' => $file_content,
+                  'filename' => $destination,
+                );
+              }
             }
           }
           elseif ($idx == 1) {
@@ -294,7 +346,7 @@ class BoardMembersListXML extends MigrateList {
             $file_content = (string) $file_xml->Content;
             $destination = (string) $file_attr['Filename'];
             if (!empty($file_content)) {
-              $data->field_declaration_interests = array(
+              $data->field_press_contact_declaration = array(
                 'content' => $file_content,
                 'filename' => $destination,
               );

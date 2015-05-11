@@ -197,26 +197,31 @@ function osha_migration_migrate_api() {
     );
   }
 
-  if (is_readable($external_data_dir . '/export-local/focal_points.xml')) {
+  $crm_data_dir = variable_get('osha_crm_data_dir');
+  if (is_readable($crm_data_dir . '/focal_points.xml')) {
     $migrations[OSHA_MIGRATION_CONTENT_TYPE_FOCAL_POINT] = array(
       'class_name' => 'MigrateOshaFocalPoints',
       'file_name' => $external_data_dir . '/export-local/focal_points.xml',
     );
   }
 
-  if (is_readable($external_data_dir . '/export-local/bureau_members.xml')) {
+  if (is_readable($crm_data_dir . '/bureau_members.xml')) {
     $migrations[OSHA_MIGRATION_CONTENT_TYPE_BOARD_BUREAU] = array(
       'class_name' => 'MigrateOshaBoardBureauMembers',
-      'file_name' => $external_data_dir . '/export-local/bureau_members.xml',
-      'file_name_board' => $external_data_dir . '/export-local/board_members.xml',
+      'file_name' => $crm_data_dir . '/bureau_members.xml',
+      'file_name_board' => $crm_data_dir . '/board_members.xml',
     );
   }
 
-  if (is_readable($external_data_dir . '/export-local/board_members.xml')) {
+  $filename = $crm_data_dir . '/Board.xml';
+  if (is_readable($filename)) {
     $migrations[OSHA_MIGRATION_CONTENT_TYPE_BOARD] = array(
       'class_name' => 'MigrateOshaBoardMembers',
-      'file_name' => $external_data_dir . '/export-local/board_members.xml',
+      'file_name' => $filename,
     );
+  }
+  else {
+    drupal_set_message('Failed to register migration BoardMembers, missing file ' . $filename);
   }
 
   if (is_readable($external_data_dir . '/export/focalpoints.txt')) {
