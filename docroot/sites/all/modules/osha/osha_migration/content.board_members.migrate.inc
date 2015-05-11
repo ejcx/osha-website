@@ -10,15 +10,11 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
    */
   public function __construct($arguments) {
     parent::__construct(MigrateGroup::getInstance('OSHA Content types'));
-    $this->description = 'Import "Board" contents from CSV file';
+    $this->description = 'Import board members from CRM XML file';
 
-    /* Remove limits on time/memory, slower machines will fail */
-    $this->timeLimit = 0;
-    $this->memoryLimit = PHP_INT_MAX;
-
-    $source_file_board = MigrationUtil::getSourceFileByKey($arguments, 'file_name');
+    $source = MigrationUtil::getSourceFileByKey($arguments, 'file_name');
     $this->source = new MigrateSourceList(
-      new BoardMembersListXML($source_file_board),
+      new BoardMembersListXML($source),
       new BoardMembersItemXML(),
       $this->fields()
     );
@@ -171,23 +167,8 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
    */
   public function prepareRow($row) {
     if (empty($row->title)) {
-      $this->saveMessage('Skipping contact without name',
-        MigrationBase::MESSAGE_WARNING);
+      $this->saveMessage('Skipping contact without name', MigrationBase::MESSAGE_WARNING);
       return FALSE;
-    }
-    // Create the terms if not exists.
-    // Migration will set terms if name found.
-    if (!empty($row->field_wg_category)) {
-      MigrationUtil::getOrCreateTaxonomyTerm('wg_category', $row->field_wg_category, array('language' => 'en'));
-    }
-    if (!empty($row->field_wg_role_1)) {
-      $roles = explode('.', $row->field_wg_role_1);
-      MigrationUtil::getOrCreateTaxonomyTerm('wg_role_1', $roles[0], array('language' => 'en'));
-      if (!empty($roles[1])) {
-        $row->field_wg_role_1 = trim($roles[0]);
-        MigrationUtil::getOrCreateTaxonomyTerm('wg_role_2', $roles[1], array('language' => 'en'));
-        $row->field_wg_role_2 = trim($roles[1]);
-      }
     }
     return TRUE;
   }
@@ -221,21 +202,26 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
       $entity->field_country[LANGUAGE_NONE][0] = array('tid' => $tid);
     }
 
+    // Save the CV file to disk
     if (!empty($row->field_press_contact_cv)) {
       $files_dir = 'public://contact_cv';
       if (file_prepare_directory($files_dir, FILE_CREATE_DIRECTORY)) {
         $destination = 'public://contact_cv/' . $row->id . '_' . $row->field_press_contact_cv['filename'];
-        if ($file = file_save_data(base64_decode($row->field_press_contact_cv['content']), $destination)) {
+        $binary_data = base64_decode($row->field_press_contact_cv['content']);
+        if ($file = file_save_data($binary_data, $destination, FILE_EXISTS_OVERWRITE)) {
           $file->display = 1;
           $entity->field_press_contact_cv[LANGUAGE_NONE][0] = (array)$file;
         }
       }
     }
+
+    // Save the declaration of interests on disk
     if (!empty($row->field_press_contact_declaration)) {
       $files_dir = 'public://contacts_declarations';
       if (file_prepare_directory($files_dir, FILE_CREATE_DIRECTORY)) {
         $destination = 'public://contacts_declarations/' . $row->id . '_' . $row->field_press_contact_declaration['filename'];
-        if ($file = file_save_data(base64_decode($row->field_press_contact_declaration['content']), $destination)) {
+        $binary_data = base64_decode($row->field_press_contact_declaration['content']);
+        if ($file = file_save_data($binary_data, $destination, FILE_EXISTS_OVERWRITE)) {
           $file->display = 1;
           $entity->field_press_contact_declaration[LANGUAGE_NONE][0] = (array)$file;
         }
@@ -318,7 +304,6 @@ class BoardMembersListXML extends MigrateList {
         $data->field_city = (string) $attributes['Textbox4'];
         $data->field_contact_type = 'Board Member';
         $id = $this->idFromName((string) $data->title);
-
         $attached_pdfs = $member->xpath('AttachedPDFs');
         $attached_pdfs = current($attached_pdfs);
         foreach($attached_pdfs->xpath('File') as $idx => $file_xml) {
