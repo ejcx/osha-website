@@ -14,6 +14,7 @@ dependencies[] = osha_legislation
 dependencies[] = osha_taxonomies
 dependencies[] = osha_seminar
 
+files[] = content.advisory_groups.migrate.inc
 files[] = content.articles.migrate.inc
 files[] = content.blog.migrate.inc
 files[] = content.blog_comments.migrate.inc

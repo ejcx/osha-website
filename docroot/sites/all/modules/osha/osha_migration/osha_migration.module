@@ -24,6 +24,7 @@ define('OSHA_MIGRATION_CONTENT_TYPE_LEGISLATION', 'Legislation');
 define('OSHA_MIGRATION_CONTENT_TYPE_INFOGRAPHICS', 'Infographics');
 define('OSHA_MIGRATION_CONTENT_TYPE_FOCAL_POINT', 'FocalPoint');
 define('OSHA_MIGRATION_CONTENT_TYPE_BOARD_BUREAU', 'BureauMembers');
+define('OSHA_MIGRATION_CONTENT_ADVISORY_GROUPS', 'AdvisoryGroups');
 define('OSHA_MIGRATION_CONTENT_TYPE_BOARD', 'BoardMembers');
 define('OSHA_MIGRATION_CONTENT_TYPE_FOP_PAGES', 'FocalPointPages');
 define('OSHA_MIGRATION_FILES', 'Files');
@@ -212,6 +213,11 @@ function osha_migration_migrate_api() {
       'file_name_board' => $crm_data_dir . '/board_members.xml',
     );
   }
+
+  $migrations[OSHA_MIGRATION_CONTENT_ADVISORY_GROUPS] = array(
+    'class_name' => 'MigrateOshaAdvisoryGroups',
+    'root_dir' => $crm_data_dir,
+  );
 
   $filename = $crm_data_dir . '/Board.xml';
   if (is_readable($filename)) {
