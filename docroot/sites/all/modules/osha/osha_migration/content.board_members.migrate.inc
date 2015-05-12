@@ -306,31 +306,18 @@ class BoardMembersListXML extends MigrateList {
         $id = $this->idFromName((string) $data->title);
         $attached_pdfs = $member->xpath('AttachedPDFs');
         $attached_pdfs = current($attached_pdfs);
-        foreach($attached_pdfs->xpath('File') as $idx => $file_xml) {
-          if ($idx == 0) {
-            $file_attr = $file_xml->attributes();
-            $file_content = (string) $file_xml->Content;
-            $destination = (string) $file_attr['Filename'];
-            if (!empty($file_content) && !empty($destination)) {
-              if ($destination == 'CV.pdf') {
-                $data->field_press_contact_cv = array(
-                  'content' => $file_content,
-                  'filename' => $destination,
-                );
-              }
-              else {
-                $data->field_press_contact_cv = array(
-                  'content' => $file_content,
-                  'filename' => $destination,
-                );
-              }
+        foreach ($attached_pdfs->xpath('File') as $file_xml) {
+          $file_attr = $file_xml->attributes();
+          $file_content = (string) $file_xml->Content;
+          $destination = (string) $file_attr['Filename'];
+          if (!empty($file_content) && !empty($destination)) {
+            if ((string) $file_attr['DocumentType'] == 'CV') {
+              $data->field_press_contact_cv = array(
+                'content' => $file_content,
+                'filename' => $destination,
+              );
             }
-          }
-          elseif ($idx == 1) {
-            $file_attr = $file_xml->attributes();
-            $file_content = (string) $file_xml->Content;
-            $destination = (string) $file_attr['Filename'];
-            if (!empty($file_content)) {
+            else {
               $data->field_press_contact_declaration = array(
                 'content' => $file_content,
                 'filename' => $destination,
