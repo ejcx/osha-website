@@ -183,27 +183,16 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
    *   Source row
    */
   public function prepare($entity, $row) {
-    $country = MigrationUtil::getCountryIso2ByName($row->field_country_iso2);
-    if ($country == NULL) {
-      $this->displayMessage('Board member Country ' . $row->field_country_iso2 . ' not found', 'warning');
+    $entity->path['pathauto'] = 1;
+    $tid = MigrationUtil::getCountryTermByISO2($row->field_country_iso2);
+    if (empty($tid)) {
+      $this->displayMessage('Advisory member ' . $row->title . ' - country ' . $row->field_country_iso2 . ' not found', 'warning');
       $row->field_country_iso2 = NULL;
     }
     else {
-      $tid = MigrationUtil::getCountryTermByISO2($country);
-      if (empty($tid)) {
-        $voc = taxonomy_vocabulary_machine_name_load('country');
-        $term = new stdClass();
-        $term->vid = $voc->vid;
-        $term->name = ucwords(strtolower($row->field_country_iso2));
-        $term->field_iso2[LANGUAGE_NONE][0]['value'] = $country;
-        $term->language = 'en';
-        taxonomy_term_save($term);
-        $tid = $term->tid;
-      }
       $entity->field_country[LANGUAGE_NONE][0] = array('tid' => $tid);
     }
-
-    // Save the CV file to disk
+    // Save the CV file to disk.
     if (!empty($row->field_press_contact_cv)) {
       $files_dir = 'public://contact_cv';
       if (file_prepare_directory($files_dir, FILE_CREATE_DIRECTORY)) {
@@ -216,7 +205,7 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
       }
     }
 
-    // Save the declaration of interests on disk
+    // Save the declaration of interests on disk.
     if (!empty($row->field_press_contact_declaration)) {
       $files_dir = 'public://contacts_declarations';
       if (file_prepare_directory($files_dir, FILE_CREATE_DIRECTORY)) {
@@ -224,7 +213,7 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
         $binary_data = base64_decode($row->field_press_contact_declaration['content']);
         if ($file = file_save_data($binary_data, $destination, FILE_EXISTS_OVERWRITE)) {
           $file->display = 1;
-          $entity->field_press_contact_declaration[LANGUAGE_NONE][0] = (array)$file;
+          $entity->field_press_contact_declaration[LANGUAGE_NONE][0] = (array) $file;
         }
       }
     }
@@ -296,14 +285,21 @@ class AdvisoryGroupsMigrateList extends MigrateList {
   protected function parseXMLFile($file, $type, $type_identifier) {
     $rows = array();
     if (!is_readable($file)) {
-      return $rows;
+      // The file might end with .XML
+      $new_file = str_replace('.xml', '.XML', $file);
+      if (!is_readable($new_file)) {
+        return $rows;
+      }
+      else {
+        $file = $new_file;
+      }
     }
-    $content = utf8_encode(file_get_contents($file));
-    if ($xml = simplexml_load_string($content)) {
+    if ($xml = simplexml_load_file($file)) {
       foreach ($xml->xpath('//Detail') as $member) {
         $data = new stdClass();
         $attributes = $member->attributes();
         $data->title = (string) $attributes['Table0_Details4'];
+        $id = $type_identifier . '-' . strtolower(str_replace(' ', '-', $data->title));
         $data->title_field = (string) $attributes['Table0_Details4'];
         $data->field_personal_title = (string) $attributes['Table0_Details3'];
         $data->field_wg_role_1 = (string) $attributes['Table0_Details2'];
@@ -311,38 +307,24 @@ class AdvisoryGroupsMigrateList extends MigrateList {
         $data->field_wg_category = (string) $attributes['Table0_Details1'];
         $data->field_press_contact_organization = (string) $attributes['Table0_Details6'];
         $data->field_press_contact_location = (string) $attributes['Table0_Details7'];
-        $data->field_country_iso2 = (string) $attributes['Textbox7'];
+        $data->field_country_iso2 = (string) $attributes['Textbox9'];
         $data->field_zip_code = (string) $attributes['Textbox1'];
         $data->field_city = (string) $attributes['Textbox4'];
         $data->field_contact_type[] = $type;
-        $id = $type_identifier . '-' . strtolower(str_replace(' ', '-', $data->title));
         $attached_pdfs = $member->xpath('AttachedPDFs');
         $attached_pdfs = current($attached_pdfs);
-        foreach($attached_pdfs->xpath('File') as $idx => $file_xml) {
-          if ($idx == 0) {
-            $file_attr = $file_xml->attributes();
-            $file_content = (string) $file_xml->Content;
-            $destination = (string) $file_attr['Filename'];
-            if (!empty($file_content) && !empty($destination)) {
-              if ($destination == 'CV.pdf') {
-                $data->field_press_contact_cv = array(
-                  'content' => $file_content,
-                  'filename' => $destination,
-                );
-              }
-              else {
-                $data->field_press_contact_cv = array(
-                  'content' => $file_content,
-                  'filename' => $destination,
-                );
-              }
+        foreach ($attached_pdfs->xpath('File') as $file_xml) {
+          $file_attr = $file_xml->attributes();
+          $file_content = (string) $file_xml->Content;
+          $destination = (string) $file_attr['Filename'];
+          if (!empty($file_content) && !empty($destination)) {
+            if ((string) $file_attr['DocumentType'] == 'CV') {
+              $data->field_press_contact_cv = array(
+                'content' => $file_content,
+                'filename' => $destination,
+              );
             }
-          }
-          elseif ($idx == 1) {
-            $file_attr = $file_xml->attributes();
-            $file_content = (string) $file_xml->Content;
-            $destination = (string) $file_attr['Filename'];
-            if (!empty($file_content)) {
+            else {
               $data->field_press_contact_declaration = array(
                 'content' => $file_content,
                 'filename' => $destination,

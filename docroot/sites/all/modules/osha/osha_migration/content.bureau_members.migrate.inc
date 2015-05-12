@@ -3,21 +3,20 @@
  * Class MigrateOshaBlog migrates blog.txt contents. The data
  * is stored inside the <em>Blog</em> content type.
  */
-class MigrateOshaBoardBureauMembers extends OSHADynamicMigration {
+class MigrateOshaBureauMembers extends OSHADynamicMigration {
 
   /**
    * {@inheritdoc}
    */
   public function __construct($arguments) {
     parent::__construct(MigrateGroup::getInstance('OSHA Content types'));
-    $this->description = 'Import "Board and Bureau" contents from CSV file';
+    $this->description = 'Import "Bureau" contents from CSV file';
 
     /* Remove limits on time/memory, slower machines will fail */
     $this->timeLimit = 0;
     $this->memoryLimit = PHP_INT_MAX;
 
     $source_file_bureau = MigrationUtil::getSourceFileByKey($arguments, 'file_name');
-//    $source_file_board = MigrationUtil::getSourceFileByKey($arguments, 'file_name_board');
     $this->source = new MigrateSourceList(
       new BoardBureauMembersListXML($source_file_bureau),
       new BoardBureauMembersItemXML(),
@@ -110,7 +109,7 @@ class MigrateOshaBoardBureauMembers extends OSHADynamicMigration {
    * {@inheritdoc}
    */
   protected function generateMachineName() {
-    return OSHA_MIGRATION_CONTENT_TYPE_BOARD_BUREAU;
+    return OSHA_MIGRATION_CONTENT_TYPE_BUREAU;
   }
 
   /**
@@ -150,6 +149,7 @@ class MigrateOshaBoardBureauMembers extends OSHADynamicMigration {
    *   Source row
    */
   public function prepare($entity, $row) {
+    $entity->path['pathauto'] = 1;
   }
 
   /**
@@ -191,10 +191,9 @@ class BoardBureauMembersListXML extends MigrateList {
   /**
    * {@inheritdoc}
    */
-  public function __construct($file, $file_board = "") {
+  public function __construct($file) {
     parent::__construct($file);
     $this->file = $file;
-    $this->file_board = $file_board;
     $this->parseSourceFile();
   }
 
@@ -215,16 +214,8 @@ class BoardBureauMembersListXML extends MigrateList {
     }
     if ($xml = simplexml_load_file($this->file)) {
       // To be used for board and bureau memebers, to merge the details.
-//    $xml_board = simplexml_load_file($this->file_board);
-      foreach ($xml->getDocNamespaces() as $str_prefix => $str_namespace) {
-        if (strlen($str_prefix) == 0) {
-          // Assign an namespace prefix.
-          $str_prefix = "fp";
-        }
-        $xml->registerXPathNamespace($str_prefix, $str_namespace);
-      }
       // Contact fields are attributes of Detail.
-      foreach ($xml->xpath('//fp:Detail') as $member) {
+      foreach ($xml->xpath('//Detail') as $member) {
         $data = new stdClass();
         $attributes = $member->attributes();
         $data->title = (string) $attributes['Table0_Details2'];

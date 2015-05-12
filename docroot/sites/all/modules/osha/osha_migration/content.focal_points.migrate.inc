@@ -117,6 +117,7 @@ class MigrateOshaFocalPoints extends OSHADynamicMigration {
    *   Source row
    */
   public function prepare($entity, $row) {
+    $entity->path['pathauto'] = 1;
     $country = MigrationUtil::getCountryIso2ByName($row->field_country_iso2);
     if ($country == NULL) {
       $this->displayMessage('Focal Points Country '
@@ -200,15 +201,8 @@ class FocalPointsContentListXML extends MigrateList {
       return;
     }
     if ($xml = simplexml_load_file($this->file)) {
-      foreach ($xml->getDocNamespaces() as $str_prefix => $str_namespace) {
-        if (strlen($str_prefix) == 0) {
-          // Assign an namespace prefix.
-          $str_prefix = "fp";
-        }
-        $xml->registerXPathNamespace($str_prefix, $str_namespace);
-      }
       // Contact fields are attributes of Detail.
-      foreach ($xml->xpath('//fp:Detail') as $focalpoint) {
+      foreach ($xml->xpath('//Detail') as $focalpoint) {
         $data = new stdClass();
         $attributes = $focalpoint->attributes();
         $data->title = (string) $attributes['Table0_Details5'];

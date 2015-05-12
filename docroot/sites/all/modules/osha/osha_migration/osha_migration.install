@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * Delete nodes of old bureau migration.
+ * De register old migration.
+ * Register new migrations.
+ */
+function osha_migration_update_7001() {
+  $nids = db_select('migrate_map_boardbureaumembers', 'mb')
+    ->fields('mb', array('destid1'))
+    ->execute()
+    ->fetchAllKeyed(0, 0);
+  if (!empty($nids)) {
+    foreach ($nids as $nid) {
+      node_delete($nid);
+    }
+  }
+  // De register old migration.
+  drush_migrate_deregister_migration('BoardBureauMembers');
+  // Auto-register new migrations.
+  migrate_autoregister();
+}

@@ -182,23 +182,13 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
    *   Source row
    */
   public function prepare($entity, $row) {
-    $country = MigrationUtil::getCountryIso2ByName($row->field_country_iso2);
-    if ($country == NULL) {
-      $this->displayMessage('Board member Country ' . $row->field_country_iso2 . ' not found', 'warning');
+    $entity->path['pathauto'] = 1;
+    $tid = MigrationUtil::getCountryTermByISO2($row->field_country_iso2);
+    if (empty($tid)) {
+      $this->displayMessage('Board member ' . $row->title . ' - country ' . $row->field_country_iso2 . ' not found', 'warning');
       $row->field_country_iso2 = NULL;
     }
     else {
-      $tid = MigrationUtil::getCountryTermByISO2($country);
-      if (empty($tid)) {
-        $voc = taxonomy_vocabulary_machine_name_load('country');
-        $term = new stdClass();
-        $term->vid = $voc->vid;
-        $term->name = ucwords(strtolower($row->field_country_iso2));
-        $term->field_iso2[LANGUAGE_NONE][0]['value'] = $country;
-        $term->language = 'en';
-        taxonomy_term_save($term);
-        $tid = $term->tid;
-      }
       $entity->field_country[LANGUAGE_NONE][0] = array('tid' => $tid);
     }
 
@@ -299,7 +289,7 @@ class BoardMembersListXML extends MigrateList {
         $data->field_wg_category = (string) $attributes['Table0_Details1'];
         $data->field_press_contact_organization = (string) $attributes['Table0_Details6'];
         $data->field_press_contact_location = (string) $attributes['Table0_Details7'];
-        $data->field_country_iso2 = (string) $attributes['Textbox7'];
+        $data->field_country_iso2 = (string) $attributes['Textbox9'];
         $data->field_zip_code = (string) $attributes['Textbox1'];
         $data->field_city = (string) $attributes['Textbox4'];
         $data->field_contact_type = 'Board Member';
