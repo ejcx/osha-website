@@ -56,6 +56,7 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
     $this->addFieldMapping('field_press_contact_location', 'field_press_contact_location');
     $this->addFieldMapping('field_city', 'field_city');
     $this->addFieldMapping('field_zip_code', 'field_zip_code');
+    $this->addFieldMapping('field_is_observer', 'field_is_observer');
 
     $this->addFieldMapping('field_contact_type', 'field_contact_type');
     $this->addFieldMapping('field_contact_type:create_term')->defaultValue(TRUE);
@@ -169,6 +170,13 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
     if (empty($row->title)) {
       $this->saveMessage('Skipping contact without name', MigrationBase::MESSAGE_WARNING);
       return FALSE;
+    }
+    if (!empty($row->field_wg_role_1)) {
+      // If observer observer than Is Observer.
+      if (strpos(strtolower($row->field_wg_role_1), 'observer observer') !== FALSE) {
+        $row->field_wg_role_1 = str_replace('observer observer', 'Observer', strtolower($row->field_wg_role_1));
+        $row->field_is_observer = TRUE;
+      }
     }
     return TRUE;
   }
