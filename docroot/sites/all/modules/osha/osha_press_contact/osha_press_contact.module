@@ -72,3 +72,4 @@ function osha_press_contact_migrate($machine_name) {
   watchdog('osha_press_contact', 'Imported @migration with result: @result',
     array('@migration' => $machine_name, '@result' => $result), WATCHDOG_INFO);
 }
+

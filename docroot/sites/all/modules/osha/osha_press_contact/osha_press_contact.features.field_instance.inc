@@ -226,6 +226,81 @@ function osha_press_contact_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-press_contact-field_is_observer'
+  $field_instances['node-press_contact-field_is_observer'] = array(
+    'bundle' => 'press_contact',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 19,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_slideshow' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_wiki' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_is_observer',
+    'label' => 'Is Observer',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 21,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-press_contact-field_personal_title'
   $field_instances['node-press_contact-field_personal_title'] = array(
     'bundle' => 'press_contact',
@@ -1806,6 +1881,7 @@ function osha_press_contact_field_default_field_instances() {
   t('Email');
   t('Flag');
   t('ISO2');
+  t('Is Observer');
   t('Job title');
   t('Location');
   t('Name');
