@@ -298,6 +298,11 @@ class AdvisoryGroupsMigrateList extends MigrateList {
       }
     }
     if ($xml = simplexml_load_file($file)) {
+      $title = $xml->xpath('//Table0_Group0_Header0/Table0_Group0_Header0');
+      $title = (string) $title[0];
+      if (!empty($title)) {
+        $type = $title;
+      }
       foreach ($xml->xpath('//Detail') as $member) {
         $data = new stdClass();
         $attributes = $member->attributes();
