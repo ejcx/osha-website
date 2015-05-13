@@ -232,7 +232,7 @@ function osha_fop_page_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_archived',
-    'label' => 'Archived',
+    'label' => 'Marked as outdated',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
