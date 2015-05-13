@@ -183,7 +183,7 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
    *   Source row
    */
   public function prepare($entity, $row) {
-    $entity->path['pathauto'] = 1;
+    $entity->path['pathauto'] = 0;
     $tid = MigrationUtil::getCountryTermByISO2($row->field_country_iso2);
     if (empty($tid)) {
       $this->displayMessage('Advisory member ' . $row->title . ' - country ' . $row->field_country_iso2 . ' not found', 'warning');
@@ -217,6 +217,9 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
         }
       }
     }
+  }
+
+  public function complete($entity, $row) {
   }
 
   /**

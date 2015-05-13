@@ -149,7 +149,10 @@ class MigrateOshaBureauMembers extends OSHADynamicMigration {
    *   Source row
    */
   public function prepare($entity, $row) {
-    $entity->path['pathauto'] = 1;
+    $entity->path['pathauto'] = 0;
+  }
+
+  public function complete($entity, $row) {
   }
 
   /**
