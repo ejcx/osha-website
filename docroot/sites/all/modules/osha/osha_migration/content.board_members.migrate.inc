@@ -276,7 +276,7 @@ class BoardMembersListXML extends MigrateList {
     if (!is_readable($this->file)) {
       return;
     }
-    $content = utf8_encode(file_get_contents($this->file));
+    $content = file_get_contents($this->file);
     if ($xml = simplexml_load_string($content)) {
       foreach ($xml->xpath('//Detail') as $member) {
         $data = new stdClass();
