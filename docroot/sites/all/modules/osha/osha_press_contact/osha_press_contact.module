@@ -32,7 +32,9 @@ function osha_press_contact_cron() {
   migrate_autoregister();
   // Update Focal Point Migration.
   $migrate = osha_migration_migrate_api();
-  $migrations = array(OSHA_MIGRATION_CONTENT_TYPE_FOCAL_POINT, OSHA_MIGRATION_CONTENT_TYPE_BOARD_BUREAU);
+  $migrations = array(OSHA_MIGRATION_CONTENT_TYPE_FOCAL_POINT,
+    OSHA_MIGRATION_CONTENT_TYPE_BUREAU, OSHA_MIGRATION_CONTENT_ADVISORY_GROUPS,
+    OSHA_MIGRATION_CONTENT_TYPE_BOARD);
   foreach ($migrations as $migration) {
     $file = $migrate['migrations'][$migration]['file_name'];
     $filemtime = filemtime($file);
@@ -70,3 +72,4 @@ function osha_press_contact_migrate($machine_name) {
   watchdog('osha_press_contact', 'Imported @migration with result: @result',
     array('@migration' => $machine_name, '@result' => $result), WATCHDOG_INFO);
 }
+

@@ -11,6 +11,571 @@ function osha_press_contact_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'advisory_groups';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Advisory groups';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Advisory groups';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mai mult';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_contact_type',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['field_contact_type']['id'] = 'field_contact_type';
+  $handler->display->display_options['fields']['field_contact_type']['table'] = 'field_data_field_contact_type';
+  $handler->display->display_options['fields']['field_contact_type']['field'] = 'field_contact_type';
+  $handler->display->display_options['fields']['field_contact_type']['label'] = '';
+  $handler->display->display_options['fields']['field_contact_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_contact_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_contact_type']['type'] = 'i18n_taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_contact_type']['delta_offset'] = '0';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['element_wrapper_type'] = 'strong';
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => '',
+    'title_class' => '',
+  );
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Field: Content: Category */
+  $handler->display->display_options['fields']['field_wg_category']['id'] = 'field_wg_category';
+  $handler->display->display_options['fields']['field_wg_category']['table'] = 'field_data_field_wg_category';
+  $handler->display->display_options['fields']['field_wg_category']['field'] = 'field_wg_category';
+  $handler->display->display_options['fields']['field_wg_category']['label'] = '';
+  $handler->display->display_options['fields']['field_wg_category']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_category']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_category']['alter']['text'] = '([field_wg_category])';
+  $handler->display->display_options['fields']['field_wg_category']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_wg_category']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<strong>[title_field]</strong> [field_wg_category]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_press_contact_location']['id'] = 'field_press_contact_location';
+  $handler->display->display_options['fields']['field_press_contact_location']['table'] = 'field_data_field_press_contact_location';
+  $handler->display->display_options['fields']['field_press_contact_location']['field'] = 'field_press_contact_location';
+  $handler->display->display_options['fields']['field_press_contact_location']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_location']['element_label_colon'] = FALSE;
+  /* Field: Content: Zip Code */
+  $handler->display->display_options['fields']['field_zip_code']['id'] = 'field_zip_code';
+  $handler->display->display_options['fields']['field_zip_code']['table'] = 'field_data_field_zip_code';
+  $handler->display->display_options['fields']['field_zip_code']['field'] = 'field_zip_code';
+  $handler->display->display_options['fields']['field_zip_code']['label'] = '';
+  $handler->display->display_options['fields']['field_zip_code']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_zip_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_zip_code']['type'] = 'text_plain';
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
+  $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['label'] = '';
+  $handler->display->display_options['fields']['field_city']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_city']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_city']['alter']['text'] = ', [field_city]';
+  $handler->display->display_options['fields']['field_city']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_city']['type'] = 'text_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '[field_zip_code][field_city] ';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
+  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['label'] = '';
+  $handler->display->display_options['fields']['field_country']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_country']['alter']['text'] = '[field_country]';
+  $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Sort criterion: Content: Title (title_field) */
+  $handler->display->display_options['sorts']['title_field_value']['id'] = 'title_field_value';
+  $handler->display->display_options['sorts']['title_field_value']['table'] = 'field_data_title_field';
+  $handler->display->display_options['sorts']['title_field_value']['field'] = 'title_field_value';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'press_contact' => 'press_contact',
+  );
+  /* Filter criterion: Content: Is advisory (field_is_advisory) */
+  $handler->display->display_options['filters']['field_is_advisory_value']['id'] = 'field_is_advisory_value';
+  $handler->display->display_options['filters']['field_is_advisory_value']['table'] = 'field_data_field_is_advisory';
+  $handler->display->display_options['filters']['field_is_advisory_value']['field'] = 'field_is_advisory_value';
+  $handler->display->display_options['filters']['field_is_advisory_value']['value'] = array(
+    1 => '1',
+  );
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block_1');
+  $translatables['advisory_groups'] = array(
+    t('Master'),
+    t('Advisory groups'),
+    t('mai mult'),
+    t('Aplicare'),
+    t('Reinițializare'),
+    t('Sortare după'),
+    t('Ascendent'),
+    t('Descendent'),
+    t('([field_wg_category])'),
+    t('<strong>[title_field]</strong> [field_wg_category]'),
+    t(', [field_city]'),
+    t('[field_zip_code][field_city] '),
+    t('[field_country]'),
+    t('Block'),
+    t('more'),
+  );
+  $export['advisory_groups'] = $view;
+
+  $view = new view();
+  $view->name = 'board_members';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Board members';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Board members';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mai mult';
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'board_group',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+  );
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Category (field_wg_category) */
+  $handler->display->display_options['relationships']['field_wg_category_tid']['id'] = 'field_wg_category_tid';
+  $handler->display->display_options['relationships']['field_wg_category_tid']['table'] = 'field_data_field_wg_category';
+  $handler->display->display_options['relationships']['field_wg_category_tid']['field'] = 'field_wg_category_tid';
+  /* Relationship: Content: WG Role1 (field_wg_role_1) */
+  $handler->display->display_options['relationships']['field_wg_role_1_tid']['id'] = 'field_wg_role_1_tid';
+  $handler->display->display_options['relationships']['field_wg_role_1_tid']['table'] = 'field_data_field_wg_role_1';
+  $handler->display->display_options['relationships']['field_wg_role_1_tid']['field'] = 'field_wg_role_1_tid';
+  /* Relationship: Content: Country (field_country) */
+  $handler->display->display_options['relationships']['field_country_tid']['id'] = 'field_country_tid';
+  $handler->display->display_options['relationships']['field_country_tid']['table'] = 'field_data_field_country';
+  $handler->display->display_options['relationships']['field_country_tid']['field'] = 'field_country_tid';
+  $handler->display->display_options['relationships']['field_country_tid']['required'] = TRUE;
+  /* Relationship: Taxonomy term: Country Status (field_country_status) */
+  $handler->display->display_options['relationships']['field_country_status_tid']['id'] = 'field_country_status_tid';
+  $handler->display->display_options['relationships']['field_country_status_tid']['table'] = 'field_data_field_country_status';
+  $handler->display->display_options['relationships']['field_country_status_tid']['field'] = 'field_country_status_tid';
+  $handler->display->display_options['relationships']['field_country_status_tid']['relationship'] = 'field_country_tid';
+  /* Field: Osha press contact: Board members group field */
+  $handler->display->display_options['fields']['board_group']['id'] = 'board_group';
+  $handler->display->display_options['fields']['board_group']['table'] = 'osha_press_contact';
+  $handler->display->display_options['fields']['board_group']['field'] = 'board_group';
+  $handler->display->display_options['fields']['board_group']['label'] = '';
+  $handler->display->display_options['fields']['board_group']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['board_group']['element_label_colon'] = FALSE;
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country']['id'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['table'] = 'field_data_field_country';
+  $handler->display->display_options['fields']['field_country']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country']['label'] = '';
+  $handler->display->display_options['fields']['field_country']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_country']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: Content: Category */
+  $handler->display->display_options['fields']['field_wg_category']['id'] = 'field_wg_category';
+  $handler->display->display_options['fields']['field_wg_category']['table'] = 'field_data_field_wg_category';
+  $handler->display->display_options['fields']['field_wg_category']['field'] = 'field_wg_category';
+  $handler->display->display_options['fields']['field_wg_category']['label'] = '';
+  $handler->display->display_options['fields']['field_wg_category']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_category']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_wg_category']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: Content: WG Role1 */
+  $handler->display->display_options['fields']['field_wg_role_1']['id'] = 'field_wg_role_1';
+  $handler->display->display_options['fields']['field_wg_role_1']['table'] = 'field_data_field_wg_role_1';
+  $handler->display->display_options['fields']['field_wg_role_1']['field'] = 'field_wg_role_1';
+  $handler->display->display_options['fields']['field_wg_role_1']['label'] = '';
+  $handler->display->display_options['fields']['field_wg_role_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_1']['alter']['text'] = ' - [field_wg_role_1]';
+  $handler->display->display_options['fields']['field_wg_role_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_wg_role_1']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_wg_category][field_wg_role_1]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'strong';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
+  $handler->display->display_options['fields']['title_field']['field'] = 'title_field';
+  $handler->display->display_options['fields']['title_field']['label'] = '';
+  $handler->display->display_options['fields']['title_field']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title_field']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['title_field']['settings'] = array(
+    'title_style' => '_none',
+    'title_link' => '',
+    'title_class' => '',
+  );
+  $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Field: Content: WG Role 2 */
+  $handler->display->display_options['fields']['field_wg_role_2']['id'] = 'field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2']['table'] = 'field_data_field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2']['field'] = 'field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2']['label'] = '';
+  $handler->display->display_options['fields']['field_wg_role_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['text'] = '([field_wg_role_2])';
+  $handler->display->display_options['fields']['field_wg_role_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_wg_role_2']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_1']['id'] = 'nothing_1';
+  $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_1']['label'] = '';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<strong>[title_field]</strong> [field_wg_role_2]';
+  $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
+  /* Field: Content: CV */
+  $handler->display->display_options['fields']['field_press_contact_cv']['id'] = 'field_press_contact_cv';
+  $handler->display->display_options['fields']['field_press_contact_cv']['table'] = 'field_data_field_press_contact_cv';
+  $handler->display->display_options['fields']['field_press_contact_cv']['field'] = 'field_press_contact_cv';
+  $handler->display->display_options['fields']['field_press_contact_cv']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_cv']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_press_contact_cv']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_press_contact_cv']['alter']['text'] = ' | [field_press_contact_cv]';
+  $handler->display->display_options['fields']['field_press_contact_cv']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_press_contact_cv']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_press_contact_cv']['type'] = 'file_download_link';
+  $handler->display->display_options['fields']['field_press_contact_cv']['settings'] = array(
+    'text' => 'CV',
+  );
+  /* Field: Content: Declaration of Interests */
+  $handler->display->display_options['fields']['field_press_contact_declaration']['id'] = 'field_press_contact_declaration';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['table'] = 'field_data_field_press_contact_declaration';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['field'] = 'field_press_contact_declaration';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_press_contact_declaration']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_press_contact_declaration']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['type'] = 'file_download_link';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['settings'] = array(
+    'text' => 'Declaration of interests',
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_2']['label'] = '';
+  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_press_contact_declaration][field_press_contact_cv]';
+  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+  /* Field: Content: Location */
+  $handler->display->display_options['fields']['field_press_contact_location']['id'] = 'field_press_contact_location';
+  $handler->display->display_options['fields']['field_press_contact_location']['table'] = 'field_data_field_press_contact_location';
+  $handler->display->display_options['fields']['field_press_contact_location']['field'] = 'field_press_contact_location';
+  $handler->display->display_options['fields']['field_press_contact_location']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_location']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_press_contact_location']['type'] = 'text_plain';
+  /* Field: Content: Zip Code */
+  $handler->display->display_options['fields']['field_zip_code']['id'] = 'field_zip_code';
+  $handler->display->display_options['fields']['field_zip_code']['table'] = 'field_data_field_zip_code';
+  $handler->display->display_options['fields']['field_zip_code']['field'] = 'field_zip_code';
+  $handler->display->display_options['fields']['field_zip_code']['label'] = '';
+  $handler->display->display_options['fields']['field_zip_code']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_zip_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_zip_code']['type'] = 'text_plain';
+  /* Field: Content: City */
+  $handler->display->display_options['fields']['field_city']['id'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['table'] = 'field_data_field_city';
+  $handler->display->display_options['fields']['field_city']['field'] = 'field_city';
+  $handler->display->display_options['fields']['field_city']['label'] = '';
+  $handler->display->display_options['fields']['field_city']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_city']['alter']['text'] = '[field_zip_code] [field_city]';
+  $handler->display->display_options['fields']['field_city']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_city']['type'] = 'text_plain';
+  /* Field: Content: Country */
+  $handler->display->display_options['fields']['field_country_1']['id'] = 'field_country_1';
+  $handler->display->display_options['fields']['field_country_1']['table'] = 'field_data_field_country';
+  $handler->display->display_options['fields']['field_country_1']['field'] = 'field_country';
+  $handler->display->display_options['fields']['field_country_1']['label'] = '';
+  $handler->display->display_options['fields']['field_country_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_country_1']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Sort criterion: Taxonomy term: Name */
+  $handler->display->display_options['sorts']['name']['id'] = 'name';
+  $handler->display->display_options['sorts']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['name']['field'] = 'name';
+  $handler->display->display_options['sorts']['name']['relationship'] = 'field_country_tid';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_wg_category_tid';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight_1']['id'] = 'weight_1';
+  $handler->display->display_options['sorts']['weight_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight_1']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight_1']['relationship'] = 'field_wg_role_1_tid';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'press_contact' => 'press_contact',
+  );
+  /* Filter criterion: Content: Type (field_contact_type) */
+  $handler->display->display_options['filters']['field_contact_type_tid']['id'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['table'] = 'field_data_field_contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['field'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['value'] = array(
+    2971 => '2971',
+  );
+  $handler->display->display_options['filters']['field_contact_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_contact_type_tid']['vocabulary'] = 'contact_type';
+  /* Filter criterion: Taxonomy term: Country Status (field_country_status) */
+  $handler->display->display_options['filters']['field_country_status_tid']['id'] = 'field_country_status_tid';
+  $handler->display->display_options['filters']['field_country_status_tid']['table'] = 'field_data_field_country_status';
+  $handler->display->display_options['filters']['field_country_status_tid']['field'] = 'field_country_status_tid';
+  $handler->display->display_options['filters']['field_country_status_tid']['relationship'] = 'field_country_tid';
+  $handler->display->display_options['filters']['field_country_status_tid']['value'] = array(
+    3016 => '3016',
+  );
+  $handler->display->display_options['filters']['field_country_status_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_country_status_tid']['vocabulary'] = 'country_status';
+  /* Filter criterion: Content: Is Observer (field_is_observer) */
+  $handler->display->display_options['filters']['field_is_observer_value']['id'] = 'field_is_observer_value';
+  $handler->display->display_options['filters']['field_is_observer_value']['table'] = 'field_data_field_is_observer';
+  $handler->display->display_options['filters']['field_is_observer_value']['field'] = 'field_is_observer_value';
+  $handler->display->display_options['filters']['field_is_observer_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_is_observer_value']['value'] = array(
+    0 => '0',
+  );
+  /* Filter criterion: Content: Category (field_wg_category) */
+  $handler->display->display_options['filters']['field_wg_category_tid']['id'] = 'field_wg_category_tid';
+  $handler->display->display_options['filters']['field_wg_category_tid']['table'] = 'field_data_field_wg_category';
+  $handler->display->display_options['filters']['field_wg_category_tid']['field'] = 'field_wg_category_tid';
+  $handler->display->display_options['filters']['field_wg_category_tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_wg_category_tid']['value'] = array(
+    3027 => '3027',
+  );
+  $handler->display->display_options['filters']['field_wg_category_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_wg_category_tid']['vocabulary'] = 'wg_category';
+
+  /* Display: Block */
+  $handler = $view->new_display('block', 'Block', 'block');
+
+  /* Display: Block EFTA */
+  $handler = $view->new_display('block', 'Block EFTA', 'block_1');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'press_contact' => 'press_contact',
+  );
+  /* Filter criterion: Content: Type (field_contact_type) */
+  $handler->display->display_options['filters']['field_contact_type_tid']['id'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['table'] = 'field_data_field_contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['field'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['value'] = array(
+    2971 => '2971',
+  );
+  $handler->display->display_options['filters']['field_contact_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_contact_type_tid']['vocabulary'] = 'contact_type';
+  /* Filter criterion: Taxonomy term: Country Status (field_country_status) */
+  $handler->display->display_options['filters']['field_country_status_tid']['id'] = 'field_country_status_tid';
+  $handler->display->display_options['filters']['field_country_status_tid']['table'] = 'field_data_field_country_status';
+  $handler->display->display_options['filters']['field_country_status_tid']['field'] = 'field_country_status_tid';
+  $handler->display->display_options['filters']['field_country_status_tid']['relationship'] = 'field_country_tid';
+  $handler->display->display_options['filters']['field_country_status_tid']['value'] = array(
+    3017 => '3017',
+  );
+  $handler->display->display_options['filters']['field_country_status_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_country_status_tid']['vocabulary'] = 'country_status';
+  /* Filter criterion: Content: Is Observer (field_is_observer) */
+  $handler->display->display_options['filters']['field_is_observer_value']['id'] = 'field_is_observer_value';
+  $handler->display->display_options['filters']['field_is_observer_value']['table'] = 'field_data_field_is_observer';
+  $handler->display->display_options['filters']['field_is_observer_value']['field'] = 'field_is_observer_value';
+  $handler->display->display_options['filters']['field_is_observer_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_is_observer_value']['value'] = array(
+    0 => '0',
+  );
+  /* Filter criterion: Content: Category (field_wg_category) */
+  $handler->display->display_options['filters']['field_wg_category_tid']['id'] = 'field_wg_category_tid';
+  $handler->display->display_options['filters']['field_wg_category_tid']['table'] = 'field_data_field_wg_category';
+  $handler->display->display_options['filters']['field_wg_category_tid']['field'] = 'field_wg_category_tid';
+  $handler->display->display_options['filters']['field_wg_category_tid']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_wg_category_tid']['value'] = array(
+    3027 => '3027',
+  );
+  $handler->display->display_options['filters']['field_wg_category_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_wg_category_tid']['vocabulary'] = 'wg_category';
+
+  /* Display: Block EC - Obs */
+  $handler = $view->new_display('block', 'Block EC - Obs', 'block_2');
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight']['relationship'] = 'field_wg_category_tid';
+  /* Sort criterion: Taxonomy term: Weight */
+  $handler->display->display_options['sorts']['weight_1']['id'] = 'weight_1';
+  $handler->display->display_options['sorts']['weight_1']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['sorts']['weight_1']['field'] = 'weight';
+  $handler->display->display_options['sorts']['weight_1']['relationship'] = 'field_wg_role_1_tid';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'OR',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'press_contact' => 'press_contact',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Type (field_contact_type) */
+  $handler->display->display_options['filters']['field_contact_type_tid']['id'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['table'] = 'field_data_field_contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['field'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['value'] = array(
+    2971 => '2971',
+  );
+  $handler->display->display_options['filters']['field_contact_type_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_contact_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_contact_type_tid']['vocabulary'] = 'contact_type';
+  /* Filter criterion: Content: Is Observer (field_is_observer) */
+  $handler->display->display_options['filters']['field_is_observer_value']['id'] = 'field_is_observer_value';
+  $handler->display->display_options['filters']['field_is_observer_value']['table'] = 'field_data_field_is_observer';
+  $handler->display->display_options['filters']['field_is_observer_value']['field'] = 'field_is_observer_value';
+  $handler->display->display_options['filters']['field_is_observer_value']['value'] = array(
+    1 => '1',
+  );
+  $handler->display->display_options['filters']['field_is_observer_value']['group'] = 2;
+  /* Filter criterion: Content: Category (field_wg_category) */
+  $handler->display->display_options['filters']['field_wg_category_tid']['id'] = 'field_wg_category_tid';
+  $handler->display->display_options['filters']['field_wg_category_tid']['table'] = 'field_data_field_wg_category';
+  $handler->display->display_options['filters']['field_wg_category_tid']['field'] = 'field_wg_category_tid';
+  $handler->display->display_options['filters']['field_wg_category_tid']['value'] = array(
+    3027 => '3027',
+  );
+  $handler->display->display_options['filters']['field_wg_category_tid']['group'] = 2;
+  $handler->display->display_options['filters']['field_wg_category_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_wg_category_tid']['vocabulary'] = 'wg_category';
+  $translatables['board_members'] = array(
+    t('Master'),
+    t('Board members'),
+    t('mai mult'),
+    t('Aplicare'),
+    t('Reinițializare'),
+    t('Sortare după'),
+    t('Ascendent'),
+    t('Descendent'),
+    t('term from field_wg_category'),
+    t('term from field_wg_role_1'),
+    t('term from field_country'),
+    t('term from field_country_status'),
+    t(' - [field_wg_role_1]'),
+    t('[field_wg_category][field_wg_role_1]'),
+    t('([field_wg_role_2])'),
+    t('<strong>[title_field]</strong> [field_wg_role_2]'),
+    t(' | [field_press_contact_cv]'),
+    t('[field_press_contact_declaration][field_press_contact_cv]'),
+    t('[field_zip_code] [field_city]'),
+    t('Block'),
+    t('more'),
+    t('Block EFTA'),
+    t('Block EC - Obs'),
+  );
+  $export['board_members'] = $view;
+
+  $view = new view();
   $view->name = 'bureau_members';
   $view->description = '';
   $view->tag = 'default';
@@ -24,10 +589,16 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Composition of the Bureau of the Governing Board';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -144,18 +715,19 @@ function osha_press_contact_views_default_views() {
   $translatables['bureau_members'] = array(
     t('Master'),
     t('Composition of the Bureau of the Governing Board'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('mai mult'),
+    t('Aplicare'),
+    t('Reinițializare'),
+    t('Sortare după'),
+    t('Ascendent'),
+    t('Descendent'),
     t('term from field_wg_role_1'),
     t('term from field_wg_category'),
     t('term from field_wg_role_2'),
     t(', [field_wg_role_2]'),
     t('<strong>[field_personal_title] [title]</strong> ([field_wg_category])[field_wg_role_2]'),
     t('Block'),
+    t('more'),
   );
   $export['bureau_members'] = $view;
 
@@ -171,13 +743,19 @@ function osha_press_contact_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Focal points\' contact details';
+  $handler->display->display_options['title'] = 'Datele de contact ale punctelor focale';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -266,6 +844,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_email']['id'] = 'field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['table'] = 'field_data_field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['field'] = 'field_press_contact_email';
+  $handler->display->display_options['fields']['field_press_contact_email']['label'] = 'Adresa de e-mail';
   $handler->display->display_options['fields']['field_press_contact_email']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_press_contact_email']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_press_contact_email']['hide_empty'] = TRUE;
@@ -325,13 +904,13 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $translatables['fop_contacts'] = array(
     t('Master'),
-    t('Focal points\' contact details'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Datele de contact ale punctelor focale'),
+    t('mai mult'),
+    t('Aplicare'),
+    t('Reinițializare'),
+    t('Sortare după'),
+    t('Ascendent'),
+    t('Descendent'),
     t('term from field_country'),
     t('field_country'),
     t('[field_zip_code] '),
@@ -339,10 +918,11 @@ function osha_press_contact_views_default_views() {
     t('Contact person'),
     t('[field_personal_title] [title_field]'),
     t('Tel'),
-    t('Email'),
+    t('Adresa de e-mail'),
     t('Web'),
     t('All'),
     t('Block'),
+    t('more'),
   );
   $export['fop_contacts'] = $view;
 
@@ -358,8 +938,9 @@ function osha_press_contact_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Press contacts';
+  $handler->display->display_options['title'] = 'Contacte de presă';
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
@@ -369,9 +950,15 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemente pe pagină';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Nodequeue: Queue */
@@ -637,13 +1224,14 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['label'] = 'Nume';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   /* Field: Content: Organization */
   $handler->display->display_options['fields']['field_press_contact_organization']['id'] = 'field_press_contact_organization';
   $handler->display->display_options['fields']['field_press_contact_organization']['table'] = 'field_data_field_press_contact_organization';
   $handler->display->display_options['fields']['field_press_contact_organization']['field'] = 'field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['label'] = 'Organizație';
   $handler->display->display_options['fields']['field_press_contact_organization']['type'] = 'text_trimmed';
   $handler->display->display_options['fields']['field_press_contact_organization']['settings'] = array(
     'trim_length' => '100',
@@ -652,6 +1240,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_email']['id'] = 'field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['table'] = 'field_data_field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['field'] = 'field_press_contact_email';
+  $handler->display->display_options['fields']['field_press_contact_email']['label'] = 'Adresa de e-mail';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -703,7 +1292,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['filters']['field_press_contact_email_email']['operator'] = 'word';
   $handler->display->display_options['filters']['field_press_contact_email_email']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['operator_id'] = 'field_press_contact_email_email_op';
-  $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['label'] = 'Email';
+  $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['label'] = 'Adresa de e-mail';
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['operator'] = 'field_press_contact_email_email_op';
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['identifier'] = 'field_press_contact_email_email';
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['remember_roles'] = array(
@@ -729,7 +1318,7 @@ function osha_press_contact_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Press contacts';
+  $handler->display->display_options['title'] = 'Contacte de presă';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -748,7 +1337,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['footer']['area_text_custom']['content'] = '<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">EU-OSHA Press kit</a>';
+  $handler->display->display_options['footer']['area_text_custom']['content'] = '<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">Dosar de presă EU-OSHA</a>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Job title */
   $handler->display->display_options['fields']['field_press_contact_job_title']['id'] = 'field_press_contact_job_title';
@@ -777,14 +1366,14 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_email']['element_label_colon'] = FALSE;
   $translatables['press_contacts'] = array(
     t('Master'),
-    t('Press contacts'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
+    t('Contacte de presă'),
+    t('mai mult'),
+    t('Aplicare'),
+    t('Reinițializare'),
+    t('Sortare după'),
+    t('Ascendent'),
+    t('Descendent'),
+    t('Elemente pe pagină'),
     t('- All -'),
     t('Offset'),
     t('« first'),
@@ -793,19 +1382,20 @@ function osha_press_contact_views_default_views() {
     t('last »'),
     t('queue'),
     t('Page'),
+    t('more'),
     t('- Choose an operation -'),
     t('Delete'),
     t('Publish'),
     t('Unpublish'),
-    t('Name'),
-    t('Organization'),
-    t('Email'),
+    t('Nume'),
+    t('Organizație'),
+    t('Adresa de e-mail'),
     t('Operations'),
     t('Edit'),
     t('Contact Name'),
     t('Email (field_press_contact_email)'),
     t('Block'),
-    t('<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">EU-OSHA Press kit</a>'),
+    t('<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">Dosar de presă EU-OSHA</a>'),
   );
   $export['press_contacts'] = $view;
 

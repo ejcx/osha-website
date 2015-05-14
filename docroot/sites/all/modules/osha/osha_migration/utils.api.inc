@@ -708,7 +708,7 @@ class MigrationUtil {
   /**
    * Get tids of the Term Countries with a specified iso2.
    */
-  public function getCountryTermByISO2($iso2) {
+  public static function getCountryTermByISO2($iso2) {
     $voc = taxonomy_vocabulary_machine_name_load('country');
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'taxonomy_term')
