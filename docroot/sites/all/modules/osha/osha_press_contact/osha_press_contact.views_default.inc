@@ -35,7 +35,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
   $handler->display->display_options['pager']['type'] = 'none';
-  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'field_contact_type',

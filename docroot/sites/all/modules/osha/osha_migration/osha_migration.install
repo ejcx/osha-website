@@ -19,4 +19,15 @@ function osha_migration_update_7001() {
   drush_migrate_deregister_migration('BoardBureauMembers');
   // Auto-register new migrations.
   migrate_autoregister();
+
+  $migrations = array(
+    OSHA_MIGRATION_CONTENT_TYPE_FOCAL_POINT,
+    OSHA_MIGRATION_CONTENT_ADVISORY_GROUPS,
+    OSHA_MIGRATION_CONTENT_TYPE_BOARD,
+    OSHA_MIGRATION_CONTENT_TYPE_BUREAU,
+  );
+
+  foreach ($migrations as $migration) {
+    osha_press_contact_migrate($migration);
+  }
 }
