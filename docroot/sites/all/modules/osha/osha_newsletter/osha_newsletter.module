@@ -543,6 +543,23 @@ function osha_newsletter_block_subscribe_load_ajax() {
 function osha_newsletter_block_subscribe_form($form, &$form_state) {
   global $user;
   $form = array();
+  if ($node = menu_get_object('node')) {
+    if (user_is_anonymous() && $node->type == 'blog') {
+      $form = array();
+      $link = l(
+        t('Subscribe'),
+        variable_get('subscribe_block_newsletter_page_url', OSHA_NEWSLETTER_PAGE_URL),
+        array(
+          'attributes' => array('class' => 'button-submit')
+        )
+      );
+      $form['submit'] = array(
+        '#type' => 'item',
+        '#markup' => $link,
+      );
+      return $form;
+    };
+  }
   if (user_is_anonymous() || empty($user->mail)) {
     $form['#prefix'] = '<div id="newsletter-subscription-form-wrapper">';
     $form['#suffix'] = '</div>';
