@@ -685,7 +685,7 @@ footer {
 }
 
 #footer * li.menu__item a {
-    color: #FFFFFF;
+    color: #FFFFFF!important;
     text-decoration: none;
 }
 
@@ -4657,7 +4657,7 @@ article.node-guideline ul li a{
   padding-right: 2em;
   padding-top: 0.2em;
   text-align: left;
-  width: auto;
+  width: auto!important;
   margin-top: 1em;
 }
 	
@@ -7237,7 +7237,7 @@ body.page-node-5429 #related-wiki {
 	padding-right: 2em;
 	padding-top: 0.2em;
 	text-align: right;
-	width: auto;
+	width: auto!important;
 	margin-top:1em;
 }
 
@@ -7272,7 +7272,7 @@ body.page-node-5429 #related-wiki {
 	padding-right: 2em;
 	padding-top: 0.2em;
 	text-align: left;
-	width: auto;
+	width: auto!important;
 	margin-top: 1em;
 }
 
@@ -7372,7 +7372,33 @@ a.contextual-links-trigger{
 
 /*National Focal Points*/
 
-.view-fop-flags table .views-field-field-flag img{
+#block-views-fop-flags-block{
+	padding-bottom: 9em;
+}
+
+.view-fop-flags ul{
+	list-style: none;
+}
+
+.view-fop-flags ul li{
+	float:left;
+	padding-right:1.5em;
+	width:5em;
+	height:9em;
+}
+
+.view-fop-flags ul li a{
+	border:0px!important;
+}
+
+.view-fop-flags .item-list{
+	  clear: both;
+	  margin-top: 0em;
+	  padding-bottom: 1em;
+}
+
+
+.view-fop-flags ul li img{
 	height:3em;
 	width:4em;
 	border:1px solid #CCCCCC;
@@ -7409,19 +7435,6 @@ a.contextual-links-trigger{
 	font-size: 0.8em;
 	font-weight: bold;
 	border-bottom: 0px!important;
-}
-
-#block-views-fop-flags-block-1 h3{
-	background-color: #FFFFFF;
-	border-top: 5px solid #003399;
-	padding-bottom: 0em;
-	padding-top: 0.5em;
-	color: #000000;
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 1.4em;
-	font-weight: bold;
-	margin-top:0em;
-	margin-bottom:0em;
 }
 
 #block-views-fop-flags-block-1  .views-row {
@@ -7697,4 +7710,63 @@ a.contextual-links-trigger{
 	float: right;  
 	margin-right: 1em; 
 	padding-left: 0.5em;
+}
+
+.chosen-container-single .chosen-single{
+	width:74%;
+
+}
+
+.region-sidebar-first .view-fop-flags h3{
+	background: url("../images/triangle-expanded.png") no-repeat scroll 96% center #e8eef7 !important;
+	border: 0 none;
+	color: #039;
+	cursor: pointer;
+	display: block;
+	font-family: arial;
+	font-size: 0.9em;
+	font-weight: bold;
+	height: auto;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.region-sidebar-first .view-fop-flags h3.expand {
+   background: url("../images/triangle-collapsed.png") no-repeat scroll 96% center #e8eef7 !important;
+}
+
+.region-sidebar-first .fop-country-list{
+	display:none;
+	list-style: none;
+	padding:0 0 0 0.5em;
+	margin-top: 0.5em;
+}
+
+
+@media screen and (max-width: 810px){
+	table tr td{
+		display:table-header-group;
+		width:100%;
+
+	}
+
+	table{
+		width:100%;
+
+	}
+
+	#page{
+		padding:1em;
+
+	}
+
+	img[alt*="link arrow"]{
+		display:none;
+	}
+
+
 }
