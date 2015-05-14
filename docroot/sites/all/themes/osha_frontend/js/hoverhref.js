@@ -2,8 +2,6 @@ jQuery(document).ready(function () {
     hoverThemes();
 	zoomMedium();
 	hoverSlideHome();
-	displayCaptcha();
-	
 });
 
 
@@ -107,14 +105,6 @@ function hoverSlideHome() {
 		jQuery("img",this).removeClass('img_opac');
 		});
 	});	
-	
-}
-
-function displayCaptcha() {
-	
-	jQuery( "#edit-email" ).click(function() {
-		jQuery(".captcha").show(300);
-	});
 	
 }
 
