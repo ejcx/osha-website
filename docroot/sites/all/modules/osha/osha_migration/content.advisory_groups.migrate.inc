@@ -58,6 +58,7 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
     $this->addFieldMapping('field_press_contact_location', 'field_press_contact_location');
     $this->addFieldMapping('field_city', 'field_city');
     $this->addFieldMapping('field_zip_code', 'field_zip_code');
+    $this->addFieldMapping('field_is_advisory', 'field_is_advisory');
 
     $this->addFieldMapping('field_contact_type', 'field_contact_type');
     $this->addFieldMapping('field_contact_type:create_term')->defaultValue(TRUE);
@@ -319,6 +320,7 @@ class AdvisoryGroupsMigrateList extends MigrateList {
         $data->field_zip_code = (string) $attributes['Textbox1'];
         $data->field_city = (string) $attributes['Textbox4'];
         $data->field_contact_type[] = $type;
+        $data->field_is_advisory = TRUE;
         $attached_pdfs = $member->xpath('AttachedPDFs');
         $attached_pdfs = current($attached_pdfs);
         foreach ($attached_pdfs->xpath('File') as $file_xml) {
