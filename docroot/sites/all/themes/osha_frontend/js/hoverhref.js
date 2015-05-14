@@ -238,4 +238,18 @@ jQuery(document).ready(function() {
 });
 
 
-
+jQuery(document).ready(function() {
+	// Toggle event for facetapi filters blocks.
+    jQuery(".region-sidebar-first .fop-country-group").has('ul, select').each(function() {
+		// If no active filters, hide the filtering on init.
+		if (jQuery(this).find('.fop-country-llist').length == 0) {
+			jQuery(this).hide();
+		}
+		else {
+			jQuery(this).closest('.region-sidebar-first .fop-country-group').find('h3').addClass('expand');
+		}
+	}).closest('.region-sidebar-first .fop-country-group').find('h3').click(function() {
+		jQuery(this).closest('.fop-country-group').find(".fop-country-llist").slideToggle();
+		jQuery(this).toggleClass("expand");
+    });
+});
