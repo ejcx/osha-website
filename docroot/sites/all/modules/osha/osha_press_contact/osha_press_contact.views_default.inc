@@ -85,6 +85,39 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<strong>[title_field]</strong> [field_wg_category]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Field: Content: CV */
+  $handler->display->display_options['fields']['field_press_contact_cv']['id'] = 'field_press_contact_cv';
+  $handler->display->display_options['fields']['field_press_contact_cv']['table'] = 'field_data_field_press_contact_cv';
+  $handler->display->display_options['fields']['field_press_contact_cv']['field'] = 'field_press_contact_cv';
+  $handler->display->display_options['fields']['field_press_contact_cv']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_cv']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_press_contact_cv']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_press_contact_cv']['alter']['text'] = ' | [field_press_contact_cv]';
+  $handler->display->display_options['fields']['field_press_contact_cv']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_press_contact_cv']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_press_contact_cv']['type'] = 'file_download_link';
+  $handler->display->display_options['fields']['field_press_contact_cv']['settings'] = array(
+    'text' => 'CV',
+  );
+  /* Field: Content: Declaration of Interests */
+  $handler->display->display_options['fields']['field_press_contact_declaration']['id'] = 'field_press_contact_declaration';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['table'] = 'field_data_field_press_contact_declaration';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['field'] = 'field_press_contact_declaration';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_press_contact_declaration']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_press_contact_declaration']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['type'] = 'file_download_link';
+  $handler->display->display_options['fields']['field_press_contact_declaration']['settings'] = array(
+    'text' => 'Declaration of interests',
+  );
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing_2']['id'] = 'nothing_2';
+  $handler->display->display_options['fields']['nothing_2']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_2']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_2']['label'] = '';
+  $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_press_contact_declaration][field_press_contact_cv]';
+  $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_press_contact_location']['id'] = 'field_press_contact_location';
   $handler->display->display_options['fields']['field_press_contact_location']['table'] = 'field_data_field_press_contact_location';
@@ -164,6 +197,8 @@ function osha_press_contact_views_default_views() {
     t('Descendent'),
     t('([field_wg_category])'),
     t('<strong>[title_field]</strong> [field_wg_category]'),
+    t(' | [field_press_contact_cv]'),
+    t('[field_press_contact_declaration][field_press_contact_cv]'),
     t(', [field_city]'),
     t('[field_zip_code][field_city] '),
     t('[field_country]'),
@@ -201,6 +236,11 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
       'field' => 'board_group',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+    1 => array(
+      'field' => 'nothing',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
@@ -262,6 +302,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_wg_category][field_wg_role_1]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'strong';
