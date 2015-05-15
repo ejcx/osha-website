@@ -240,7 +240,7 @@ jQuery(document).ready(function() {
 
 jQuery(document).ready(function() {
 	// Toggle event for facetapi filters blocks.
-    jQuery(".region-sidebar-first").has('ul, select').each(function() {
+    jQuery(".region-sidebar-first .view-fop-flags").has('ul, select').each(function() {
 		// If no active filters, hide the filtering on init.
 		if (jQuery(this).find('.fop-country-list').length == 0) {
 			jQuery(this).hide();
