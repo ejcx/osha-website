@@ -541,7 +541,6 @@ function osha_newsletter_block_subscribe_load_ajax() {
  * Newsletter subscribe block form.
  */
 function osha_newsletter_block_subscribe_form($form, &$form_state) {
-  global $user;
   $form = array();
   if ($node = menu_get_object('node')) {
     if (user_is_anonymous() && $node->type == 'blog') {
@@ -560,15 +559,14 @@ function osha_newsletter_block_subscribe_form($form, &$form_state) {
       return $form;
     };
   }
-  if (user_is_anonymous() || empty($user->mail)) {
-    $form['#prefix'] = '<div id="newsletter-subscription-form-wrapper">';
-    $form['#suffix'] = '</div>';
-    $form['email'] = array(
-      '#type' => 'textfield',
-      '#size' => 30,
-      '#attributes' => array('placeholder' => t('E-mail address')),
-    );
-  }
+
+  $form['#prefix'] = '<div id="newsletter-subscription-form-wrapper">';
+  $form['#suffix'] = '</div>';
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#size' => 30,
+    '#attributes' => array('placeholder' => t('E-mail address')),
+  );
   $link_label = t(variable_get('subscribe_block_details_link_label', 'Privacy notice'));
   $link_url = variable_get('subscribe_block_details_link_url', OSHA_PRIVACY_PAGE_URL);
   $form['details_link'] = array(
@@ -620,20 +618,12 @@ function osha_newsletter_block_subscribe_captcha_form($form, &$form_state) {
 
 function osha_newsletter_block_subscribe_captcha_form_validate($form, &$form_state) {
   // Need to redirect due to Ajax handling
-  global $user;
   $referer = empty($_SERVER['HTTP_REFERER']) ? '/' : $_SERVER['HTTP_REFERER'];
   if(form_get_errors()) { // Invalid CAPTCHA
     $fs['redirect'] = $referer;
     drupal_redirect_form($fs);
   }
-  $email = NULL;
-  if (!empty($form_state['values']['email'])) {
-    $email = $form_state['values']['email'];
-  }
-  else if (!user_is_anonymous() && !empty($user->mail)) {
-    $email = $user->mail;
-  }
-  if (empty($email)) {
+  if (empty($form_state['values']['email']) || !valid_email_address($form_state['values']['email'])) {
     form_set_error('email', t('The e-mail address is not valid.'));
     $fs['redirect'] = $referer;
     drupal_redirect_form($fs);
@@ -641,14 +631,7 @@ function osha_newsletter_block_subscribe_captcha_form_validate($form, &$form_sta
 }
 
 function osha_newsletter_block_subscribe_captcha_form_submit($form, &$form_state) {
-  global $user;
-  $email = NULL;
-  if (!empty($form_state['values']['email'])) {
-    $email = $form_state['values']['email'];
-  }
-  else if (!user_is_anonymous() && !empty($user->mail)) {
-    $email = $user->mail;
-  }
+  $email = $form_state['values']['email'];
   $to = variable_get('osha_newsletter_listserv', 'listserv@list.osha.europa.eu');
   osha_newsletter_send_email(
     'subscribe_email',
