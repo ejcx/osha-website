@@ -7372,44 +7372,44 @@ a.contextual-links-trigger{
 
 /*National Focal Points*/
 
-#block-views-fop-flags-block{
+#content #block-views-fop-flags-block{
 	padding-bottom: 9em;
 }
 
-.view-fop-flags ul{
+#content #block-views-fop-flags-block .view-fop-flags ul{
 	list-style: none;
 }
 
-.view-fop-flags ul li{
+#content #block-views-fop-flags-block .view-fop-flags ul li{
 	float:left;
 	padding-right:1.5em;
 	width:5em;
 	height:9em;
 }
 
-.view-fop-flags ul li a{
+#content #block-views-fop-flags-block .view-fop-flags ul li a{
 	border:0px!important;
 }
 
-.view-fop-flags .item-list{
+#content #block-views-fop-flags-block .view-fop-flags .item-list{
 	  clear: both;
 	  margin-top: 0em;
 	  padding-bottom: 1em;
 }
 
 
-.view-fop-flags ul li img{
+#content #block-views-fop-flags-block .view-fop-flags ul li img{
 	height:3em;
 	width:4em;
 	border:1px solid #CCCCCC;
 }
 
-.view-fop-flags table  .views-field-title-field{
+#content #block-views-fop-flags-block .view-fop-flags table  .views-field-title-field{
 	width: 6em;
 	height: 4em;
 }
 
-.view-fop-links h3 {
+#content #block-views-fop-flags-block .view-fop-links h3 {
 	background-color: #FFFFFF;
 	border-top: 5px solid #003399;
 	padding-bottom: 0em;
@@ -7422,12 +7422,12 @@ a.contextual-links-trigger{
 	margin-bottom:0em;
 }
 
-.view-fop-links  .views-row {
+#content #block-views-fop-flags-block .view-fop-links  .views-row {
 	background: url("../images/separator_home.jpg") repeat-x scroll 0 100% rgba(0, 0, 0, 0);
 	padding:1em;
 }
 
-.view-fop-links div a{
+#content #block-views-fop-flags-block .view-fop-links div a{
 	color: #003399;
 	text-decoration: none;
 	background: url("../images/li_arrow.png") no-repeat scroll 0% 75% transparent;
@@ -7463,6 +7463,11 @@ a.contextual-links-trigger{
 	font-weight: bold;
 	margin-top:0em;
 	margin-bottom:0em;
+}
+
+
+.sidebars_first .view-fop-flags .item-list ul{
+	display:none;
 }
 
 .view-fop-page-links  .views-row {
@@ -7739,8 +7744,13 @@ a.contextual-links-trigger{
    background: url("../images/triangle-collapsed.png") no-repeat scroll 96% center #e8eef7 !important;
 }
 
+.view-fop-flags  .item-list.fop-country-group{
+display:block!important;
+
+}
+
 .region-sidebar-first .fop-country-list{
-	display:none;
+	
 	list-style: none;
 	padding:0 0 0 0.5em;
 	margin-top: 0.5em;
