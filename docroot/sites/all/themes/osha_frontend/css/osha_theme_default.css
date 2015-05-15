@@ -3564,6 +3564,10 @@ a.button-submit {
 
 /*CAPTCHA */
 
+#osha-newsletter-subscribe-extra-form div.captcha {
+   display: none;
+}
+
 /*This shows captcha for alert services*/
 #block-osha-alert-service-osha-alert-service-subscribe .captcha {
     display: block !important;
