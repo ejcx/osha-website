@@ -2164,7 +2164,6 @@ font-weight: normal;
 }
 
 		/*OSHMail Newsletter Section*/
-
 		#block-osha-newsletter-osha-newsletter-subscribe-extra{
 			background-color: #e9edf6;
 			float: left;
@@ -2948,12 +2947,16 @@ font-weight: normal;
 	padding:0;
 }
 
-#block-osha-newsletter-osha-newsletter-subscribe div{
+#block-osha-newsletter-osha-newsletter-subscribe div {
 	color: #000;
 	font-family: Arial,sans-serif;
 	font-size: 0.9em;
 	margin: 0 0 .5em 0;
 	line-height:1.5em;
+}
+
+#block-osha-newsletter-osha-newsletter-subscribe input {
+  font-size: 110%;
 }
 
 #block-osha-newsletter-osha-newsletter-subscribe #edit-captcha-response{
@@ -2982,7 +2985,7 @@ font-weight: normal;
 }
 
 #block-osha-newsletter-osha-newsletter-subscribe a{
-	font-size: 1em;
+	font-size: 110%;
 	font-weight: lighter;
 	font-family: arial;
 	color: #003399;
@@ -2992,7 +2995,7 @@ font-weight: normal;
 	font-weight:bold;
 }
 
-#block-osha-newsletter-osha-newsletter-subscribe input[type="submit"]{
+#block-osha-newsletter-osha-newsletter-subscribe input[type="submit"], a.button-submit {
 	background: url("../images/flecha.png") no-repeat scroll 96% center #b7c6e3;
     border: 0 none;
     color: #003399;
@@ -3006,6 +3009,23 @@ font-weight: normal;
     padding-top: 0.2em;
     text-align: right;
     width: 100%;
+}
+
+a.button-submit {
+  background: url("../images/flecha.png") no-repeat scroll 96% center #b7c6e3;
+  border: 0 !important;
+  color: #003399;
+  float: none;
+  font-family: "Open Sans Condensed",sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 0.5em;
+  padding-bottom: 0.2em;
+  padding-right: 2.3em;
+  padding-top: 0.2em;
+  text-align: right;
+  display: block;
+  width: auto;
 }
 
 /* END OSHMail Newsletter home*/
@@ -3543,6 +3563,10 @@ font-weight: normal;
 /*End Publication tein detail OSHWiki featured articles*/
 
 /*CAPTCHA */
+
+#osha-newsletter-subscribe-extra-form div.captcha {
+   display: none;
+}
 
 /*This shows captcha for alert services*/
 #block-osha-alert-service-osha-alert-service-subscribe .captcha {
@@ -7168,7 +7192,7 @@ body.page-node-5429 #related-wiki {
 	padding-bottom:0.5em;
 }
 
-#block-osha-newsletter-osha-newsletter-subscribe p{ 
+#block-osha-newsletter-osha-newsletter-subscribe p{
 	margin: 0.5em 0;
 }
 
@@ -7566,15 +7590,6 @@ a.contextual-links-trigger{
 
 
 /*captcha home and newsletter*/
-
-.region-sidebar-second #block-osha-newsletter-osha-newsletter-subscribe .captcha{
-	display:none;
-
-}
-
- #block-osha-newsletter-osha-newsletter-subscribe-extra .captcha{
-	display:none;
-}
 
 #block-views-exp-search-guidelines-page #edit-filter{
 	width:100%;
