@@ -4,9 +4,6 @@
  * Code for the osha_authentication feature.
  */
 
-include_once 'osha_authentication.features.inc';
-
-
 /**
  * Implements Elysia hook_cronapi().
  */
