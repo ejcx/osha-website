@@ -685,7 +685,7 @@ footer {
 }
 
 #footer * li.menu__item a {
-    color: #FFFFFF;
+    color: #FFFFFF!important;
     text-decoration: none;
 }
 
@@ -2164,7 +2164,6 @@ font-weight: normal;
 }
 
 		/*OSHMail Newsletter Section*/
-
 		#block-osha-newsletter-osha-newsletter-subscribe-extra{
 			background-color: #e9edf6;
 			float: left;
@@ -2948,12 +2947,16 @@ font-weight: normal;
 	padding:0;
 }
 
-#block-osha-newsletter-osha-newsletter-subscribe div{
+#block-osha-newsletter-osha-newsletter-subscribe div {
 	color: #000;
 	font-family: Arial,sans-serif;
 	font-size: 0.9em;
 	margin: 0 0 .5em 0;
 	line-height:1.5em;
+}
+
+#block-osha-newsletter-osha-newsletter-subscribe input {
+  font-size: 110%;
 }
 
 #block-osha-newsletter-osha-newsletter-subscribe #edit-captcha-response{
@@ -2982,7 +2985,7 @@ font-weight: normal;
 }
 
 #block-osha-newsletter-osha-newsletter-subscribe a{
-	font-size: 1em;
+	font-size: 110%;
 	font-weight: lighter;
 	font-family: arial;
 	color: #003399;
@@ -2992,7 +2995,7 @@ font-weight: normal;
 	font-weight:bold;
 }
 
-#block-osha-newsletter-osha-newsletter-subscribe input[type="submit"]{
+#block-osha-newsletter-osha-newsletter-subscribe input[type="submit"], a.button-submit {
 	background: url("../images/flecha.png") no-repeat scroll 96% center #b7c6e3;
     border: 0 none;
     color: #003399;
@@ -3006,6 +3009,23 @@ font-weight: normal;
     padding-top: 0.2em;
     text-align: right;
     width: 100%;
+}
+
+a.button-submit {
+  background: url("../images/flecha.png") no-repeat scroll 96% center #b7c6e3;
+  border: 0 !important;
+  color: #003399;
+  float: none;
+  font-family: "Open Sans Condensed",sans-serif;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-top: 0.5em;
+  padding-bottom: 0.2em;
+  padding-right: 2.3em;
+  padding-top: 0.2em;
+  text-align: right;
+  display: block;
+  width: auto;
 }
 
 /* END OSHMail Newsletter home*/
@@ -3543,6 +3563,10 @@ font-weight: normal;
 /*End Publication tein detail OSHWiki featured articles*/
 
 /*CAPTCHA */
+
+#osha-newsletter-subscribe-extra-form div.captcha {
+   display: none;
+}
 
 /*This shows captcha for alert services*/
 #block-osha-alert-service-osha-alert-service-subscribe .captcha {
@@ -4657,7 +4681,7 @@ article.node-guideline ul li a{
   padding-right: 2em;
   padding-top: 0.2em;
   text-align: left;
-  width: auto;
+  width: auto!important;
   margin-top: 1em;
 }
 	
@@ -7168,7 +7192,7 @@ body.page-node-5429 #related-wiki {
 	padding-bottom:0.5em;
 }
 
-#block-osha-newsletter-osha-newsletter-subscribe p{ 
+#block-osha-newsletter-osha-newsletter-subscribe p{
 	margin: 0.5em 0;
 }
 
@@ -7237,7 +7261,7 @@ body.page-node-5429 #related-wiki {
 	padding-right: 2em;
 	padding-top: 0.2em;
 	text-align: right;
-	width: auto;
+	width: auto!important;
 	margin-top:1em;
 }
 
@@ -7272,7 +7296,7 @@ body.page-node-5429 #related-wiki {
 	padding-right: 2em;
 	padding-top: 0.2em;
 	text-align: left;
-	width: auto;
+	width: auto!important;
 	margin-top: 1em;
 }
 
@@ -7372,18 +7396,44 @@ a.contextual-links-trigger{
 
 /*National Focal Points*/
 
-.view-fop-flags table .views-field-field-flag img{
+#content #block-views-fop-flags-block{
+	padding-bottom: 9em;
+}
+
+#content #block-views-fop-flags-block .view-fop-flags ul{
+	list-style: none;
+}
+
+#content #block-views-fop-flags-block .view-fop-flags ul li{
+	float:left;
+	padding-right:1.5em;
+	width:5em;
+	height:9em;
+}
+
+#content #block-views-fop-flags-block .view-fop-flags ul li a{
+	border:0px!important;
+}
+
+#content #block-views-fop-flags-block .view-fop-flags .item-list{
+	  clear: both;
+	  margin-top: 0em;
+	  padding-bottom: 1em;
+}
+
+
+#content #block-views-fop-flags-block .view-fop-flags ul li img{
 	height:3em;
 	width:4em;
 	border:1px solid #CCCCCC;
 }
 
-.view-fop-flags table  .views-field-title-field{
+#content #block-views-fop-flags-block .view-fop-flags table  .views-field-title-field{
 	width: 6em;
 	height: 4em;
 }
 
-.view-fop-links h3 {
+#content #block-views-fop-flags-block .view-fop-links h3 {
 	background-color: #FFFFFF;
 	border-top: 5px solid #003399;
 	padding-bottom: 0em;
@@ -7396,12 +7446,12 @@ a.contextual-links-trigger{
 	margin-bottom:0em;
 }
 
-.view-fop-links  .views-row {
+#content #block-views-fop-flags-block .view-fop-links  .views-row {
 	background: url("../images/separator_home.jpg") repeat-x scroll 0 100% rgba(0, 0, 0, 0);
 	padding:1em;
 }
 
-.view-fop-links div a{
+#content #block-views-fop-flags-block .view-fop-links div a{
 	color: #003399;
 	text-decoration: none;
 	background: url("../images/li_arrow.png") no-repeat scroll 0% 75% transparent;
@@ -7409,19 +7459,6 @@ a.contextual-links-trigger{
 	font-size: 0.8em;
 	font-weight: bold;
 	border-bottom: 0px!important;
-}
-
-#block-views-fop-flags-block-1 h3{
-	background-color: #FFFFFF;
-	border-top: 5px solid #003399;
-	padding-bottom: 0em;
-	padding-top: 0.5em;
-	color: #000000;
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 1.4em;
-	font-weight: bold;
-	margin-top:0em;
-	margin-bottom:0em;
 }
 
 #block-views-fop-flags-block-1  .views-row {
@@ -7450,6 +7487,11 @@ a.contextual-links-trigger{
 	font-weight: bold;
 	margin-top:0em;
 	margin-bottom:0em;
+}
+
+
+.sidebars_first .view-fop-flags .item-list ul{
+	display:none;
 }
 
 .view-fop-page-links  .views-row {
@@ -7548,15 +7590,6 @@ a.contextual-links-trigger{
 
 
 /*captcha home and newsletter*/
-
-.region-sidebar-second #block-osha-newsletter-osha-newsletter-subscribe .captcha{
-	display:none;
-
-}
-
- #block-osha-newsletter-osha-newsletter-subscribe-extra .captcha{
-	display:none;
-}
 
 #block-views-exp-search-guidelines-page #edit-filter{
 	width:100%;
@@ -7697,4 +7730,110 @@ a.contextual-links-trigger{
 	float: right;  
 	margin-right: 1em; 
 	padding-left: 0.5em;
+}
+
+.chosen-container-single .chosen-single{
+	width:74%;
+
+}
+
+.region-sidebar-first .view-fop-flags h3{
+	background: url("../images/triangle-expanded.png") no-repeat scroll 96% center #e8eef7 !important;
+	border: 0 none;
+	color: #039;
+	cursor: pointer;
+	display: block;
+	font-family: arial;
+	font-size: 0.9em;
+	font-weight: bold;
+	height: auto;
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.region-sidebar-first .view-fop-flags h3.expand {
+   background: url("../images/triangle-collapsed.png") no-repeat scroll 96% center #e8eef7 !important;
+}
+
+.view-fop-flags  .item-list.fop-country-group{
+display:block!important;
+
+}
+
+.region-sidebar-first .fop-country-list{
+	
+	list-style: none;
+	padding:0 0 0 0.5em;
+	margin-top: 0.5em;
+}
+
+@media screen and (max-width: 810px){
+	table tr td{
+		display:table-header-group;
+		width:100%;
+
+	}
+
+	table{
+		width:100%;
+
+	}
+
+	#page{
+		padding:1em;
+
+	}
+
+	img[alt*="link arrow"]{
+		display:none;
+	}
+
+
+}
+
+
+#block-nodeblock-8441 h2 { 
+  background: url("../images/separator_home.jpg") repeat-x scroll 0 40px transparent;
+  margin-bottom: 0px;
+  border-top: 5px solid #003399;
+  color: #000000;
+  font-family: "Open Sans Condensed",sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding-left: 0em;
+  padding-top: 0.5em;
+  padding-bottom: 0px;
+  margin-bottom: 0em;
+  margin-top: 0px;
+}
+
+#block-nodeblock-8441 h3 {
+  color: #000000;
+  font-family: "Open Sans Condensed",sans-serif;
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left: 0.5em;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+
+#block-nodeblock-8441 a {
+  color: #003399;
+  text-decoration: none;
+  background: url(/sites/all/themes/osha_frontend/images/li_arrow.png) no-repeat scroll 12px 98% transparent;
+  padding-left: 2em;
+  font-size: 12.008px!important;
+  font-weight: bold;
+  border-bottom: 0px!important;
+
+}
+
+#block-nodeblock-8441 span {
+  font-size: 12.008px!important;
 }

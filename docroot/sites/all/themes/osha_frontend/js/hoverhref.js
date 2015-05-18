@@ -2,8 +2,6 @@ jQuery(document).ready(function () {
     hoverThemes();
 	zoomMedium();
 	hoverSlideHome();
-	displayCaptcha();
-	
 });
 
 
@@ -107,14 +105,6 @@ function hoverSlideHome() {
 		jQuery("img",this).removeClass('img_opac');
 		});
 	});	
-	
-}
-
-function displayCaptcha() {
-	
-	jQuery( "#edit-email" ).click(function() {
-		jQuery(".captcha").show(300);
-	});
 	
 }
 
@@ -237,5 +227,21 @@ jQuery(document).ready(function() {
 	jQuery('#content a[target="_blank"]').append('<span class="osha_target_external_link">&nbsp;</span>');
 });
 
+
+jQuery(document).ready(function() {
+	// Toggle event for facetapi filters blocks.
+    jQuery(".region-sidebar-first .view-fop-flags").has('ul, select').each(function() {
+		// If no active filters, hide the filtering on init.
+		if (jQuery(this).find('.fop-country-list').length == 0) {
+			jQuery(this).hide();
+		}
+		else {
+			jQuery(this).closest('.region-sidebar-first').find('h3').addClass('expand');
+		}
+	}).closest('.region-sidebar-first').find('h3').click(function() {
+		jQuery(this).closest('.item-list').find(".fop-country-list").slideToggle();
+		jQuery(this).toggleClass("expand");
+    });
+});
 
 

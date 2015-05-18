@@ -14,6 +14,7 @@ dependencies[] = osha_legislation
 dependencies[] = osha_taxonomies
 dependencies[] = osha_seminar
 
+files[] = content.advisory_groups.migrate.inc
 files[] = content.articles.migrate.inc
 files[] = content.blog.migrate.inc
 files[] = content.blog_comments.migrate.inc
@@ -32,7 +33,8 @@ files[] = content.wiki.migrate.inc
 files[] = content.infographics.migrate.inc
 files[] = content.focal_points.migrate.inc
 files[] = content.fop_pages.migrate.inc
-files[] = content.board_bureau_members.migrate.inc
+files[] = content.bureau_members.migrate.inc
+files[] = content.board_members.migrate.inc
 files[] = files.migrate.inc
 files[] = images.migrate.inc
 files[] = utils.api.inc
