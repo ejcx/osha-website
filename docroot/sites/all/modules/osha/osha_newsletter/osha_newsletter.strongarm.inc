@@ -402,13 +402,6 @@ function osha_newsletter_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'subscribe_block_subscribers_no';
-  $strongarm->value = '67.000';
-  $export['subscribe_block_subscribers_no'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'subscribe_extra_block_details_link_label';
   $strongarm->value = 'How will EU-OSHA use my details?';
   $export['subscribe_extra_block_details_link_label'] = $strongarm;
