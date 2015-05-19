@@ -269,13 +269,6 @@ function osha_newsletter_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'osha_newsletter_image_block_subscribers_no';
-  $strongarm->value = '67.000';
-  $export['osha_newsletter_image_block_subscribers_no'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'osha_newsletter_image_block_text_end';
   $strongarm->value = 'subscribers';
   $export['osha_newsletter_image_block_text_end'] = $strongarm;
