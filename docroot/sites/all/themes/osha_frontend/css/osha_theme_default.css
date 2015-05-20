@@ -5123,7 +5123,7 @@ a.tabs-primary__tab-link{
 
 /* EVENTS HOME*/
 
-#block-views-events-index-block-1{
+#block-views-upcoming-events-block{
 	border-top: 5px solid #003399;
 	margin-bottom:3em;
 }
@@ -5133,7 +5133,7 @@ a.tabs-primary__tab-link{
 	margin-bottom:3em;
 }
 
-#block-views-events-index-block-1 h2{
+#block-views-upcoming-events-block h2{
 	color: #000;
 	font-family: 'Open Sans Condensed',sans-serif!important;
 	font-size: 1.25em;
@@ -5157,28 +5157,28 @@ a.tabs-primary__tab-link{
 	font-weight: bold;
 }
 
-#block-views-events-index-block-1 .views-row{
+#block-views-upcoming-events-block .views-row{
 	font-weight:bold;
 }
 
-#block-views-events-index-block-1 .date-display-single{
+#block-views-upcoming-events-block .date-display-single{
 	font-size: 0.8em;
 	font-weight: bold;
 	float: left;
 	padding-right: 0.5em;
 }
 
-#block-views-events-index-block-1 .date-display-start{
+#block-views-upcoming-events-block .date-display-start{
 	font-size:0.8em;
 	font-weight:bold;
 }
 
-#block-views-events-index-block-1 .date-display-end{
+#block-views-upcoming-events-block .date-display-end{
 	font-size:0.8em;
 	font-weight:bold;
 }
 
-.view-events-index ul{
+.view-events-index ul {
 	list-style:none;
 	padding: 0;
 	margin: 0;
@@ -5208,6 +5208,45 @@ a.tabs-primary__tab-link{
 }
 
 .view-events-index.view-display-id-block_1 a {
+	color:#003399;
+	text-decoration:none;
+	background: url("../images/li_arrow.png") no-repeat scroll 0 50% transparent;
+	font-weight:bold;
+	padding-left:1em;
+	font-size:0.8em;
+	clear:both;
+}
+
+.view-upcoming-events ul {
+	list-style:none;
+	padding: 0;
+	margin: 0;
+}
+
+.view-upcoming-events  .views-field-field-start-date .field-content{
+	float:left;
+	padding-right: 0.2em;
+}
+
+.view-upcoming-events .country{
+	float:left;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-right:0.3em;
+}
+
+.view-upcoming-events .city{
+	float:left;
+	font-size: 0.8em;
+	font-weight: bold;
+	padding-right:0.3em;
+}
+
+.view-upcoming-events .title{
+	clear:both;
+}
+
+.view-upcoming-events .views-field-title-field a {
 	color:#003399;
 	text-decoration:none;
 	background: url("../images/li_arrow.png") no-repeat scroll 0 50% transparent;
