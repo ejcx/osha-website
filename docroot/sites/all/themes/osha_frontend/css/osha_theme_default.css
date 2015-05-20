@@ -7794,7 +7794,9 @@ display:block!important;
 
 
 }
-
+.page-node-7690 div#addtoany_bottom_container {
+	display:none;
+}
 
 #block-nodeblock-8142 h2 { 
   background: url("../images/separator_home.jpg") repeat-x scroll 0 40px transparent;
