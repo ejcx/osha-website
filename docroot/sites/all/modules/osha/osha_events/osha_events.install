@@ -68,3 +68,14 @@ function osha_events_update_7004() {
     }
   }
 }
+
+function osha_events_update_7005() {
+  // set block visibility for upcoming events
+  db_insert('context_visibility_context')
+    ->fields(array(
+      'module' => 'views',
+      'delta' => 'upcoming_events-block',
+      'context' => 'context_events',
+    ))->execute();
+}
+
