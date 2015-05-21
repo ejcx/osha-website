@@ -283,6 +283,11 @@ function osha_press_contact_views_default_views() {
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
+    1 => array(
+      'field' => 'field_wg_category',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
   );
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Content: Category (field_wg_category) */
@@ -331,19 +336,9 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_wg_role_1']['table'] = 'field_data_field_wg_role_1';
   $handler->display->display_options['fields']['field_wg_role_1']['field'] = 'field_wg_role_1';
   $handler->display->display_options['fields']['field_wg_role_1']['label'] = '';
-  $handler->display->display_options['fields']['field_wg_role_1']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_wg_role_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_wg_role_1']['alter']['text'] = ' - [field_wg_role_1]';
   $handler->display->display_options['fields']['field_wg_role_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_wg_role_1']['type'] = 'i18n_taxonomy_term_reference_plain';
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_wg_category][field_wg_role_1]';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'strong';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
@@ -642,7 +637,6 @@ function osha_press_contact_views_default_views() {
     t('term from field_country'),
     t('term from field_country_status'),
     t(' - [field_wg_role_1]'),
-    t('[field_wg_category][field_wg_role_1]'),
     t('([field_wg_role_2])'),
     t('<strong>[title_field]</strong> [field_wg_role_2]'),
     t('[field_press_contact_declaration] |'),
