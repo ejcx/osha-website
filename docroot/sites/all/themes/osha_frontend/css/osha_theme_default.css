@@ -7882,6 +7882,7 @@ display:block!important;
     margin-top: 1em;
 	margin-bottom: .5em;
 	text-transform: capitalize;
+	color:#003399;
 }
 .view-id-board_members .view-grouping-content .views-field-field-wg-role-1 {
 	text-transform: capitalize;
@@ -7918,11 +7919,6 @@ display:block!important;
 }
 
 #block-views-board-members-block .view-board-members .views-row{
-	padding:10px 0 10px 0;
-
-}
-
-#block-views-board-members-block .view-board-members h4{
-	color:#003399;
+	padding:5px 0 5px 0;
 
 }
