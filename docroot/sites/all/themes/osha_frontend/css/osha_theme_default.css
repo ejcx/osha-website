@@ -7867,6 +7867,8 @@ display:block!important;
 /* Board members */
 .view-id-board_members .views-field span.file+span.file {
   border-left: 1px solid;
+  padding-bottom: 2px;
+  padding-left: 3px;
 }
 .view-id-board_members .views-row {
 	margin-bottom: 1em;
@@ -7888,6 +7890,8 @@ display:block!important;
 
 #block-views-advisory-groups-block-1 .views-field span.file+span.file {
   border-left: 1px solid;
+  padding-bottom: 2px;
+  padding-left: 5px;
 }
 
 #block-nodeblock-8142 a {
@@ -7903,4 +7907,22 @@ display:block!important;
 
 #block-nodeblock-8142 span {
   font-size: 12px!important;
+}
+
+#block-views-board-members-block .view-board-members .views-field-nothing-2 .file-icon{
+	vertical-align: middle;
+}
+
+#block-views-board-members-block .view-board-members .views-field-nothing-2 .file-size{
+	padding-right: 5px;
+}
+
+#block-views-board-members-block .view-board-members .views-row{
+	padding:10px 0 10px 0;
+
+}
+
+#block-views-board-members-block .view-board-members h4{
+	color:#003399;
+
 }
