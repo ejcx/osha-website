@@ -134,7 +134,6 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_cv']['field'] = 'field_press_contact_cv';
   $handler->display->display_options['fields']['field_press_contact_cv']['label'] = '';
   $handler->display->display_options['fields']['field_press_contact_cv']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_press_contact_cv']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_press_contact_cv']['alter']['text'] = ' | [field_press_contact_cv]';
   $handler->display->display_options['fields']['field_press_contact_cv']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_press_contact_cv']['click_sort_column'] = 'fid';

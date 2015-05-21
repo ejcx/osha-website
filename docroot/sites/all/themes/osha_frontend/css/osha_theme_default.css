@@ -7868,6 +7868,10 @@ display:block!important;
   border-left: 1px solid;
 }
 
+#block-views-advisory-groups-block-1 .views-field span.file+span.file {
+  border-left: 1px solid;
+}
+
 #block-nodeblock-8142 a {
   color: #003399;
   text-decoration: none;
