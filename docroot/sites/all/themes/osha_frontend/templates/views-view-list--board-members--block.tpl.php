@@ -5,10 +5,10 @@
  */
 ?>
   <?php if (!empty($title)) : ?>
-    <h3><?php print $title; ?></h3>
+    <h4><?php print $title; ?></h4>
   <?php endif; ?>
-  <?php print $list_type_prefix; ?>
+  <div class="view-content-group-2">
     <?php foreach ($rows as $id => $row): ?>
-      <li class="<?php print $classes_array[$id]; ?>"><?php print $row; ?></li>
+      <div class="<?php print $classes_array[$id]; ?>"><?php print $row; ?></div>
     <?php endforeach; ?>
-  <?php print $list_type_suffix; ?>
+  </div>
