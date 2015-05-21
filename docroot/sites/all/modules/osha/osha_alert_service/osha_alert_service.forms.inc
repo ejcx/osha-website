@@ -180,7 +180,7 @@ function osha_alert_service_subscribe_form_submit($form, $form_state) {
   drupal_mail('osha_alert_service', 'subscribe', $email, $language->language, $params);
   // Subscribe to OSHMail
   if ($values['newsletter']) {
-    osha_newsletter_subscribe_form_submit($form, $form_state);
+    osha_newsletter_block_subscribe_captcha_form_submit($form, $form_state);
   }
   drupal_goto('<front>');
 }
