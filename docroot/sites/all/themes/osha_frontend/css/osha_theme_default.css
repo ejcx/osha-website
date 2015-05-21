@@ -7864,10 +7864,28 @@ display:block!important;
   margin-top: 0.5em;
 }
 
-#block-views-board-members-block .views-field span.file+span.file {
+/* Board members */
+.view-id-board_members .views-field span.file+span.file {
   border-left: 1px solid;
   padding-bottom: 2px;
   padding-left: 3px;
+}
+.view-id-board_members .views-row {
+	margin-bottom: 1em;
+}
+.view-id-board_members .view-content-group-2 {
+	padding-bottom: 1em;
+	background: url("../images/separator_home.jpg") repeat-x scroll 0 100% rgba(0, 0, 0, 0);
+}
+.view-id-board_members .view-grouping-content h4 {
+	font-size: 1.2em;
+    margin-top: 1em;
+	margin-bottom: .5em;
+	text-transform: capitalize;
+}
+.view-id-board_members .view-grouping-content .views-field-field-wg-role-1 {
+	text-transform: capitalize;
+	font-weight: bold;
 }
 
 #block-views-advisory-groups-block-1 .views-field span.file+span.file {
