@@ -53,6 +53,13 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_contact_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_contact_type']['type'] = 'i18n_taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_contact_type']['delta_offset'] = '0';
+  /* Field: Content: Personal Title */
+  $handler->display->display_options['fields']['field_personal_title']['id'] = 'field_personal_title';
+  $handler->display->display_options['fields']['field_personal_title']['table'] = 'field_data_field_personal_title';
+  $handler->display->display_options['fields']['field_personal_title']['field'] = 'field_personal_title';
+  $handler->display->display_options['fields']['field_personal_title']['label'] = '';
+  $handler->display->display_options['fields']['field_personal_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_personal_title']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
@@ -68,23 +75,59 @@ function osha_press_contact_views_default_views() {
     'title_class' => '',
   );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Field: Content: WG Role 2 */
+  $handler->display->display_options['fields']['field_wg_role_2']['id'] = 'field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2']['table'] = 'field_data_field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2']['field'] = 'field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2']['label'] = '';
+  $handler->display->display_options['fields']['field_wg_role_2']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['text'] = '([field_wg_role_2])';
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['path'] = 'inside-eu-osha/governance-eu-osha/composition-bureau';
+  $handler->display->display_options['fields']['field_wg_role_2']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_wg_role_2']['element_class'] = 'advisory-role2';
+  $handler->display->display_options['fields']['field_wg_role_2']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_wg_role_2']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_personal_title] <strong>[title_field]</strong> [field_wg_role_2]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: Category */
   $handler->display->display_options['fields']['field_wg_category']['id'] = 'field_wg_category';
   $handler->display->display_options['fields']['field_wg_category']['table'] = 'field_data_field_wg_category';
   $handler->display->display_options['fields']['field_wg_category']['field'] = 'field_wg_category';
   $handler->display->display_options['fields']['field_wg_category']['label'] = '';
   $handler->display->display_options['fields']['field_wg_category']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_wg_category']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_wg_category']['alter']['text'] = '([field_wg_category])';
   $handler->display->display_options['fields']['field_wg_category']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_wg_category']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: Content: WG Role1 */
+  $handler->display->display_options['fields']['field_wg_role_1']['id'] = 'field_wg_role_1';
+  $handler->display->display_options['fields']['field_wg_role_1']['table'] = 'field_data_field_wg_role_1';
+  $handler->display->display_options['fields']['field_wg_role_1']['field'] = 'field_wg_role_1';
+  $handler->display->display_options['fields']['field_wg_role_1']['label'] = '';
+  $handler->display->display_options['fields']['field_wg_role_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_wg_role_1']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<strong>[title_field]</strong> [field_wg_category]';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing_3']['id'] = 'nothing_3';
+  $handler->display->display_options['fields']['nothing_3']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing_3']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing_3']['label'] = '';
+  $handler->display->display_options['fields']['nothing_3']['alter']['text'] = '[field_wg_category] - [field_wg_role_1]';
+  $handler->display->display_options['fields']['nothing_3']['element_type'] = 'span';
+  $handler->display->display_options['fields']['nothing_3']['element_class'] = 'advisory-role1';
+  $handler->display->display_options['fields']['nothing_3']['element_label_colon'] = FALSE;
+  /* Field: Content: Organization */
+  $handler->display->display_options['fields']['field_press_contact_organization']['id'] = 'field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['table'] = 'field_data_field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['field'] = 'field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_organization']['element_label_colon'] = FALSE;
   /* Field: Content: CV */
   $handler->display->display_options['fields']['field_press_contact_cv']['id'] = 'field_press_contact_cv';
   $handler->display->display_options['fields']['field_press_contact_cv']['table'] = 'field_data_field_press_contact_cv';
@@ -195,8 +238,10 @@ function osha_press_contact_views_default_views() {
     t('Sortare după'),
     t('Ascendent'),
     t('Descendent'),
+    t('([field_wg_role_2])'),
+    t('[field_personal_title] <strong>[title_field]</strong> [field_wg_role_2]'),
     t('([field_wg_category])'),
-    t('<strong>[title_field]</strong> [field_wg_category]'),
+    t('[field_wg_category] - [field_wg_role_1]'),
     t(' | [field_press_contact_cv]'),
     t('[field_press_contact_declaration][field_press_contact_cv]'),
     t(', [field_city]'),
@@ -349,7 +394,6 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_declaration']['field'] = 'field_press_contact_declaration';
   $handler->display->display_options['fields']['field_press_contact_declaration']['label'] = '';
   $handler->display->display_options['fields']['field_press_contact_declaration']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_press_contact_declaration']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_press_contact_declaration']['alter']['text'] = '[field_press_contact_declaration] |';
   $handler->display->display_options['fields']['field_press_contact_declaration']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_press_contact_declaration']['click_sort_column'] = 'fid';
