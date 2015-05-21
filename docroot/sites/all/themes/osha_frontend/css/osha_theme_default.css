@@ -7878,14 +7878,3 @@ display:block!important;
 #block-nodeblock-8142 span {
   font-size: 12px!important;
 }
-
-
-.view-id-board_members .views-row-odd{
-	float: left;
-	width: 53%;
-	min-height: 180px;
-}
-
-.view-id-board_members .views-row-even{
-	min-height: 180px;
-}

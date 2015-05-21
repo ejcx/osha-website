@@ -1831,19 +1831,6 @@ a {
 }
 
 
-
-.view-id-board_members .views-row-odd{
-	float: none;
-	width: 100%;
-	min-height: auto;
-}
-
-.view-id-board_members .views-row-even{
-	min-height: auto;
-}
-
-
-
 /*Start styles for Esener*/
 .euOnly.selected {
     background-position: -148px 3px !important;
