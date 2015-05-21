@@ -7866,10 +7866,14 @@ display:block!important;
 
 #block-views-board-members-block .views-field span.file+span.file {
   border-left: 1px solid;
+  padding-bottom: 2px;
+  padding-left: 3px;
 }
 
 #block-views-advisory-groups-block-1 .views-field span.file+span.file {
   border-left: 1px solid;
+  padding-bottom: 2px;
+  padding-left: 5px;
 }
 
 #block-nodeblock-8142 a {
@@ -7885,4 +7889,17 @@ display:block!important;
 
 #block-nodeblock-8142 span {
   font-size: 12px!important;
+}
+
+#block-views-board-members-block .view-board-members .views-field-nothing-2 .file-icon{
+	vertical-align: middle;
+}
+
+#block-views-board-members-block .view-board-members .views-field-nothing-2 .file-size{
+	padding-right: 5px;
+}
+
+#block-views-board-members-block .view-board-members .views-row{
+	padding:15px 0 15px 0;
+
 }
