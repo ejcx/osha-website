@@ -367,6 +367,8 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_wg_role_2']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['text'] = '([field_wg_role_2])';
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['path'] = 'inside-eu-osha/governance-eu-osha/composition-bureau';
   $handler->display->display_options['fields']['field_wg_role_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_wg_role_2']['type'] = 'i18n_taxonomy_term_reference_plain';
   /* Field: Global: Custom text */
