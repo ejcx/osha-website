@@ -7864,6 +7864,10 @@ display:block!important;
   margin-top: 0.5em;
 }
 
+#block-views-board-members-block .views-field span.file+span.file {
+  border-left: 1px solid;
+}
+
 #block-nodeblock-8142 a {
   color: #003399;
   text-decoration: none;
