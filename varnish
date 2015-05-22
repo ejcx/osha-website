@@ -1,7 +1,7 @@
 #!/bin/sh
 
-sudo varnishd -F -a :80 \
-  -f /Users/cristiroma/Work/osha/project/conf/varnish-devel.vcl \
+sudo varnishd -F -a :8081 \
+  -f conf/varnish.vcl \
   -s malloc,256M \
   -T localhost:6082 \
   -p sess_workspace=262144 \

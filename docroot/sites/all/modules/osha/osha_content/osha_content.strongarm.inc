@@ -28,7 +28,9 @@ function osha_content_strongarm() {
 1501
 1502
 1503
-7690';
+7690
+2424
+8131';
   $export['no_translation_exceptions'] = $strongarm;
 
   $strongarm = new stdClass();

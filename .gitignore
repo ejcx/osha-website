@@ -6,6 +6,7 @@ docroot/sites/*/settings*.php
 drush/aliases/aliases.drushrc.php
 conf/apache.conf
 conf/config.json
+conf/varnish.vcl
 .idea
 phpunit.xml
 results/*
