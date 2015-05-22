@@ -2594,6 +2594,95 @@ function osha_views_default_views() {
   $export['data_export'] = $view;
 
   $view = new view();
+  $view->name = 'hcw_data_export';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'HCW Data Export';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'HCW Data Export';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 1;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  /* Relationship: Field: Tags (field_tags) */
+  $handler->display->display_options['relationships']['field_tags_tid']['id'] = 'field_tags_tid';
+  $handler->display->display_options['relationships']['field_tags_tid']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['relationships']['field_tags_tid']['field'] = 'field_tags_tid';
+  $handler->display->display_options['relationships']['field_tags_tid']['required'] = TRUE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  /* Contextual filter: Content: Type */
+  $handler->display->display_options['arguments']['type']['id'] = 'type';
+  $handler->display->display_options['arguments']['type']['table'] = 'node';
+  $handler->display->display_options['arguments']['type']['field'] = 'type';
+  $handler->display->display_options['arguments']['type']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['type']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['type']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['type']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['type']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['type']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Code (field_tags_code) */
+  $handler->display->display_options['arguments']['field_tags_code_value']['id'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['table'] = 'field_data_field_tags_code';
+  $handler->display->display_options['arguments']['field_tags_code_value']['field'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['relationship'] = 'field_tags_tid';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tags_code_value']['limit'] = '0';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'export/list';
+  $translatables['hcw_data_export'] = array(
+    t('Master'),
+    t('HCW Data Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('term from field_tags'),
+    t('All'),
+    t('Page'),
+  );
+  $export['hcw_data_export'] = $view;
+
+  $view = new view();
   $view->name = 'media_browser_osha';
   $view->description = 'Default view for the media browser library tab.';
   $view->tag = 'media, default';
