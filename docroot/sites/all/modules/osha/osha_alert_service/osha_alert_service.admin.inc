@@ -106,5 +106,5 @@ function osha_alert_service_test_my_email_submit($form, &$form_state) {
     ->condition('email', $user->mail)
     ->execute();
   drupal_cron_run();
-  drupal_set_message('Your subscription last sent was reseted ' . $months . ' months ago!', 'warning');
+  drupal_set_message('Your subscription last sent was reset ' . $months . ' months ago!', 'warning');
 }
