@@ -202,12 +202,12 @@ function osha_press_release_block_view($delta = '') {
             'Register here to receive our news releases.')),
           'join_dist_list_link_label' => t(variable_get('join_dist_list_link_label', 'Register')),
           'join_dist_list_link_url' => variable_get('join_dist_list_link_url', 'news@osha.europa.eu'),
-          'join_dist_list_email_text' =>  variable_get('join_dist_list_email_text',
-            "
-Dear Sir or Madam,
+          'join_dist_list_email_text' => t(variable_get('join_dist_list_email_text',
+            "Dear Sir or Madam,
 
 To receive EU-OSHA’s news releases by email, please send us full contact details. We will then include you in our news distribution list. You have the option to unsubscribe at any point.
-")
+"
+          ))
         ));
         return $block;
       }

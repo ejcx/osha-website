@@ -8,7 +8,7 @@
         'html' => TRUE,
         'external' => TRUE,
         'query' => array(
-          'subject' => "News Distribution List Registration",
+          'subject' => 'News Distribution List Registration',
           'body' => $join_dist_list_email_text,
         ),
       ));
