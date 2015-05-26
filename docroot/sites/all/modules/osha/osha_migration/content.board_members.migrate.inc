@@ -231,6 +231,14 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
   }
 
   /**
+   * Executes after import.
+   */
+  public function postImport() {
+    parent::postImport();
+    $this->removeNeedsUpdateItems();
+  }
+
+  /**
    * Return the list of available source fields.
    *
    * @return array

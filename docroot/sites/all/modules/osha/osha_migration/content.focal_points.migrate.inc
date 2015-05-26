@@ -173,6 +173,14 @@ class MigrateOshaFocalPoints extends OSHADynamicMigration {
       'expiration_date' => '',
     );
   }
+
+  /**
+   * Executes after import.
+   */
+  public function postImport() {
+    parent::postImport();
+    $this->removeNeedsUpdateItems();
+  }
 }
 
 class FocalPointsContentListXML extends MigrateList {
