@@ -7922,3 +7922,17 @@ display:block!important;
 	padding:5px 0 5px 0;
 
 }
+
+#aggregator .feed-source .feed-description{
+	display:none;
+}
+
+
+#aggregator .feed-source .feed-url{
+	display:none;
+}
+
+
+#aggregator .feed-source .feed-updated{
+	display:none;
+}
