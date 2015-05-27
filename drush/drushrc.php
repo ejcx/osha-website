@@ -482,6 +482,7 @@ $options['init-modules'] = array(
   'osha_search',
   'osha_content',
   'osha_lingua_tools',
+  'dvs',
 
   // Newsletter modules.
   'entity_collection',
