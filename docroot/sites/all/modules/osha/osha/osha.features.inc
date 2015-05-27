@@ -45,6 +45,14 @@ function osha_node_info() {
       'title_label' => 'Title',
       'help' => '',
     ),
+    'dvs_survey' => array(
+      'name' => 'DVS survey',
+      'base' => 'node_content',
+      'description' => '',
+      'has_title' => '1',
+      'title_label' => 'Title',
+      'help' => '',
+    ),
     'page' => array(
       'name' => 'Basic page',
       'base' => 'node_content',

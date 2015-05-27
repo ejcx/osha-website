@@ -1,0 +1,34 @@
+<?php
+function dvs_preprocess_node(&$vars) {
+	if($vars['type'] == 'dvs_survey' && $vars['view_mode'] == 'full'){
+		
+		$survey = $vars['content']['field_dvs_code'][0]['#markup'];
+		global $language ;
+		$lang_name = $language->language ;
+		$locale = "";
+		
+		if(isset($_GET["locale"])){
+			$localeget = $_GET["locale"];
+			$locale = $_GET["locale"];
+		}
+		
+		
+		if (isset($_SESSION["idiomaweb"])==""){
+			$_SESSION["idiomaweb"]=$lang_name;
+			if ($locale == ""){
+				$locale =$lang_name;
+			}
+		}else{
+			//Existe y es distinto
+			if($_SESSION["idiomaweb"]!=$lang_name){ //The language of the was has change
+				$_SESSION["idiomaweb"]=$lang_name;
+				$locale = $lang_name;
+			}
+		}
+	
+		$DVScontent = file_get_contents('http://194.30.34.27/DVS/DVT/survey.php?dataSource=' . $survey."&locale=" . strtoupper($locale));
+		$vars['content']['field_dvs_code'][0]['#markup'] = $DVScontent;
+		
+	}
+}
+

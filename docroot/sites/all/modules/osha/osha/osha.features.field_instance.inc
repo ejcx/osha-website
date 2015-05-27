@@ -821,7 +821,10 @@ function osha_field_default_field_instances() {
         'allow_duplicates' => 0,
         'close_modal' => 0,
         'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => FALSE,
         'view' => 'aditional_resources|entityreference_view_widget_1',
+        'view_mode' => FALSE,
       ),
       'type' => 'entityreference_view_widget',
       'weight' => 24,
@@ -1935,6 +1938,87 @@ function osha_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-dvs_survey-field_dvs_code'
+  $field_instances['node-dvs_survey-field_dvs_code'] = array(
+    'bundle' => 'dvs_survey',
+    'default_value' => array(
+      0 => array(
+        'value' => 'esener04',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'highlights_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'newsletter_item' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_resources' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_slideshow' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'osha_wiki' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_dvs_code',
+    'label' => 'DVS code',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 41,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-page-body'
   $field_instances['node-page-body'] = array(
     'bundle' => 'page',
@@ -2480,16 +2564,17 @@ function osha_field_default_field_instances() {
   t('Additional resources');
   t('Alt text');
   t('Alternative text is used by screen readers, search engines, and when the image cannot be loaded. By adding alt text you improve accessibility and search engine optimization.');
-  t('Archived');
   t('Article type');
   t('Automatically calculated when saving. The count of characters found in the default language text (English).');
   t('Automatically calculated when saving. The count of pages of text in the default language (English).');
   t('Body');
   t('Character count');
+  t('DVS code');
   t('Description');
   t('Expiration date');
   t('Image');
   t('Language');
+  t('Marked as outdated');
   t('Nace');
   t('OSHwiki category');
   t('OSHwiki featured articles');
