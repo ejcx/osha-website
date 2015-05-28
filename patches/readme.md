@@ -7,6 +7,10 @@ When patching a contrib module, the following steps should be followed:
 
 List of patches (most recent first)
 
+* varnish
+  * req.http.host not correct when using custom port for varnish.
+  * /patches/varnish/parse_url_fix.patch
+
 * workbench_access
   * read-only screen for editorrial management
   * /patches/workbench_access/read_only_root_section.patch
