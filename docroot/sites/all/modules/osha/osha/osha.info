@@ -1,7 +1,7 @@
 name = osha
 core = 7.x
 package = OSHA
-version = 7.x-1.29
+version = 7.x-1.30
 project = osha
 dependencies[] = aggregator
 dependencies[] = comment
@@ -369,4 +369,4 @@ features_exclude[taxonomy][thesaurus] = thesaurus
 features_exclude[taxonomy][flickr_tags] = flickr_tags
 files[] = osha.test
 files[] = osha.utils.inc
-mtime = 1431695000
+mtime = 1432802580
