@@ -28,6 +28,29 @@ function osha_menu() {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function osha_menu_alter(&$items) {
+  if (isset($items['aggregator/sources/%aggregator_feed'])) {
+    $items['aggregator/sources/%aggregator_feed']['page callback'] = 'osha_aggregator_page_source';
+  }
+}
+
+/**
+ * Override aggregator_page_source to localize the title.
+ */
+function osha_aggregator_page_source($feed) {
+  drupal_set_title(t($feed->title));
+  $feed_source = theme('aggregator_feed_source', array('feed' => $feed));
+
+  // It is safe to include the fid in the query because it's loaded from the
+  // database by aggregator_feed_load.
+  $items = aggregator_feed_items_load('source', $feed);
+
+  return _aggregator_page_list($items, arg(3), $feed_source);
+}
+
+/**
  * Implements hook_node_update().
  */
 function osha_node_update($node) {
