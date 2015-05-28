@@ -223,3 +223,25 @@ function osha_update_7010() {
   locale('More info');
   locale('<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>');
 }
+
+/**
+ * Update aliases that have special punctuation chars.
+ */
+function osha_update_7011() {
+  $chars = array('“', '„', '´', '‘', '«', '»');
+  foreach ($chars as $char) {
+    $aliases = db_select('url_alias', 'u')
+      ->fields('u')
+      ->condition('alias', '%' . db_like($char) . '%', 'LIKE')
+      ->execute()
+      ->fetchAllAssoc('pid');
+    foreach ($aliases as $pid => $alias) {
+      db_update('url_alias')
+        ->condition('pid', $pid)
+        ->fields(array(
+          'alias' => str_replace($char, '-', $alias->alias)
+        ))
+        ->execute();
+    }
+  }
+}
