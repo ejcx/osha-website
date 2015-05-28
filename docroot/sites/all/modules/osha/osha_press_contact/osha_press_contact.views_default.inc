@@ -24,14 +24,10 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Advisory groups';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'more';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Apply';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort by';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -247,7 +243,6 @@ function osha_press_contact_views_default_views() {
     t('[field_zip_code][field_city] '),
     t('[field_country]'),
     t('Block'),
-    t('more'),
   );
   $export['advisory_groups'] = $view;
 
@@ -265,14 +260,10 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Board members';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'more';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Apply';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort by';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -404,6 +395,13 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['label'] = '';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_press_contact_declaration][field_press_contact_cv]';
   $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+  /* Field: Content: Organization */
+  $handler->display->display_options['fields']['field_press_contact_organization']['id'] = 'field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['table'] = 'field_data_field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['field'] = 'field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_organization']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_press_contact_organization']['type'] = 'text_plain';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_press_contact_location']['id'] = 'field_press_contact_location';
   $handler->display->display_options['fields']['field_press_contact_location']['table'] = 'field_data_field_press_contact_location';
@@ -643,7 +641,6 @@ function osha_press_contact_views_default_views() {
     t('[field_press_contact_declaration][field_press_contact_cv]'),
     t('[field_zip_code] [field_city]'),
     t('Block'),
-    t('more'),
     t('Block EFTA'),
     t('Block EC - Obs'),
   );
@@ -663,14 +660,10 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Composition of the Bureau of the Governing Board';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'more';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Apply';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort by';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -801,7 +794,6 @@ function osha_press_contact_views_default_views() {
     t(', [field_wg_role_2]'),
     t('<strong>[field_personal_title] [title]</strong> ([field_wg_category])[field_wg_role_2]'),
     t('Block'),
-    t('more'),
   );
   $export['bureau_members'] = $view;
 
@@ -819,15 +811,11 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Datele de contact ale punctelor focale';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'more';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Apply';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort by';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'some';
@@ -996,7 +984,6 @@ function osha_press_contact_views_default_views() {
     t('Web'),
     t('All'),
     t('Block'),
-    t('more'),
   );
   $export['fop_contacts'] = $view;
 
@@ -1014,7 +1001,6 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Press contacts';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'more';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
@@ -1024,15 +1010,11 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Apply';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reset';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sort by';
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Items per page';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Nodequeue: Queue */
@@ -1392,7 +1374,7 @@ function osha_press_contact_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Contacte de presă';
+  $handler->display->display_options['title'] = 'Press contacts';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -1445,8 +1427,8 @@ function osha_press_contact_views_default_views() {
     t('Apply'),
     t('Reset'),
     t('Sort by'),
-    t('Asc'),
-    t('Desc'),
+    t('Ascending'),
+    t('Descending'),
     t('Items per page'),
     t('- All -'),
     t('Offset'),
@@ -1456,7 +1438,6 @@ function osha_press_contact_views_default_views() {
     t('last »'),
     t('queue'),
     t('Page'),
-    t('more'),
     t('- Choose an operation -'),
     t('Delete'),
     t('Publish'),
