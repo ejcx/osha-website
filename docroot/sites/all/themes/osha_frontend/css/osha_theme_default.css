@@ -7936,3 +7936,34 @@ display:block!important;
 #aggregator .feed-source .feed-updated{
 	display:none;
 }
+
+/*Composition of the Advisory Groups*/
+
+.view-id-advisory_groups .views-row{
+	margin-bottom:1em;
+}
+
+.view-id-advisory_groups .views-field-nothing-3{
+	  font-size: 1.2em;
+	  margin-top: 1em;
+	  margin-bottom: .5em;
+	  text-transform: capitalize;
+	  color: #003399;
+}
+
+.view-id-advisory_groups .views-field-nothing-3{
+	  font-size: 1.2em;
+	  margin-top: 1em;
+	  margin-bottom: .5em;
+	  text-transform: capitalize;
+	  color: #003399;
+	  font-weight: bold;
+}
+
+.view-id-advisory_groups .views-field-nothing-2 .file-icon{
+	vertical-align: middle;
+}
+
+#content iframe{
+	max-width: 99%!important;
+}
