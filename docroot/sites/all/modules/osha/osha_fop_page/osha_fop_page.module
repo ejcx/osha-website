@@ -65,3 +65,21 @@ function osha_fop_page_osha_tmgmt_i18n_string_list() {
   module_load_include('inc', 'osha_fop_page', 'osha_fop_page.translations');
   return osha_fop_page_get_translatable_strings();
 }
+
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function osha_fop_page_views_pre_view( view &$view, &$display_id, &$args) {
+  if ($view->name == 'fop_page_links') {
+    $node = menu_get_object();
+    if (!empty($node)) {
+      global $language;
+      $lang = $language->language;
+      // If no link for current lang, fallback for display with english link.
+      if ($lang != 'en' && empty($node->field_fop_link[$lang])) {
+        $view->set_display('block_1');
+      }
+    }
+  }
+}
