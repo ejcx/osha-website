@@ -726,13 +726,13 @@ function osha_fop_page_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Archived');
   t('Body');
   t('Country');
   t('Description');
   t('Focal Point website');
   t('Image');
   t('Link');
+  t('Marked as outdated');
   t('Name');
   t('Section');
   t('Title');
