@@ -41,3 +41,10 @@ function osha_press_contact_update_7001() {
   // Auto Register to get the FocalPoint migraton.
   drush_invoke('migrate-auto-register');
 }
+
+/**
+ * Migrate --update Board Members.
+ */
+function osha_press_contact_update_7002() {
+  osha_press_contact_migrate(OSHA_MIGRATION_CONTENT_TYPE_BOARD);
+}
