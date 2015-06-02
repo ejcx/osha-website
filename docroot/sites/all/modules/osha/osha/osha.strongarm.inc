@@ -1688,6 +1688,46 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'piwik_custom_var';
+  $strongarm->value = array(
+    'slots' => array(
+      1 => array(
+        'slot' => 1,
+        'name' => 'Activity',
+        'value' => '[node:field-activity]',
+        'scope' => 'page',
+      ),
+      2 => array(
+        'slot' => 2,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      3 => array(
+        'slot' => 3,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      4 => array(
+        'slot' => 4,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      5 => array(
+        'slot' => 5,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+    ),
+  );
+  $export['piwik_custom_var'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'search_active_modules';
   $strongarm->value = array(
     'apachesolr_search' => 'apachesolr_search',
