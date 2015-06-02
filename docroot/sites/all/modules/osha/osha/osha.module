@@ -61,10 +61,11 @@ function osha_node_update($node) {
  * Implements hook_nodequeue_sort_alter().
  */
 function osha_nodequeue_sort_alter(&$nodes, $sqid) {
-  if ($pq = nodequeue_load_queue_by_name('publication_queue')) {
-    if ($sqid == $pq->qid) {
-      osha_expire_view_page('tools-and-publications/publications');
-    }
+  if ($sqid == 4 || $sqid == 5) {
+    osha_expire_view_page('inside-eu-osha/press-room');
+  }
+  if ($sqid == 6) {
+    osha_expire_view_page('tools-and-publications/publications');
   }
 }
 
