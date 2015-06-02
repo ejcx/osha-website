@@ -38,7 +38,7 @@
         "environment": "production",
         "osha_newsletter_list_name": "OSHMail-Test",
         "osha_data_dir": "/var/local/osha/data",
-        "site_name": "OSHA",
+        "site_name": "Safety and health at work - EU-OSHA",
         "site_mail": "account@example.com",
         "file_temporary_path": "/tmp",
         "sa_admin_helper": "0",
