@@ -62,7 +62,7 @@ function osha_node_update($node) {
  */
 function osha_nodequeue_sort_alter(&$nodes, $sqid) {
   if ($sqid == 4 || $sqid == 5) {
-    osha_expire_view_page('inside-eu-osha/press-room');
+    osha_expire_view_page('about-eu-osha/press-room');
   }
   if ($sqid == 6) {
     osha_expire_view_page('tools-and-publications/publications');

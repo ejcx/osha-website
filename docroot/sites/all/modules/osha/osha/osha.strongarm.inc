@@ -1514,7 +1514,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_calls_pattern';
-  $strongarm->value = 'inside-eu-osha/procurement/[node:title]';
+  $strongarm->value = 'about-eu-osha/procurement/[node:title]';
   $export['pathauto_node_calls_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1570,7 +1570,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_job_vacancies_pattern';
-  $strongarm->value = 'inside-eu-osha/careers/[node:title]';
+  $strongarm->value = 'about-eu-osha/careers/[node:title]';
   $export['pathauto_node_job_vacancies_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1591,7 +1591,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_note_to_editor_pattern';
-  $strongarm->value = 'inside-eu-osha/press-room/note-to-editor/[node:title]';
+  $strongarm->value = 'about-eu-osha/press-room/note-to-editor/[node:title]';
   $export['pathauto_node_note_to_editor_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1619,7 +1619,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_press_release_pattern';
-  $strongarm->value = 'inside-eu-osha/press-room/[node:title]';
+  $strongarm->value = 'about-eu-osha/press-room/[node:title]';
   $export['pathauto_node_press_release_pattern'] = $strongarm;
 
   $strongarm = new stdClass();

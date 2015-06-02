@@ -241,7 +241,7 @@ function osha_fop_page_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_fop_page_pattern';
-  $strongarm->value = 'inside-eu-osha/national-focal-points/[node:title]';
+  $strongarm->value = 'about-eu-osha/national-focal-points/[node:title]';
   $export['pathauto_node_fop_page_pattern'] = $strongarm;
 
   return $export;

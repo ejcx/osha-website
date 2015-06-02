@@ -84,7 +84,7 @@ function osha_press_release_views_default_views() {
 
   /* Display: All press releases */
   $handler = $view->new_display('page', 'All press releases', 'page');
-  $handler->display->display_options['path'] = 'inside-eu-osha/press-releases';
+  $handler->display->display_options['path'] = 'about-eu-osha/press-releases';
 
   /* Display: Press releases block */
   $handler = $view->new_display('block', 'Press releases block', 'block');
@@ -145,7 +145,7 @@ function osha_press_release_views_default_views() {
   $handler->display->display_options['filters']['field_publication_date_value']['field'] = 'field_publication_date_value';
   $handler->display->display_options['filters']['field_publication_date_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_publication_date_value']['default_date'] = 'now';
-  $handler->display->display_options['path'] = 'inside-eu-osha/press-room';
+  $handler->display->display_options['path'] = 'about-eu-osha/press-room';
   $translatables['press_releases'] = array(
     t('Master'),
     t('Press releases'),

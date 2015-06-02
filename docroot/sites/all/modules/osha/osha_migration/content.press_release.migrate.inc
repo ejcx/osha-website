@@ -276,7 +276,7 @@ class MigrateOshaPressRelease extends OSHADynamicMigration {
       $tmp_path = $row->path;
       $languages = array_keys($entity->translations->data);
       foreach($languages as $language){
-        $row->path[$language] = 'inside-eu-osha/press-room/' . $matches[1];
+        $row->path[$language] = 'about-eu-osha/press-room/' . $matches[1];
       }
       MigrationUtil::createAliases($entity, $row, 'node', 'nid');
       $row->path = $tmp_path;
