@@ -66,6 +66,7 @@
         "varnish_control_terminal": "127.0.0.1:6082",
         "varnish_control_key": "",
         "varnish_socket_timeout": 150,
-        "print_pdf_autoconfig" : 0
+        "print_pdf_autoconfig" : 0,
+        "googleanalytics_account" : "UA-1234567-AB"
     }
 }

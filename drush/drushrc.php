@@ -412,6 +412,7 @@ $options['init-modules'] = array(
   // cookie privacy
   'eu_cookie_compliance',
   'piwik',
+  'googleanalytics',
 
   'calendar',
   'date_popup',
