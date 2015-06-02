@@ -518,7 +518,7 @@ $options['init-themes'] = array(
 );
 
 $options['disable-modules'] = array(
-  'varnish', 'memcache_storage', 'piwik',
+  'varnish', 'memcache_storage'
 );
 
 // Add specific settings for development or demo.
@@ -530,12 +530,17 @@ $command_specific['devify'] = array(
     'devel_node_access',
     'stage_file_proxy',
   ),
-  'delete-variables' => array('googleanalytics_account'),
+  'delete-variables' => array(
+    'googleanalytics_account',
+    'piwik_site_id',
+    'piwik_url_http',
+    'piwik_url_https',
+  ),
   'reset-variables' => array_merge(
     array(
       'reroute_email_enable_message' => TRUE,
       'reroute_email_enable' => TRUE,
-      'stage_file_proxy_origin' => 'http://osha-corp-staging03.mainstrat.com',
+      'stage_file_proxy_origin' => 'https://ncw.osha.europa.eu',
       'stage_file_proxy_use_imagecache_root' => TRUE,
       'stage_file_proxy_hotlink' => FALSE,
       'reroute_email_address' => $cfg->variables->site_mail,
