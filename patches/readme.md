@@ -7,6 +7,10 @@ When patching a contrib module, the following steps should be followed:
 
 List of patches (most recent first)
 
+* ldap_user
+  * Disable the watchdog successful messages
+  * /patches/ldap/ldap_user/disable-watchdg.patch
+
 * flickr
   * Applied patch for HTTPS font error
   * /patches/flickr/ssl-font-error.patch
