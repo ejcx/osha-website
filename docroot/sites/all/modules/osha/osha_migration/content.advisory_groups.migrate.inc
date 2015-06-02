@@ -306,7 +306,7 @@ class AdvisoryGroupsMigrateList extends MigrateList {
         $file = $new_file;
       }
     }
-    if ($xml = simplexml_load_file($file)) {
+    if ($xml = simplexml_load_file($file, 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE)) {
       $title = $xml->xpath('//Table0_Group0_Header0/Table0_Group0_Header0');
       $title = (string) $title[0];
       if (!empty($title)) {
