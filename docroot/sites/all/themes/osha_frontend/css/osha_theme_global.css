@@ -1794,6 +1794,7 @@ a {
 		.accesibility_table td {
 		font-size: 0.7em;
 	    padding: 0.5em;
+	    display: table-cell;
 		}
 	}
 
@@ -1843,6 +1844,15 @@ a {
 .filtersExtra .visualisationSelections a {
     height: 1.4em!important;
     width: 0 !important;
+}
+
+#label_question .chosen-single{
+	width:100%!important;
+
+}
+
+#visualizationTitleSection{
+	margin-top:3em;
 }
 
 /*End styles for Esener*/
