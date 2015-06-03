@@ -792,7 +792,7 @@ function osha_press_release_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
-          'view_mode' => 'teaser',
+          'view_mode' => 'full',
         ),
         'type' => 'entityreference_entity_view',
         'weight' => 6,
@@ -1367,7 +1367,6 @@ function osha_press_release_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Activity');
   t('Additional resources');
-  t('Archived');
   t('Automatically calculated when saving. The count of characters found in the default language text (English).');
   t('Automatically calculated when saving. The count of pages of text in the default language (English).');
   t('Body');
@@ -1375,6 +1374,7 @@ function osha_press_release_field_default_field_instances() {
   t('Embargo date');
   t('Expiration date');
   t('Image');
+  t('Marked as outdated');
   t('Nace');
   t('Notes to editor');
   t('Page count');

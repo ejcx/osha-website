@@ -944,4 +944,17 @@ class OSHADynamicMigration extends DynamicMigration {
     MigrationUtil::createAliases($entity, $row, 'node', 'nid');
     self::createRedirectsFromAliases($entity, $row);
   }
+
+  public function removeNeedsUpdateItems() {
+    // Remove non-existing sources.
+    $removed = $this->getMap()->getRowsNeedingUpdate(10000);
+    if (!empty($removed)) {
+      $nodes = array();
+      foreach ($removed as $to_remove) {
+        $nodes[] = $to_remove->destid1;
+        $this->getMap()->delete(array($to_remove->sourceid1));
+      }
+      node_delete_multiple($nodes);
+    }
+  }
 }

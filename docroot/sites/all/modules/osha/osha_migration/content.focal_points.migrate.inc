@@ -173,6 +173,14 @@ class MigrateOshaFocalPoints extends OSHADynamicMigration {
       'expiration_date' => '',
     );
   }
+
+  /**
+   * Executes after import.
+   */
+  public function postImport() {
+    parent::postImport();
+    $this->removeNeedsUpdateItems();
+  }
 }
 
 class FocalPointsContentListXML extends MigrateList {
@@ -203,7 +211,7 @@ class FocalPointsContentListXML extends MigrateList {
     if (!is_readable($this->file)) {
       return;
     }
-    if ($xml = simplexml_load_file($this->file)) {
+    if ($xml = simplexml_load_file($this->file, 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE)) {
       // Contact fields are attributes of Detail.
       foreach ($xml->xpath('//Detail') as $focalpoint) {
         $data = new stdClass();

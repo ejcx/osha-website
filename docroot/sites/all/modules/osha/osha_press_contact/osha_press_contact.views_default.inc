@@ -24,16 +24,12 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Advisory groups';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -110,7 +106,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['text'] = '([field_wg_role_2])';
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_wg_role_2']['alter']['path'] = 'inside-eu-osha/governance-eu-osha/composition-bureau';
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['path'] = 'about-eu-osha/governance-eu-osha/composition-bureau';
   $handler->display->display_options['fields']['field_wg_role_2']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_wg_role_2']['element_class'] = 'advisory-role2';
   $handler->display->display_options['fields']['field_wg_role_2']['element_label_colon'] = FALSE;
@@ -231,12 +227,12 @@ function osha_press_contact_views_default_views() {
   $translatables['advisory_groups'] = array(
     t('Master'),
     t('Advisory groups'),
-    t('mai mult'),
-    t('Aplicare'),
-    t('Reinițializare'),
-    t('Sortare după'),
-    t('Ascendent'),
-    t('Descendent'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Ascending'),
+    t('Descending'),
     t('([field_wg_category])'),
     t('[field_wg_category] - [field_wg_role_1]'),
     t('([field_wg_role_2])'),
@@ -247,7 +243,6 @@ function osha_press_contact_views_default_views() {
     t('[field_zip_code][field_city] '),
     t('[field_country]'),
     t('Block'),
-    t('more'),
   );
   $export['advisory_groups'] = $view;
 
@@ -265,16 +260,12 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Board members';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'list';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -362,7 +353,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['text'] = '([field_wg_role_2])';
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_wg_role_2']['alter']['path'] = 'inside-eu-osha/governance-eu-osha/composition-bureau';
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['path'] = 'about-eu-osha/governance-eu-osha/composition-bureau';
   $handler->display->display_options['fields']['field_wg_role_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_wg_role_2']['type'] = 'i18n_taxonomy_term_reference_plain';
   /* Field: Global: Custom text */
@@ -404,6 +395,13 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['nothing_2']['label'] = '';
   $handler->display->display_options['fields']['nothing_2']['alter']['text'] = '[field_press_contact_declaration][field_press_contact_cv]';
   $handler->display->display_options['fields']['nothing_2']['element_label_colon'] = FALSE;
+  /* Field: Content: Organization */
+  $handler->display->display_options['fields']['field_press_contact_organization']['id'] = 'field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['table'] = 'field_data_field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['field'] = 'field_press_contact_organization';
+  $handler->display->display_options['fields']['field_press_contact_organization']['label'] = '';
+  $handler->display->display_options['fields']['field_press_contact_organization']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_press_contact_organization']['type'] = 'text_plain';
   /* Field: Content: Location */
   $handler->display->display_options['fields']['field_press_contact_location']['id'] = 'field_press_contact_location';
   $handler->display->display_options['fields']['field_press_contact_location']['table'] = 'field_data_field_press_contact_location';
@@ -626,12 +624,12 @@ function osha_press_contact_views_default_views() {
   $translatables['board_members'] = array(
     t('Master'),
     t('Board members'),
-    t('mai mult'),
-    t('Aplicare'),
-    t('Reinițializare'),
-    t('Sortare după'),
-    t('Ascendent'),
-    t('Descendent'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Ascending'),
+    t('Descending'),
     t('term from field_wg_category'),
     t('term from field_wg_role_1'),
     t('term from field_country'),
@@ -643,7 +641,6 @@ function osha_press_contact_views_default_views() {
     t('[field_press_contact_declaration][field_press_contact_cv]'),
     t('[field_zip_code] [field_city]'),
     t('Block'),
-    t('more'),
     t('Block EFTA'),
     t('Block EC - Obs'),
   );
@@ -663,16 +660,12 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'Composition of the Bureau of the Governing Board';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['grouping'] = array(
@@ -789,19 +782,18 @@ function osha_press_contact_views_default_views() {
   $translatables['bureau_members'] = array(
     t('Master'),
     t('Composition of the Bureau of the Governing Board'),
-    t('mai mult'),
-    t('Aplicare'),
-    t('Reinițializare'),
-    t('Sortare după'),
-    t('Ascendent'),
-    t('Descendent'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Ascending'),
+    t('Descending'),
     t('term from field_wg_role_1'),
     t('term from field_wg_category'),
     t('term from field_wg_role_2'),
     t(', [field_wg_role_2]'),
     t('<strong>[field_personal_title] [title]</strong> ([field_wg_category])[field_wg_role_2]'),
     t('Block'),
-    t('more'),
   );
   $export['bureau_members'] = $view;
 
@@ -817,19 +809,15 @@ function osha_press_contact_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Datele de contact ale punctelor focale';
+  $handler->display->display_options['title'] = 'Focal points\' contact details';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '5';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -978,13 +966,13 @@ function osha_press_contact_views_default_views() {
   $handler = $view->new_display('block', 'Block', 'block');
   $translatables['fop_contacts'] = array(
     t('Master'),
-    t('Datele de contact ale punctelor focale'),
-    t('mai mult'),
-    t('Aplicare'),
-    t('Reinițializare'),
-    t('Sortare după'),
-    t('Ascendent'),
-    t('Descendent'),
+    t('Focal points\' contact details'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Ascending'),
+    t('Descending'),
     t('term from field_country'),
     t('field_country'),
     t('[field_zip_code] '),
@@ -996,7 +984,6 @@ function osha_press_contact_views_default_views() {
     t('Web'),
     t('All'),
     t('Block'),
-    t('more'),
   );
   $export['fop_contacts'] = $view;
 
@@ -1012,9 +999,8 @@ function osha_press_contact_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Contacte de presă';
+  $handler->display->display_options['title'] = 'Press contacts';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mai mult';
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
     3 => '3',
@@ -1024,15 +1010,11 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['pure_distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Aplicare';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Reinițializare';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortare după';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascendent';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descendent';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Ascending';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Descending';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '10';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Elemente pe pagină';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   /* Relationship: Nodequeue: Queue */
@@ -1392,7 +1374,7 @@ function osha_press_contact_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Contacte de presă';
+  $handler->display->display_options['title'] = 'Press contacts';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['defaults']['pager'] = FALSE;
@@ -1411,7 +1393,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
   $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
   $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['footer']['area_text_custom']['content'] = '<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">Dosar de presă EU-OSHA</a>';
+  $handler->display->display_options['footer']['area_text_custom']['content'] = '<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">EU-OSHA Press kit</a>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Job title */
   $handler->display->display_options['fields']['field_press_contact_job_title']['id'] = 'field_press_contact_job_title';
@@ -1440,14 +1422,14 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_email']['element_label_colon'] = FALSE;
   $translatables['press_contacts'] = array(
     t('Master'),
-    t('Contacte de presă'),
-    t('mai mult'),
-    t('Aplicare'),
-    t('Reinițializare'),
-    t('Sortare după'),
-    t('Ascendent'),
-    t('Descendent'),
-    t('Elemente pe pagină'),
+    t('Press contacts'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Ascending'),
+    t('Descending'),
+    t('Items per page'),
     t('- All -'),
     t('Offset'),
     t('« first'),
@@ -1456,7 +1438,6 @@ function osha_press_contact_views_default_views() {
     t('last »'),
     t('queue'),
     t('Page'),
-    t('more'),
     t('- Choose an operation -'),
     t('Delete'),
     t('Publish'),
@@ -1469,7 +1450,7 @@ function osha_press_contact_views_default_views() {
     t('Contact Name'),
     t('Email (field_press_contact_email)'),
     t('Block'),
-    t('<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">Dosar de presă EU-OSHA</a>'),
+    t('<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">EU-OSHA Press kit</a>'),
   );
   $export['press_contacts'] = $view;
 

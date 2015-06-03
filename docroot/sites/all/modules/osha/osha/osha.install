@@ -223,3 +223,62 @@ function osha_update_7010() {
   locale('More info');
   locale('<h2>Thank you for accepting cookies</h2><p>You can now hide this message or find out more about cookies.</p>');
 }
+
+/**
+ * Update aliases that have special punctuation chars.
+ */
+function osha_update_7011() {
+  $chars = array('“', '„', '´', '‘', '«', '»');
+  foreach ($chars as $char) {
+    $aliases = db_select('url_alias', 'u')
+      ->fields('u')
+      ->condition('alias', '%' . db_like($char) . '%', 'LIKE')
+      ->execute()
+      ->fetchAllAssoc('pid');
+    foreach ($aliases as $pid => $alias) {
+      db_update('url_alias')
+        ->condition('pid', $pid)
+        ->fields(array(
+          'alias' => str_replace($char, '-', $alias->alias)
+        ))
+        ->execute();
+    }
+  }
+}
+
+/**
+ * CW-1690: Update all aliases from inside-eu-osha to about-eu-osha
+ */
+function osha_update_7012() {
+  $aliases = db_select('url_alias', 'u')
+    ->fields('u', array('source', 'alias'))
+    ->distinct()
+    ->condition('alias', 'inside-eu-osha%', 'LIKE')
+    //->condition('source', 'node/8468')
+    ->execute()
+    ->fetchAll();
+
+  foreach ($aliases as $row) {
+    //print 'about'.substr($row->alias, 6)."\n";
+    db_update('url_alias')
+    ->condition('source', $row->source)
+    ->condition('alias', $row->alias)
+    ->fields(array(
+      'alias' => 'about'.substr($row->alias, 6)
+    ))
+    ->execute();
+
+    osha_create_redirect($row->alias, $row->source);
+  }
+  // add redirect for some views
+  osha_create_redirect('inside-eu-osha/press-room', 'about-eu-osha/press-room');
+  osha_create_redirect('inside-eu-osha/press-releases', 'about-eu-osha/press-releases');
+
+  db_update('menu_links')
+    ->condition('link_path', 'inside-eu-osha/press-room')
+    ->fields(array(
+      'link_path' => 'about-eu-osha/press-room',
+      'router_path' => 'about-eu-osha/press-room',
+    ))
+    ->execute();
+}

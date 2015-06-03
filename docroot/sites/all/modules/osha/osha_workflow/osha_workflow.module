@@ -764,7 +764,7 @@ function osha_workflow_workbench_moderation_transition($node, $old, $new) {
   $rm_notified = FALSE;
   if ($old == OSHA_WORKFLOW_STATE_DRAFT && $new == OSHA_WORKFLOW_STATE_FINAL_DRAFT) {
     // Assign the default PM, if none assigned.
-    if (!osha_workflow_get_project_manager($node->nid)) {
+    if ($node->type != 'publication' && !osha_workflow_get_project_manager($node->nid)) {
       reset($node->workbench_access);
       $section = current($node->workbench_access);
       $pms = osha_workflow_access_get_section_pm($section);

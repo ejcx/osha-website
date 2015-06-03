@@ -231,6 +231,14 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
   }
 
   /**
+   * Executes after import.
+   */
+  public function postImport() {
+    parent::postImport();
+    $this->removeNeedsUpdateItems();
+  }
+
+  /**
    * Return the list of available source fields.
    *
    * @return array
@@ -288,7 +296,7 @@ class BoardMembersListXML extends MigrateList {
       return;
     }
     $content = file_get_contents($this->file);
-    if ($xml = simplexml_load_string($content)) {
+    if ($xml = simplexml_load_string($content, 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE)) {
       foreach ($xml->xpath('//Detail') as $member) {
         $data = new stdClass();
         $attributes = $member->attributes();

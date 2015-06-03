@@ -54,7 +54,8 @@ press_contact
 banner
 news
 directive
-guideline';
+guideline
+publication';
   $export['no_translation_type_exceptions'] = $strongarm;
 
   return $export;

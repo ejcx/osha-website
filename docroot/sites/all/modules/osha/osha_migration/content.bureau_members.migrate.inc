@@ -156,6 +156,14 @@ class MigrateOshaBureauMembers extends OSHADynamicMigration {
   }
 
   /**
+   * Executes after import.
+   */
+  public function postImport() {
+    parent::postImport();
+    $this->removeNeedsUpdateItems();
+  }
+
+  /**
    * Return the list of available source fields.
    *
    * @return array
@@ -215,7 +223,7 @@ class BoardBureauMembersListXML extends MigrateList {
     if (!is_readable($this->file)) {
       return;
     }
-    if ($xml = simplexml_load_file($this->file)) {
+    if ($xml = simplexml_load_file($this->file,  'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE)) {
       // To be used for board and bureau memebers, to merge the details.
       // Contact fields are attributes of Detail.
       foreach ($xml->xpath('//Detail') as $member) {

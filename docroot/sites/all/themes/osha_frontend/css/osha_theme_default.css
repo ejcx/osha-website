@@ -264,6 +264,8 @@ header{
 	clear:both;
 	float:none;
 	text-decoration:none;
+	[;padding-top: 10px!important;];
+	[;display: block;];
 }
 
 #block-menu-block-1 .menu li .menu li  a:hover{
@@ -281,6 +283,7 @@ header{
 	clear:both;
 	float:none;
 	text-decoration:none;
+	[;padding-top: 0px!important;];
 }
 
 #block-menu-block-1 .menu li .menu li .menu li  a:hover{
@@ -355,6 +358,7 @@ header{
 	text-align: left;
 	padding-bottom:0px;
 	padding-left:15px;
+	[;margin-top: -10px;];
 }
 
 
@@ -602,6 +606,11 @@ footer {
 	padding: 0 0 4px;
 	font-weight:bold;
 	margin-top: 1em;
+}
+
+footer a{
+	color:#FFF;
+	text-decoration: none;
 }
 
 #footer-first-line{
@@ -2461,6 +2470,7 @@ font-weight: normal;
 
 .view-osha-home-banner-top .view-osha-home-banner-top img{
 	width:100%!important;
+	[;height: auto!important;];
 }
 
 .view-osha-home-banner-top .views-field-title{
@@ -4426,8 +4436,7 @@ and (max-width: 1237px) {
 	line-height: 2em;
 }
 
-.view-press-releases  .links.inline {
-	background: url("../images/flecha.png") no-repeat scroll right center transparent;
+.view-press-releases .links.inline {
 	color: #003399;
 	float: right;
 	font-family: "Open Sans Condensed",sans-serif;
@@ -4439,14 +4448,22 @@ and (max-width: 1237px) {
 	font-weight:bold;
 }
 
-.view-press-releases  .links.inline  a{
+.view-press-releases .links.inline  a{
 	padding-right: 0.5em;
 	font-family: "Open Sans Condensed",sans-serif!important;
 	border-bottom: 0px!important;
+	background: url("../images/flecha.png") no-repeat scroll right center transparent;
+	padding-right:1.5em;
 }
 
 article.node-press-release{
 	background: url("../images/separator_home.jpg") repeat-x scroll 0% 100% rgba(0, 0, 0, 0);
+	padding-bottom:1em;
+	padding-top:0.5em;
+	padding-left:0.8em;
+}
+
+.view-press-releases article.node-highlight{
 	padding-bottom:1em;
 	padding-top:0.5em;
 	padding-left:0.8em;
@@ -4497,6 +4514,29 @@ article.node-press-release .field-name-body.field-type-text-with-summary p{
 	font-size: 0.9em;
 	font-weight: normal;
 	line-height: 1.1em;
+	margin: 0 0 0em;
+	font-weight:bold;
+}
+
+.view-press-releases .field-name-title-field h1 {
+	padding-bottom: 0.5em;
+	padding-top: 0.2em;
+	margin:0;
+	line-height: 0;
+}
+
+.view-press-releases .field-name-body p {
+	padding:0;
+	margin:0.2em 0 0.5em;
+}
+
+.view-press-releases .field-name-title-field h1 a{
+	border-bottom: 0 none !important;
+	color: #003399;
+	font-family: Open Sans Condensed !important;
+	font-size: 0.5em;
+	font-weight: normal;
+	line-height: 0em;
 	margin: 0 0 0em;
 	font-weight:bold;
 }
@@ -7732,6 +7772,14 @@ a.contextual-links-trigger{
 	padding:1em;
 }
 
+.accesibility_table .media-element-container .field-label{
+	display: none;
+}
+
+.accesibility_table .media-element-container img{
+	width: auto!important;
+}
+
 .press-release-quote-no-image{
 	float: right;
 	border-top: 5px solid #536e91;
@@ -7921,4 +7969,49 @@ display:block!important;
 #block-views-board-members-block .view-board-members .views-row{
 	padding:5px 0 5px 0;
 
+}
+
+#aggregator .feed-source .feed-description{
+	display:none;
+}
+
+
+#aggregator .feed-source .feed-url{
+	display:none;
+}
+
+
+#aggregator .feed-source .feed-updated{
+	display:none;
+}
+
+/*Composition of the Advisory Groups*/
+
+.view-id-advisory_groups .views-row{
+	margin-bottom:1em;
+}
+
+.view-id-advisory_groups .views-field-nothing-3{
+	  font-size: 1.2em;
+	  margin-top: 1em;
+	  margin-bottom: .5em;
+	  text-transform: capitalize;
+	  color: #003399;
+}
+
+.view-id-advisory_groups .views-field-nothing-3{
+	  font-size: 1.2em;
+	  margin-top: 1em;
+	  margin-bottom: .5em;
+	  text-transform: capitalize;
+	  color: #003399;
+	  font-weight: bold;
+}
+
+.view-id-advisory_groups .views-field-nothing-2 .file-icon{
+	vertical-align: middle;
+}
+
+#content iframe{
+	max-width: 99%!important;
 }

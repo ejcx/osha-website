@@ -96,3 +96,15 @@ function osha_sort_language_list($languages) {
 
   return $result;
 }
+
+function osha_create_redirect($from_path, $to_path) {
+    $redirect = new stdClass();
+    $redirect->source = $from_path;
+    $redirect->source_options = array();
+    $redirect->redirect = $to_path;
+    $redirect->redirect_options = array();
+    $redirect->status_code = 0;
+    $redirect->type = 'redirect';
+    $redirect->language = LANGUAGE_NONE;
+    redirect_save($redirect);
+}

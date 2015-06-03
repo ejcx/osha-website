@@ -214,7 +214,7 @@ class OshaMigrateJobVacancies extends OSHADynamicMigration {
   public function complete($entity, $row) {
     if (preg_match(self::PATH_PATTERN, $row->id, $matches)) {
       $tmp_path = $row->path;
-      $row->path[$row->language] = 'inside-eu-osha/careers/' . $matches[2];
+      $row->path[$row->language] = 'about-eu-osha/careers/' . $matches[2];
       MigrationUtil::createAliases($entity, $row, 'node', 'nid');
       $row->path = $tmp_path;
 
