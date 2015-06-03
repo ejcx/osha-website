@@ -273,6 +273,11 @@ function osha_fop_page_views_default_views() {
   $handler->display->display_options['fields']['field_link']['field'] = 'field_link';
   $handler->display->display_options['fields']['field_link']['relationship'] = 'field_fop_link_value';
   $handler->display->display_options['fields']['field_link']['label'] = '';
+  $handler->display->display_options['fields']['field_link']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_link']['alter']['text'] = '[field_link-title]';
+  $handler->display->display_options['fields']['field_link']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_link']['alter']['path'] = '[field_link-url]';
+  $handler->display->display_options['fields']['field_link']['alter']['target'] = '_blank';
   $handler->display->display_options['fields']['field_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_link']['click_sort_column'] = 'url';
   /* Field: Field collection item: Section */
@@ -357,6 +362,7 @@ function osha_fop_page_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('field collection item from field_fop_link'),
+    t('[field_link-title]'),
     t('All'),
     t('Block'),
   );
