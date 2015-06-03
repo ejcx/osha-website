@@ -4463,6 +4463,12 @@ article.node-press-release{
 	padding-left:0.8em;
 }
 
+.view-press-releases article.node-highlight{
+	padding-bottom:1em;
+	padding-top:0.5em;
+	padding-left:0.8em;
+}
+
 article.node-press-release .field-name-title-field {
 	border-bottom: 0 none !important;
 	color: #003399;
@@ -4512,13 +4518,25 @@ article.node-press-release .field-name-body.field-type-text-with-summary p{
 	font-weight:bold;
 }
 
+.view-press-releases .field-name-title-field h1 {
+	padding-bottom: 0.5em;
+	padding-top: 0.2em;
+	margin:0;
+	line-height: 0;
+}
+
+.view-press-releases .field-name-body p {
+	padding:0;
+	margin:0.2em 0 0.5em;
+}
+
 .view-press-releases .field-name-title-field h1 a{
 	border-bottom: 0 none !important;
 	color: #003399;
 	font-family: Open Sans Condensed !important;
 	font-size: 0.5em;
 	font-weight: normal;
-	line-height: 1.1em;
+	line-height: 0em;
 	margin: 0 0 0em;
 	font-weight:bold;
 }
