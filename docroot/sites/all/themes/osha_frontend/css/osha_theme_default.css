@@ -7985,6 +7985,13 @@ display:block!important;
 	display:none;
 }
 
+#aggregator .pager-first,
+#aggregator .pager-previous,
+#aggregator .pager-next,
+#aggregator .pager-last {
+    display: none;
+}
+
 /*Composition of the Advisory Groups*/
 
 .view-id-advisory_groups .views-row{
