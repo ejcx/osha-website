@@ -442,6 +442,10 @@ function osha_alert_service_render_alert($entity) {
     $table['rows'][] = $cells;
     $prev_label = $label;
   }
+  if (!empty($table['rows'])) {
+    $output .= theme_table($table);
+    $table = array('rows' => array(), 'caption' => $label, 'attributes' => array());
+  }
   return $output;
 }
 
