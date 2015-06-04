@@ -446,6 +446,9 @@ function osha_alert_service_render_alert($entity) {
  *
  * @param int $item_id
  *   osha_alert_service entity ID.
+ *
+ * @return bool
+ *   TRUE if there was any mail sent (can be FALSE if no content was found).
  */
 function osha_alert_service_send_alert($item_id) {
   // User still holds a valid subscription from last check.
