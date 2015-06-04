@@ -210,7 +210,7 @@ function osha_alert_service_remove_alert_form($form, &$form_state) {
     );
   }
   else {
-    drupal_set_message(t("Invalid request, and I hope it's a test!"), 'error');
+    drupal_set_message(t('Invalid alert subscription token'), 'error');
   }
   return $form;
 }
