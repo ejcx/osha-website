@@ -41,7 +41,7 @@ function drush_osha_alert_service_alert_test_osha_alert_service_test($id, $days 
     $entity->last_alert = date('U') - ($days * 24 * 3600);
     entity_save('osha_alert_service', $entity);
     if (!osha_alert_service_send_alert($id)) {
-      drush_log('Sending failed due to an error or because there was no content found for the interval mentioned', 'warning');
+      drush_log('Sending failed due to an error or because there was no new content found for the requested interval', 'warning');
     }
     else {
       drush_log('An alert was successfully sent to ' . $entity->email, 'status');

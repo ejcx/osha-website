@@ -412,6 +412,7 @@ function osha_alert_service_render_alert($entity) {
   $row0 = $rows[0];
   $prev_label = 'Type: ' . entity_bundle_label('node', $row0->type);
   $table = array('rows' => array(), 'caption' => $prev_label, 'attributes' => array());
+  $languages = osha_language_list();
   foreach($rows as $row) {
     $label = 'Type: ' . entity_bundle_label('node', $row->type);
     if ($label != $prev_label) {
@@ -429,12 +430,13 @@ function osha_alert_service_render_alert($entity) {
         ->condition('entity_id', $row->nid)
         ->execute()->fetchCol();
       if (!empty($translations)) {
+        $translations = osha_sort_language_list(array_combine($translations, $translations));
         $scell = array();
         foreach($translations as $tr) {
-          $lang = i18n_language_load($tr);
-          $scell[] = l(i18n_language_name($tr), 'node/' . $row->nid, array('absolute' => TRUE, 'language' => $lang));
+          $lang = $languages[$tr];
+          $scell[] = l($lang->native, 'node/' . $row->nid, array('absolute' => TRUE, 'language' => $lang));
         }
-        $cells[1] = 'See it also in your selected languages: ' . implode(', ', $scell);
+        $cells[1] = 'Available also in: ' . implode(', ', $scell);
       }
     }
     $table['rows'][] = $cells;
