@@ -89,7 +89,7 @@ EOT
     '#submit' => array('osha_alert_service_test_my_email_submit'),
   );
   $form['test']['info'] = array(
-    '#markup' => '<p>You can also use drush command: ' . htmlentities('drush osha-alert-test <id> <days>') . '</p>',
+    '#markup' => '<p>You can also use drush command: ' . htmlentities('drush osha-alert-service-test <id> <days>') . '</p>',
   );
 
   return system_settings_form($form);
