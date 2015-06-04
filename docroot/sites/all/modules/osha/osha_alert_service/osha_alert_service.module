@@ -421,19 +421,21 @@ function osha_alert_service_render_alert($entity) {
 
     $cells = array(0 => l($row->title_field_value, 'node/' . $row->nid, array('absolute' => TRUE)), 1 => '&nbsp;');
     // Get all translations needed for the result.
-    $translations = db_select('entity_translation', 'et')
-      ->fields('et', array('language'))->condition('entity_type', 'node')
-      ->condition('language', $settings->languages, 'IN')
-      ->condition('status', 1)
-      ->condition('entity_id', $row->nid)
-      ->execute()->fetchCol();
-    if(!empty($translations)) {
-      $scell = array();
-      foreach($translations as $tr) {
-        $lang = i18n_language_load($tr);
-        $scell[] = l(i18n_language_name($tr), 'node/' . $row->nid, array('absolute' => TRUE, 'language' => $lang));
+    if (!empty($settings->languages)) {
+      $translations = db_select('entity_translation', 'et')
+        ->fields('et', array('language'))->condition('entity_type', 'node')
+        ->condition('language', $settings->languages, 'IN')
+        ->condition('status', 1)
+        ->condition('entity_id', $row->nid)
+        ->execute()->fetchCol();
+      if (!empty($translations)) {
+        $scell = array();
+        foreach($translations as $tr) {
+          $lang = i18n_language_load($tr);
+          $scell[] = l(i18n_language_name($tr), 'node/' . $row->nid, array('absolute' => TRUE, 'language' => $lang));
+        }
+        $cells[1] = 'See it also in your selected languages: ' . implode(', ', $scell);
       }
-      $cells[1] = 'See it also in your selected languages: ' . implode(', ', $scell);
     }
     $table['rows'][] = $cells;
     $prev_label = $label;
