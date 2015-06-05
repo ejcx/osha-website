@@ -116,7 +116,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_personal_title] <strong>[title_field]</strong> [field_wg_role_2]';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<strong>[field_personal_title] [title_field]</strong> [field_wg_role_2]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Field: Content: CV */
   $handler->display->display_options['fields']['field_press_contact_cv']['id'] = 'field_press_contact_cv';
@@ -236,7 +236,7 @@ function osha_press_contact_views_default_views() {
     t('([field_wg_category])'),
     t('[field_wg_category] - [field_wg_role_1]'),
     t('([field_wg_role_2])'),
-    t('[field_personal_title] <strong>[title_field]</strong> [field_wg_role_2]'),
+    t('<strong>[field_personal_title] [title_field]</strong> [field_wg_role_2]'),
     t(' | [field_press_contact_cv]'),
     t('[field_press_contact_declaration][field_press_contact_cv]'),
     t(', [field_city]'),
@@ -330,6 +330,13 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_wg_role_1']['alter']['text'] = ' - [field_wg_role_1]';
   $handler->display->display_options['fields']['field_wg_role_1']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_wg_role_1']['type'] = 'i18n_taxonomy_term_reference_plain';
+  /* Field: Content: Personal Title */
+  $handler->display->display_options['fields']['field_personal_title']['id'] = 'field_personal_title';
+  $handler->display->display_options['fields']['field_personal_title']['table'] = 'field_data_field_personal_title';
+  $handler->display->display_options['fields']['field_personal_title']['field'] = 'field_personal_title';
+  $handler->display->display_options['fields']['field_personal_title']['label'] = '';
+  $handler->display->display_options['fields']['field_personal_title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_personal_title']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title_field']['id'] = 'title_field';
   $handler->display->display_options['fields']['title_field']['table'] = 'field_data_title_field';
@@ -361,7 +368,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['nothing_1']['table'] = 'views';
   $handler->display->display_options['fields']['nothing_1']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing_1']['label'] = '';
-  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<strong>[title_field]</strong> [field_wg_role_2]';
+  $handler->display->display_options['fields']['nothing_1']['alter']['text'] = '<strong>[field_personal_title] [title_field]</strong> [field_wg_role_2]';
   $handler->display->display_options['fields']['nothing_1']['element_label_colon'] = FALSE;
   /* Field: Content: CV */
   $handler->display->display_options['fields']['field_press_contact_cv']['id'] = 'field_press_contact_cv';
@@ -636,7 +643,7 @@ function osha_press_contact_views_default_views() {
     t('term from field_country_status'),
     t(' - [field_wg_role_1]'),
     t('([field_wg_role_2])'),
-    t('<strong>[title_field]</strong> [field_wg_role_2]'),
+    t('<strong>[field_personal_title] [title_field]</strong> [field_wg_role_2]'),
     t('[field_press_contact_declaration] |'),
     t('[field_press_contact_declaration][field_press_contact_cv]'),
     t('[field_zip_code] [field_city]'),

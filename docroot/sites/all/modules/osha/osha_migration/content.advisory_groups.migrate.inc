@@ -60,6 +60,8 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
     $this->addFieldMapping('field_zip_code', 'field_zip_code');
     $this->addFieldMapping('field_is_advisory', 'field_is_advisory');
 
+    $this->addFieldMapping('field_contact_uuid', 'field_contact_uuid');
+
     $this->addFieldMapping('field_contact_type', 'field_contact_type');
     $this->addFieldMapping('field_contact_type:create_term')->defaultValue(TRUE);
 
@@ -94,6 +96,7 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
       'field_website:title',
       'field_website:attributes',
       'field_website:language',
+      'field_contact_uuid:language',
 
       'field_press_contact_cv:file_class',
       'field_press_contact_cv:language',
@@ -168,8 +171,8 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
    * {@inheritdoc}
    */
   public function prepareRow($row) {
-    if (empty($row->title)) {
-      $this->saveMessage('Skipping contact without name', MigrationBase::MESSAGE_WARNING);
+    if (empty($row->field_contact_uuid)) {
+      $this->saveMessage('Skipping contact without uuid', MigrationBase::MESSAGE_WARNING);
       return FALSE;
     }
     return TRUE;
@@ -251,6 +254,7 @@ class MigrateOshaAdvisoryGroups extends OSHADynamicMigration {
       'field_country_iso2' => '',
       'field_zip_code' => '',
       'field_city' => '',
+      'field_contact_uuid' => '',
       'field_contact_type' => '',
       'field_press_contact_declaration' => '',
       'field_press_contact_cv' => '',
@@ -316,7 +320,9 @@ class AdvisoryGroupsMigrateList extends MigrateList {
         $data = new stdClass();
         $attributes = $member->attributes();
         $data->title = (string) $attributes['Table0_Details4'];
-        $id = $type_identifier . '-' . strtolower(str_replace(' ', '-', $data->title));
+        //$id = $type_identifier . '-' . strtolower(str_replace(' ', '-', $data->title));
+        $data->field_contact_uuid = (string) $attributes['Textbox8'];
+        $id = $type_identifier . '-' . $data->field_contact_uuid;
         $data->title_field = (string) $attributes['Table0_Details4'];
         $data->field_personal_title = (string) $attributes['Table0_Details3'];
         $data->field_wg_role_1 = (string) $attributes['Table0_Details2'];
