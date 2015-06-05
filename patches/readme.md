@@ -7,6 +7,10 @@ When patching a contrib module, the following steps should be followed:
 
 List of patches (most recent first)
 
+* site_map
+  * Page title translatable
+  * https://www.drupal.org/files/issues/site_map-page_title_translation-2500421-1-D7.patch
+
 * addtoany
   * Always return HTTPS version
   * /patches/addtoany/https-friendly.patch
