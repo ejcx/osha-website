@@ -79,8 +79,12 @@ body {
     margin-top: 1em!important;
     position: absolute;
     vertical-align: middle;
+	
  }
 
+@media screen and (max-width: 809px) {
+	#languagesAndSearch img { padding-left: 13px;}
+}
 /* END HEADER */
 
 
@@ -213,7 +217,7 @@ body {
 .mean-container #block-search-form , 
 .mean-container #block-lang-dropdown-language-content, 
 .mean-container #languagesAndSearch {
-	display: none;
+	display: block;
 }
 
 /* -------- */
@@ -1518,7 +1522,7 @@ body.page-search-publications aside.sidebars_first {
 	float: none;
 	height: auto;	
 	max-width: 987px;
-	width: 100%;
+	width: auto;
 }
 
 
