@@ -199,16 +199,6 @@ jQuery(document).ready(function() {
     });
 });
 
-/* Show searcher in responsive menu */
-jQuery(document).ready(function() {
-	var menuExpanded = false;
-    // Click event: show language and search box
-	jQuery("a[href$='#nav']").click(function() {		
-		!menuExpanded?showSearcher():hideSearcher();		
-		menuExpanded = !menuExpanded;
-    });
-});
-
 function showSearcher() {	
 	jQuery(".mean-container #block-lang-dropdown-language-content").css("display","block");
 	jQuery(".mean-container #block-search-form").css("display","block");

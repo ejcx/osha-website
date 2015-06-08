@@ -609,7 +609,7 @@ footer {
 }
 
 footer a{
-	color:#FFF;
+	color:#FFF!important;
 	text-decoration: none;
 }
 
@@ -7968,7 +7968,13 @@ display:block!important;
 
 #block-views-board-members-block .view-board-members .views-row{
 	padding:5px 0 5px 0;
+}
 
+#block-views-board-members-block-2 a.wg-role2-3096 {
+      pointer-events: none;
+      cursor: default;
+      border-bottom: none;
+      color: inherit;
 }
 
 #aggregator .feed-source .feed-description{
@@ -8014,4 +8020,49 @@ display:block!important;
 
 #content iframe{
 	max-width: 99%!important;
+}
+
+
+/*Block Camapaing 2012-2013*/
+
+#block-nodeblock-8675 h2 { 
+  background: url("../images/separator_home.jpg") repeat-x scroll 0 40px transparent;
+  margin-bottom: 0px;
+  border-top: 5px solid #003399;
+  color: #000000;
+  font-family: "Open Sans Condensed",sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding-left: 0em;
+  padding-top: 0.5em;
+  padding-bottom: 0px;
+  margin-bottom: 0em;
+  margin-top: 0px;
+}
+
+#block-nodeblock-8675 h3 {
+  color: #000000;
+  font-family: "Open Sans Condensed",sans-serif;
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  padding-left: 0.5em;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+
+#block-nodeblock-8675 a {
+  color: #003399;
+  text-decoration: none;
+  background: url(/sites/all/themes/osha_frontend/images/li_arrow.png) no-repeat scroll 12px 98% transparent;
+  padding-left: 2em;
+  font-size: 12px!important;
+  font-weight: bold;
+  border-bottom: 0px!important;
+
+}
+
+#block-nodeblock-8675 span {
+  font-size: 12px!important;
 }

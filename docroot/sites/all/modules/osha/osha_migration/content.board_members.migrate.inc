@@ -52,6 +52,7 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
 
 
 
+    $this->addFieldMapping('field_contact_uuid', 'field_contact_uuid');
     $this->addFieldMapping('field_press_contact_organization', 'field_press_contact_organization');
     $this->addFieldMapping('field_press_contact_location', 'field_press_contact_location');
     $this->addFieldMapping('field_city', 'field_city');
@@ -93,6 +94,7 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
       'field_website:title',
       'field_website:attributes',
       'field_website:language',
+      'field_contact_uuid:language',
 
       'field_press_contact_cv:file_class',
       'field_press_contact_cv:language',
@@ -167,8 +169,8 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
    * {@inheritdoc}
    */
   public function prepareRow($row) {
-    if (empty($row->title)) {
-      $this->saveMessage('Skipping contact without name', MigrationBase::MESSAGE_WARNING);
+    if (empty($row->field_contact_uuid)) {
+      $this->saveMessage('Skipping contact without uuid', MigrationBase::MESSAGE_WARNING);
       return FALSE;
     }
     if (!empty($row->field_wg_role_1)) {
@@ -254,6 +256,7 @@ class MigrateOshaBoardMembers extends OSHADynamicMigration {
       'field_wg_role_2' => '',
       'field_wg_category' => '',
       'field_press_contact_organization' => '',
+      'field_contact_uuid' => '',
       'field_press_contact_location' => '',
       'field_country_iso2' => '',
       'field_zip_code' => '',
@@ -312,7 +315,7 @@ class BoardMembersListXML extends MigrateList {
         $data->field_zip_code = (string) $attributes['Textbox1'];
         $data->field_city = (string) $attributes['Textbox4'];
         $data->field_contact_type = 'Board Member';
-        $id = $this->idFromName((string) $data->title);
+        $data->field_contact_uuid = (string) $attributes['Textbox8'];
         $attached_pdfs = $member->xpath('AttachedPDFs');
         $attached_pdfs = current($attached_pdfs);
         foreach ($attached_pdfs->xpath('File') as $file_xml) {
@@ -334,17 +337,9 @@ class BoardMembersListXML extends MigrateList {
             }
           }
         }
-        self::$data[$id] = $data;
+        self::$data[$data->field_contact_uuid] = $data;
       }
     }
-  }
-
-
-  /**
-   * Convert to ID from contact name.
-   */
-  public function idFromName($name) {
-    return strtolower(str_replace(' ', '_', $name));
   }
 
   /**

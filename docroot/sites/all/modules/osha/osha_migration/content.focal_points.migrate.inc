@@ -42,6 +42,7 @@ class MigrateOshaFocalPoints extends OSHADynamicMigration {
     $this->addFieldMapping('field_press_contact_organization', 'field_press_contact_organization');
     $this->addFieldMapping('field_personal_title', 'field_personal_title');
     $this->addFieldMapping('title_field', 'title_field');
+    $this->addFieldMapping('field_contact_uuid', 'field_contact_uuid');
     $this->addFieldMapping('field_press_contact_phone', 'field_press_contact_phone');
     $this->addFieldMapping('field_press_contact_location', 'field_press_contact_location');
     $this->addFieldMapping('field_press_contact_email', 'field_press_contact_email');
@@ -86,6 +87,7 @@ class MigrateOshaFocalPoints extends OSHADynamicMigration {
       'field_thesaurus:create_term',
       'field_thesaurus:ignore_case',
       'field_country',
+      'field_contact_uuid:language',
       'comment',
     ));
   }
@@ -166,6 +168,7 @@ class MigrateOshaFocalPoints extends OSHADynamicMigration {
       'imageCaption' => 'Image tooltip',
       'subject' => 'Categories/Tags',
       'country' => '',
+      'field_contact_uuid' => '',
       'subcategory' => 'Merged into categories',
       'multilingual_thesaurus' => '',
       'nace' => 'Nace codes taxonomy',
@@ -216,6 +219,7 @@ class FocalPointsContentListXML extends MigrateList {
       foreach ($xml->xpath('//Detail') as $focalpoint) {
         $data = new stdClass();
         $attributes = $focalpoint->attributes();
+        $data->field_contact_uuid = (string) $attributes['Textbox8'];
         $data->title = (string) $attributes['Table0_Details5'];
         $data->title_field = (string) $attributes['Table0_Details5'];
         $data->field_press_contact_organization = (string) $attributes['Table0_Details1'];
@@ -228,18 +232,9 @@ class FocalPointsContentListXML extends MigrateList {
         $data->field_zip_code = (string) $attributes['a_osh_phcp'];
         $data->field_city = (string) $attributes['a_osh_phtown'];
         $data->field_contact_type = 'Focal Point';
-        $id = $this->idFromName((string) $data->title);
-        self::$data[$id] = $data;
+        self::$data[$data->field_contact_uuid] = $data;
       }
     }
-  }
-
-
-  /**
-   * Convert to ID from contact name.
-   */
-  public function idFromName($name) {
-    return strtolower(str_replace(' ', '_', $name));
   }
 
   /**
