@@ -7968,7 +7968,13 @@ display:block!important;
 
 #block-views-board-members-block .view-board-members .views-row{
 	padding:5px 0 5px 0;
+}
 
+#block-views-board-members-block-2 a.wg-role2-3096 {
+      pointer-events: none;
+      cursor: default;
+      border-bottom: none;
+      color: inherit;
 }
 
 #aggregator .feed-source .feed-description{

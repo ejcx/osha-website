@@ -351,6 +351,17 @@ function osha_press_contact_views_default_views() {
     'title_class' => '',
   );
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
+  /* Field: WG Role 2 for CSS */
+  $handler->display->display_options['fields']['field_wg_role_2_1']['id'] = 'field_wg_role_2_1';
+  $handler->display->display_options['fields']['field_wg_role_2_1']['table'] = 'field_data_field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2_1']['field'] = 'field_wg_role_2';
+  $handler->display->display_options['fields']['field_wg_role_2_1']['ui_name'] = 'WG Role 2 for CSS';
+  $handler->display->display_options['fields']['field_wg_role_2_1']['label'] = '';
+  $handler->display->display_options['fields']['field_wg_role_2_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_wg_role_2_1']['alter']['text'] = 'wg-role2-[field_wg_role_2_1-tid]';
+  $handler->display->display_options['fields']['field_wg_role_2_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_wg_role_2_1']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: WG Role 2 */
   $handler->display->display_options['fields']['field_wg_role_2']['id'] = 'field_wg_role_2';
   $handler->display->display_options['fields']['field_wg_role_2']['table'] = 'field_data_field_wg_role_2';
@@ -361,6 +372,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['text'] = '([field_wg_role_2])';
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['field_wg_role_2']['alter']['path'] = 'about-eu-osha/governance-eu-osha/composition-bureau';
+  $handler->display->display_options['fields']['field_wg_role_2']['alter']['link_class'] = '[field_wg_role_2_1]';
   $handler->display->display_options['fields']['field_wg_role_2']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_wg_role_2']['type'] = 'i18n_taxonomy_term_reference_plain';
   /* Field: Global: Custom text */
@@ -642,6 +654,7 @@ function osha_press_contact_views_default_views() {
     t('term from field_country'),
     t('term from field_country_status'),
     t(' - [field_wg_role_1]'),
+    t('wg-role2-[field_wg_role_2_1-tid]'),
     t('([field_wg_role_2])'),
     t('<strong>[field_personal_title] [title_field]</strong> [field_wg_role_2]'),
     t('[field_press_contact_declaration] |'),
