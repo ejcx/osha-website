@@ -2684,6 +2684,23 @@ function osha_views_default_views() {
     'note_to_editor' => 'note_to_editor',
   );
   $handler->display->display_options['path'] = 'export/notetoeditor';
+
+  /* Display: Press Contact */
+  $handler = $view->new_display('page', 'Press Contact', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HCW Data Export - Press Contact';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'press_contact' => 'press_contact',
+  );
+  $handler->display->display_options['path'] = 'export/presscontact';
   $translatables['hcw_data_export'] = array(
     t('Master'),
     t('HCW Data Export'),
@@ -2698,6 +2715,8 @@ function osha_views_default_views() {
     t('Page'),
     t('Note to editor'),
     t('HCW Data Export - Note to editor'),
+    t('Press Contact'),
+    t('HCW Data Export - Press Contact'),
   );
   $export['hcw_data_export'] = $view;
 
