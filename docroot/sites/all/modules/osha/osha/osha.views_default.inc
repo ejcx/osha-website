@@ -2667,6 +2667,23 @@ function osha_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'export/list';
+
+  /* Display: Note to editor */
+  $handler = $view->new_display('page', 'Note to editor', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HCW Data Export - Note to editor';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'note_to_editor' => 'note_to_editor',
+  );
+  $handler->display->display_options['path'] = 'export/notetoeditor';
   $translatables['hcw_data_export'] = array(
     t('Master'),
     t('HCW Data Export'),
@@ -2679,6 +2696,8 @@ function osha_views_default_views() {
     t('term from field_tags'),
     t('All'),
     t('Page'),
+    t('Note to editor'),
+    t('HCW Data Export - Note to editor'),
   );
   $export['hcw_data_export'] = $view;
 
