@@ -955,14 +955,15 @@ article.node-events.view-mode-full {
 	padding-right: 0em!important;
 }
 .view-press-releases ul.links.inline {
-	background: url("../images/flecha.png") no-repeat scroll right 75% rgba(0, 0, 0, 0)!important;
+	background: none!important;
 	border-top: none!important;
 	border-bottom: none!important;	
 	text-align: right!important;	
 	width: inherit!important;
+	margin-top:1em;
 }
 .view-press-releases ul.links.inline a {
-	padding-right: 0em;
+	padding-right: 1.5em;
 }
 
 .view-press-contacts {
@@ -1861,7 +1862,10 @@ a {
 
 /*End styles for Esener*/
 
-
+#block_newsletter_image_text{
+	font-size: 1em;
+	margin-top:-10em;
+}
 
 
 }
