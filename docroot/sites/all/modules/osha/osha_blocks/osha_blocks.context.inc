@@ -88,7 +88,8 @@ function osha_blocks_context_default_contexts() {
         'node/1464' => 'node/1464',
         'node/1456' => 'node/1456',
         'node/1468' => 'node/1468',
-        'node/1457' => 'node/1457',        
+        'node/1457' => 'node/1457',
+        'node/1410' => 'node/1410',
       ),
     ),
     'views' => array(
