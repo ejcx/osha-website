@@ -135,7 +135,8 @@ function osha_search_form_alter(&$form, &$form_state, $form_id) {
   if (isset($form['search_api_language']['#options'])) {
     // in views-exposed-form-search-site and views-exposed-form-publications-index-page
     $options = array();
-    $options['All'] = array_shift($form['search_api_language']['#options']);
+    // $options['All'] = array_shift($form['search_api_language']['#options']);
+    // intentionally removing - Any - option
     // replace the name of each language
     $languages = osha_language_list(TRUE);
     foreach ($languages as $language_code => $lang) {
