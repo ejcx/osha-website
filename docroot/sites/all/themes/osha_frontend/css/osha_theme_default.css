@@ -847,7 +847,7 @@ span.date-display-single{
 .node-publication .field-name-field-publication-bookshop-id span img{
 	background: url("../images/summary_arrow.png") no-repeat scroll 80% 27% rgba(0, 0, 0, 0);
 	margin-right: -3em;
-	margin-top: -2px;
+	margin-top: -5px;
 	right:0em;
 	padding-right: 7em;
 	position:absolute;
@@ -7650,7 +7650,7 @@ a.contextual-links-trigger{
 	position: absolute;
 	width: auto;
 	font-family: "Open Sans Condensed",sans-serif;
-	max-width: 19%;
+	max-width: 275px;
 	font-weight: bold;
 	line-height: 1.3em;
 	padding: 0.5em 4em 0.3em 0.5em;
@@ -8092,4 +8092,12 @@ display:block!important;
 
 body.page-entity-collection h1#page-title{
 	display:none;
+}
+
+#num_slides .node-publication .field-name-field-publication-bookshop-id span{
+	padding-top:0px!important;
+}
+
+#num_slides .node-publication .field-name-field-publication-bookshop-id span img{
+	margin-top: -32px
 }
