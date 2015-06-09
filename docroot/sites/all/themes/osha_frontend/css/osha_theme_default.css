@@ -814,25 +814,43 @@ span.date-display-single{
 .node-publication .field-name-field-publication-bookshop-id{
 	float:right;
 	margin-top: -10px;
+	padding-right: 1em;
 }
 
 .node-publication .field-name-field-publication-bookshop-id span{
 	color: #003399;
     font-size: 0.8em;
     font-weight: 600;
-    margin-left: -26em;
+    margin-left: -13em;
     margin-top: -1px;
     padding-top: 18px;
-    position: absolute;
+    position: relative;
+  	display: block;
+}
+
+
+.node-publication .field-name-field-publication-bookshop-id span.osha_target_external_link{
+	display:none!important;
+}
+
+.node-publication .field-name-field-publication-bookshop-id a{
+	  clear: both;
+	  float: none;
+	  position: absolute;
+	  top: 4em;
+}
+
+.node-publication .field-name-field-publication-bookshop-id a{
+	border-bottom: 0px!important;
 }
 
 .node-publication .field-name-field-publication-bookshop-id span img{
 	background: url("../images/summary_arrow.png") no-repeat scroll 80% 27% rgba(0, 0, 0, 0);
-	margin-left: -3em;
+	margin-right: -3em;
 	margin-top: -2px;
-	padding-left: 4em;
+	right:0em;
 	padding-right: 7em;
-	float: right;
+	position:absolute;
 }
 
 .pager .pager-current{
@@ -1029,6 +1047,7 @@ span.date-display-single{
 	margin-left: 11.8em;
 	padding: 0.5em;
 	width: 76.9%;
+	min-height: 47px;
 }
 
 .node-publication.view-mode-full #related-publications{
@@ -4000,7 +4019,7 @@ and (max-width: 1237px) {
 
 .view-mode-osha_slideshow .field-name-field-cover-image{
 	float:left;
-	padding:.5em 1em 1em 0em;
+	padding:0.8em 1em 1em 0em;
 	height:100%;
 
 
@@ -4522,7 +4541,9 @@ article.node-press-release .field-name-body.field-type-text-with-summary p{
 	padding-bottom: 0.5em;
 	padding-top: 0.2em;
 	margin:0;
-	line-height: 0;
+	background: none!important;
+	line-height: 0.1em;
+  	padding-left: 0px!important;
 }
 
 .view-press-releases .field-name-body p {
@@ -4536,9 +4557,9 @@ article.node-press-release .field-name-body.field-type-text-with-summary p{
 	font-family: Open Sans Condensed !important;
 	font-size: 0.5em;
 	font-weight: normal;
-	line-height: 0em;
 	margin: 0 0 0em;
 	font-weight:bold;
+
 }
 
 #block-views-press-releases-block{
@@ -7621,20 +7642,18 @@ a.contextual-links-trigger{
 
 
 #block_newsletter_image_text{
-	background: url("../images/background-banner-home.png") repeat-x scroll 0 110% rgba(0, 0, 0, 0);
+	background: url("../images/background-banner-home.png") repeat-x scroll 0 10px rgba(0, 0, 0, 0);
 	color: #ffffff;
 	font-size: 2em;
 	height: auto;
-	margin-top: -6em;
+	margin-top: -7em;
 	position: absolute;
 	width: auto;
 	font-family: "Open Sans Condensed",sans-serif;
-	max-width: 7%;
+	max-width: 19%;
 	font-weight: bold;
-	padding-right: 5em;
-	padding-bottom: 1em;
 	line-height: 1.3em;
-	padding-left: 0.5em;
+	padding: 0.5em 4em 0.3em 0.5em;
 }
 
 #sliding-popup.sliding-popup-top{
@@ -7764,8 +7783,8 @@ a.contextual-links-trigger{
 
 .osha_target_external_link{
 	background: url("../images/external_link.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-    margin-left: 0.5em;
-    padding-right: 0.6em;
+    margin-left: 0.5em!important;
+    padding-right: 0.8em;
 }
 	
 .accesibility_table td{
@@ -8065,4 +8084,12 @@ display:block!important;
 
 #block-nodeblock-8675 span {
   font-size: 12px!important;
+}
+
+.view-fop-contacts.view-id-fop_contacts.view-display-id-block .views-row{
+	margin-top:1em;
+}
+
+body.page-entity-collection h1#page-title{
+	display:none;
 }
