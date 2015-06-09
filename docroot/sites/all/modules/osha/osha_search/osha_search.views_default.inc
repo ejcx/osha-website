@@ -127,11 +127,9 @@ function osha_search_views_default_views() {
     'pl' => 'pl',
     'pt' => 'pt',
     'ro' => 'ro',
-    'ru' => 'ru',
     'sk' => 'sk',
     'sl' => 'sl',
     'sv' => 'sv',
-    'tr' => 'tr',
   );
   $handler->display->display_options['filters']['search_api_language']['exposed'] = TRUE;
   $handler->display->display_options['filters']['search_api_language']['expose']['operator_id'] = 'search_api_language_op';
@@ -506,11 +504,9 @@ function osha_search_views_default_views() {
     'pl' => 'pl',
     'pt' => 'pt',
     'ro' => 'ro',
-    'ru' => 'ru',
     'sk' => 'sk',
     'sl' => 'sl',
     'sv' => 'sv',
-    'tr' => 'tr',
   );
   $handler->display->display_options['filters']['search_api_language']['group'] = 1;
   $handler->display->display_options['filters']['search_api_language']['exposed'] = TRUE;
