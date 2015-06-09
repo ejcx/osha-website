@@ -55,3 +55,10 @@ jQuery(document).ready(function () {
 	});
 	startTest ();
 });
+
+
+/* remove br in site map */
+
+jQuery(document).ready(function() {
+    jQuery(".page-sitemap #content br").remove();
+});

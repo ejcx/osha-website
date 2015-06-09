@@ -86,7 +86,7 @@ function osha_alert_service_subscribe_form() {
   );
 
   $languages = array();
-  $alllanguages = language_list();
+  $alllanguages = osha_language_list(TRUE);
   unset($alllanguages['en']);
   foreach ($alllanguages as $code => $language) {
     $languages[$code] = $language->native;
