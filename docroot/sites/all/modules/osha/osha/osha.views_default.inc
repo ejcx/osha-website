@@ -2700,6 +2700,16 @@ function osha_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'press_contact' => 'press_contact',
   );
+  /* Filter criterion: Content: Type (field_contact_type) */
+  $handler->display->display_options['filters']['field_contact_type_tid']['id'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['table'] = 'field_data_field_contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['field'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['value'] = array(
+    2969 => '2969',
+  );
+  $handler->display->display_options['filters']['field_contact_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_contact_type_tid']['vocabulary'] = 'contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['hierarchy'] = 1;
   $handler->display->display_options['path'] = 'export/presscontact';
   $translatables['hcw_data_export'] = array(
     t('Master'),
