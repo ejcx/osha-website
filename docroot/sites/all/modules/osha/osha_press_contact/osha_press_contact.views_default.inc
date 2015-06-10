@@ -926,7 +926,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_email']['id'] = 'field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['table'] = 'field_data_field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['field'] = 'field_press_contact_email';
-  $handler->display->display_options['fields']['field_press_contact_email']['label'] = 'Adresa de e-mail';
+  $handler->display->display_options['fields']['field_press_contact_email']['label'] = 'E-mail address';
   $handler->display->display_options['fields']['field_press_contact_email']['element_type'] = 'span';
   $handler->display->display_options['fields']['field_press_contact_email']['element_label_type'] = 'span';
   $handler->display->display_options['fields']['field_press_contact_email']['hide_empty'] = TRUE;
@@ -1000,7 +1000,7 @@ function osha_press_contact_views_default_views() {
     t('Contact person'),
     t('[field_personal_title] [title_field]'),
     t('Tel'),
-    t('Adresa de e-mail'),
+    t('E-mail address'),
     t('Web'),
     t('All'),
     t('Block'),
@@ -1316,7 +1316,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['field_press_contact_email']['id'] = 'field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['table'] = 'field_data_field_press_contact_email';
   $handler->display->display_options['fields']['field_press_contact_email']['field'] = 'field_press_contact_email';
-  $handler->display->display_options['fields']['field_press_contact_email']['label'] = 'Adresa de e-mail';
+  $handler->display->display_options['fields']['field_press_contact_email']['label'] = 'E-mail address';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -1368,7 +1368,7 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['filters']['field_press_contact_email_email']['operator'] = 'word';
   $handler->display->display_options['filters']['field_press_contact_email_email']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['operator_id'] = 'field_press_contact_email_email_op';
-  $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['label'] = 'Adresa de e-mail';
+  $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['label'] = 'E-mail address';
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['operator'] = 'field_press_contact_email_email_op';
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['identifier'] = 'field_press_contact_email_email';
   $handler->display->display_options['filters']['field_press_contact_email_email']['expose']['remember_roles'] = array(
@@ -1464,7 +1464,7 @@ function osha_press_contact_views_default_views() {
     t('Unpublish'),
     t('Nume'),
     t('Organizație'),
-    t('Adresa de e-mail'),
+    t('E-mail address'),
     t('Operations'),
     t('Edit'),
     t('Contact Name'),
