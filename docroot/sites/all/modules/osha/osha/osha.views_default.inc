@@ -2667,6 +2667,50 @@ function osha_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'export/list';
+
+  /* Display: Note to editor */
+  $handler = $view->new_display('page', 'Note to editor', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HCW Data Export - Note to editor';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'note_to_editor' => 'note_to_editor',
+  );
+  $handler->display->display_options['path'] = 'export/notetoeditor';
+
+  /* Display: Press Contact */
+  $handler = $view->new_display('page', 'Press Contact', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HCW Data Export - Press Contact';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'press_contact' => 'press_contact',
+  );
+  /* Filter criterion: Content: Type (field_contact_type) */
+  $handler->display->display_options['filters']['field_contact_type_tid']['id'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['table'] = 'field_data_field_contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['field'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['value'] = array(
+    2969 => '2969',
+  );
+  $handler->display->display_options['filters']['field_contact_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_contact_type_tid']['vocabulary'] = 'contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['hierarchy'] = 1;
+  $handler->display->display_options['path'] = 'export/presscontact';
   $translatables['hcw_data_export'] = array(
     t('Master'),
     t('HCW Data Export'),
@@ -2679,6 +2723,10 @@ function osha_views_default_views() {
     t('term from field_tags'),
     t('All'),
     t('Page'),
+    t('Note to editor'),
+    t('HCW Data Export - Note to editor'),
+    t('Press Contact'),
+    t('HCW Data Export - Press Contact'),
   );
   $export['hcw_data_export'] = $view;
 
