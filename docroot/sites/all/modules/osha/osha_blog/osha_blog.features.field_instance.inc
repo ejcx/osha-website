@@ -946,9 +946,11 @@ function osha_blog_field_default_field_instances() {
           'more_text' => 'Read more',
           'summary_handler' => 'full',
           'trim_length' => 600,
+          'trim_link' => FALSE,
           'trim_options' => array(
             'text' => 0,
           ),
+          'trim_preserve_tags' => '',
           'trim_suffix' => '...',
           'trim_type' => 'chars',
         ),
@@ -1228,7 +1230,6 @@ function osha_blog_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Activity');
-  t('Archived');
   t('Author(s)');
   t('Automatically calculated when saving. The count of characters found in the default language text (English).');
   t('Automatically calculated when saving. The count of pages of text in the default language (English).');
@@ -1236,6 +1237,7 @@ function osha_blog_field_default_field_instances() {
   t('Character count');
   t('Expiration date');
   t('Image');
+  t('Marked as outdated');
   t('Nace');
   t('Page count');
   t('Project manager');
