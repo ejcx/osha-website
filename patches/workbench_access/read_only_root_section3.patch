@@ -1,0 +1,33 @@
+diff --git a/docroot/sites/all/modules/contrib/workbench_access/workbench_access.admin.inc b/docroot/sites/all/modules/contrib/workbench_access/workbench_access.admin.inc
+index b3e075f..8c76753 100644
+--- a/docroot/sites/all/modules/contrib/workbench_access/workbench_access.admin.inc
++++ b/docroot/sites/all/modules/contrib/workbench_access/workbench_access.admin.inc
+@@ -539,15 +539,23 @@ function workbench_access_editors($access_type = NULL, $access_type_id = NULL, $
+       if ($section['depth'] == 0 || !isset($active['active'][$section['parent']])) {
+         $parent = $section['name'];
+       }
+-      if ($access_id == $root_section) {
++      global $user;
++      if ($user->uid == 1) {
+         $row = array(
+-          str_repeat('-', $section['depth']) . ' ' . $section['name'],
++          str_repeat('-', $section['depth'] ) . ' ' . l($section['name'], 'admin/config/workbench/access/' . "{$type}s/" . $active['access_scheme']['access_type'] . '/' . $access_id),
+         );
+       }
+       else {
+-        $row = array(
+-          str_repeat('-', $section['depth']) . ' ' . $section['name'],
+-        );
++        if ($access_id == $root_section) {
++          $row = array(
++            str_repeat('-', $section['depth']) . ' ' . $section['name'],
++          );
++        }
++        else {
++          $row = array(
++            str_repeat('-', $section['depth']) . ' ' . $section['name'],
++          );
++        }
+       }
+       $roles = workbench_access_get_roles('access workbench access by role');
+       if (empty($roles)) {

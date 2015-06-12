@@ -58,6 +58,7 @@ function osha_workflow_workbench_project_managers_form_submit($form, $form_state
 
 function osha_workflow_workbench_project_managers($access_type = NULL, $access_type_id = NULL) {
   if (is_null($access_type) || is_null($access_type_id)) {
+    global $user;
     // Set proper breadcrumb trails.
     $breadcrumb[] = t('Project Managers');
     $current = drupal_get_breadcrumb();
@@ -83,9 +84,11 @@ function osha_workflow_workbench_project_managers($access_type = NULL, $access_t
       if ($section['depth'] == 0 || !isset($active['active'][$section['parent']])) {
         $parent = $section['name'];
       }
-      $row = array(
-        str_repeat('-', $section['depth'] ) . ' ' . $section['name'],
-      );
+      $link = str_repeat('-', $section['depth'] ) . ' ' . $section['name'];
+      if ($user->uid == 1) {
+        $link = str_repeat('-', $section['depth'] ) . ' ' . l($section['name'], 'admin/config/workbench/access/' . "managers/" . $active['access_scheme']['access_type'] . '/' . $access_id);
+      }
+      $row = array($link);
       $roles = workbench_access_get_roles('access workbench access by role');
       if (empty($roles)) {
         if (user_access('administer permissions')) {
@@ -113,8 +116,8 @@ function osha_workflow_workbench_project_managers($access_type = NULL, $access_t
       }
       $count = count($pms);
       $new_row = format_plural($count, '1 Project Manager', '@count Project Managers');
-      if (user_access('assign workbench access')) {
-        $new_row = $new_row;
+      if ($user->uid == 1) {
+        $new_row = l($new_row, 'admin/config/workbench/access/managers/' . $active['access_scheme']['access_type'] . '/' . $access_id);
       }
       if (!empty($pms)) {
         $new_row .= ' (' . implode(', ',$pms ) . ') ';

@@ -7,6 +7,10 @@ When patching a contrib module, the following steps should be followed:
 
 List of patches (most recent first)
 
+* workbench_access
+  * read-only screen for editorial management (except admin)
+  * /patches/workbench_access/read_only_root_section3.patch
+
 * site_map
   * Page title translatable
   * https://www.drupal.org/files/issues/site_map-page_title_translation-2500421-1-D7.patch

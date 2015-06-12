@@ -2,6 +2,7 @@
 
 function osha_workflow_workbench_review_managers($access_type = NULL, $access_type_id = NULL) {
   if (is_null($access_type) || is_null($access_type_id)) {
+    global $user;
     // Set proper breadcrumb trails.
     $breadcrumb[] = t('Review Managers');
     $current = drupal_get_breadcrumb();
@@ -27,9 +28,11 @@ function osha_workflow_workbench_review_managers($access_type = NULL, $access_ty
       if ($section['depth'] == 0 || !isset($active['active'][$section['parent']])) {
         $parent = $section['name'];
       }
-      $row = array(
-        str_repeat('-', $section['depth'] ) . ' ' . $section['name'],
-      );
+      $link = str_repeat('-', $section['depth'] ) . ' ' . $section['name'];
+      if ($user->uid == 1) {
+        $link = str_repeat('-', $section['depth'] ) . ' ' . l($section['name'], 'admin/config/workbench/access/review-managers/' . $active['access_scheme']['access_type'] . '/' . $access_id);
+      }
+      $row = array($link);
       $roles = workbench_access_get_roles('access workbench access by role');
       if (empty($roles)) {
         if (user_access('administer permissions')) {
@@ -57,6 +60,9 @@ function osha_workflow_workbench_review_managers($access_type = NULL, $access_ty
       }
       $count = count($pms);
       $new_row = format_plural($count, '1 Review Manager', '@count Review Managers');
+      if ($user->uid == 1) {
+        $new_row = l(format_plural($count, '1 Review Manager', '@count Review Managers'), 'admin/config/workbench/access/review-managers/' . $active['access_scheme']['access_type'] . '/' . $access_id);
+      }
       if (!empty($pms)) {
         $new_row .= ' (' . implode(', ',$pms ) . ') ';
       }
