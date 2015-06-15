@@ -493,7 +493,7 @@ about-eu-osha/press-releases',
       ),
     ),
     'title' => '',
-    'visibility' => 0,
+    'visibility' => 1,
   );
 
   return $export;
