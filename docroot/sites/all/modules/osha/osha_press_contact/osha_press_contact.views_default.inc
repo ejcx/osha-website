@@ -1450,6 +1450,8 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Content: Phone */
   $handler->display->display_options['fields']['field_press_contact_phone']['id'] = 'field_press_contact_phone';
   $handler->display->display_options['fields']['field_press_contact_phone']['table'] = 'field_data_field_press_contact_phone';
