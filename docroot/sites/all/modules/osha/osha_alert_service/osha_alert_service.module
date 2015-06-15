@@ -171,6 +171,14 @@ function osha_alert_service_block_info() {
     'cache' => DRUPAL_CACHE_GLOBAL,
     'weight' => -5
   );
+  $blocks['press_release_rss'] = array(
+    'info' => t('Press release feed'),
+    'visibility' => BLOCK_VISIBILITY_LISTED,
+    'pages' => 'about-eu-osha/press-room
+about-eu-osha/press-releases',
+    'cache' => DRUPAL_CACHE_GLOBAL,
+    'weight' => -5
+  );
   return $blocks;
 }
 
@@ -233,6 +241,10 @@ function osha_alert_service_block_view($delta = '') {
       break;
     case 'osha_guidelines_rss':
       $ret['content'] = l(t('Click here for the RSS Feed'), 'rss-feeds/latest/guidelines.xml',
+        array('attributes' => array('class' => array('rss-feed'))));
+      break;
+    case 'press_release_rss':
+      $ret['content'] = l(t('Click here for the RSS Feed'), 'rss-feeds/latest/press_releases.xml',
         array('attributes' => array('class' => array('rss-feed'))));
       break;
   }

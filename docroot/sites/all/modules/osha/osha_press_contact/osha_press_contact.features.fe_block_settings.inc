@@ -281,7 +281,7 @@ function osha_press_contact_default_fe_block_settings() {
         'region' => 'sidebar_second',
         'status' => 1,
         'theme' => 'osha_frontend',
-        'weight' => -71,
+        'weight' => -7,
       ),
       'seven' => array(
         'region' => '',
