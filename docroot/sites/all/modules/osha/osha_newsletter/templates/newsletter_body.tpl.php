@@ -4,6 +4,8 @@
   } else {
     $url_query = array();
   }
+  global $base_url;
+  global $language;
   ?>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 <style>
@@ -96,14 +98,13 @@ td{
                             'query' => $url_query,
                             'external' => TRUE));
                           $directory = drupal_get_path('module','osha_newsletter');
-                          $site_url = variable_get('site_base_url', 'http://osha.europa.eu');
                           print l(theme('image', array(
                             'path' => $directory . '/images/pink-arrow.png',
                             'width' => 19,
                             'height' => 11,
                             'alt' => 'link arrow',
                             'attributes' => array('style' => 'border: 0px;')
-                          )), $site_url, array(
+                          )), $base_url.'/'.$language->language, array(
                             'html' => TRUE,
                             'external' => TRUE
                           ));
@@ -142,13 +143,12 @@ td{
                              'query' => $url_query,
                              'external' => TRUE)); 
                             $directory = drupal_get_path('module','osha_newsletter');
-                            $site_url = variable_get('site_base_url', 'http://osha.europa.eu');
                             print l(theme('image', array(
                               'path' => $directory . '/images/pink-arrow.png',
                               'width' => 19,
                               'height' => 11,
                               'alt' => 'link arrow',
-                            )), $site_url, array(
+                            )), $base_url.'/'.$language->language, array(
                               'html' => TRUE,
                               'external' => TRUE
                             ));
@@ -188,13 +188,12 @@ td{
                             'external' => TRUE)
                           );
                           $directory = drupal_get_path('module','osha_newsletter');
-                          $site_url = variable_get('site_base_url', 'http://osha.europa.eu');
                           print l(theme('image', array(
                             'path' => $directory . '/images/pink-arrow.png',
                             'width' => 19,
                             'height' => 11,
                             'alt' => 'link arrow',
-                          )), $site_url, array(
+                          )), $base_url.'/'.$language->language, array(
                             'html' => TRUE,
                             'external' => TRUE
                           ));
