@@ -26,7 +26,7 @@ function dvs_preprocess_node(&$vars) {
 			}
 		}
 	
-		$DVScontent = file_get_contents('/DVS/DVT/survey.php?dataSource=' . $survey."&locale=" . strtoupper($locale));
+		$DVScontent = file_get_contents('http://194.30.34.27/DVS/DVT/survey.php?dataSource=' . $survey."&locale=" . strtoupper($locale));
 		$vars['content']['field_dvs_code'][0]['#markup'] = $DVScontent;
 		
 	}
