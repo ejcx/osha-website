@@ -12,14 +12,15 @@
       <td>
         <?php
           $directory = drupal_get_path('module','osha_newsletter');
-          $site_url = variable_get('site_base_url', 'http://osha.europa.eu');
+          global $base_url;
+          global $language;
           print l(theme('image', array(
           'path' => $directory . '/images/Osha-EU-logos.png',
           'width' => 256,
           'height' => 60,
           'alt' => 'Osha logo',
           'attributes' => array('style' => 'border: 0px;')
-          )), $site_url, array(
+          )), $base_url.'/'.$language->language, array(
           'html' => TRUE,
           'external' => TRUE
         ));
@@ -51,9 +52,9 @@
                         <?php
                          if ($languages) {
                             $last_lang = array_pop($languages);
-                            foreach ($languages as $language):?>
-                              <a href="<?php echo url('node/' . $node_id, array('absolute' => TRUE, 'language' => $language));?>" style="text-decoration: none; color: #003399;">
-                                <?php print $language->native . ' | ';?>
+                            foreach ($languages as $l):?>
+                              <a href="<?php echo url('node/' . $node_id, array('absolute' => TRUE, 'language' => $l));?>" style="text-decoration: none; color: #003399;">
+                                <?php print $l->native . ' | ';?>
                               </a>
                             <?php  endforeach; ?>
                             <a href="<?php echo url('node/' . $node_id, array('absolute' => TRUE, 'language' => $last_lang));?>" style="text-decoration: none; color: #003399;">

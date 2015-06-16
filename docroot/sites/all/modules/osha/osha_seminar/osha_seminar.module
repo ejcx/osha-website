@@ -112,3 +112,14 @@ function osha_seminar_date_popup_process_alter(&$element, &$form_state, $context
     unset($element['date']['#title']);
   }
 }
+
+/**
+ * Implements hook_form_views_exposed_form_alter().
+ */
+function osha_seminar_form_views_exposed_form_alter(&$form, &$form_state) {
+  // Format date for date widget.
+  if ($form['#id'] == 'views-exposed-form-search-seminars-page') {
+    $form['field_seminar_start_date']['#date_format'] = 'd/m/Y';
+    $form['field_seminar_end_date']['#date_format'] = 'd/m/Y';
+  }
+}
