@@ -6573,12 +6573,12 @@ article.comment p {
 	font-weight: bold;
 }
 
-.block-osha-alert-service{
+#block-osha-alert-service-press-release-rss{
 	border-top: 5px solid #003399;
 	background: transparent!important;
 }
 
-.block-osha-alert-service a {
+#block-osha-alert-service-press-release-rss a {
   border: 0px!important;
   background: url("../images/rss.png") no-repeat scroll 0% 16px transparent!important;
   padding-left: 2em;
