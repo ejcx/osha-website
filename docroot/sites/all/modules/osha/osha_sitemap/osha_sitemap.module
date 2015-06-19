@@ -42,3 +42,24 @@ function osha_sitemap_get_all_sitemaps() {
   exit;
 }
 
+/**
+ * Implements hook_xmlsitemap_link_update().
+ */
+function osha_sitemap_xmlsitemap_link_update(array $link, array $context) {
+  osha_sitemap_exclude_menu_to_node($link);
+}
+
+/**
+ * Implements hook_xmlsitemap_link_insert().
+ */
+function osha_sitemap_xmlsitemap_link_insert(array $link, array $context) {
+  osha_sitemap_exclude_menu_to_node($link);
+}
+
+function osha_sitemap_exclude_menu_to_node($link) {
+  if ($link['type'] == 'menu_link' && strpos($link['loc'], 'node/') === 0) {
+    // Disable this from getting into the sitemap.xml
+    $link['status'] = 0;
+    drupal_write_record('xmlsitemap', $link, array('type', 'id', 'language'));
+  }
+}
