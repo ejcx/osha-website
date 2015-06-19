@@ -42,12 +42,10 @@ function xmlsitemap_node_xmlsitemap_process_node_links(array $nids) {
     if (!empty($node->translations->data)) {
       foreach (array_keys($node->translations->data) as $lang) {
         $link = xmlsitemap_node_create_link($node, $lang);
-        dpm($link);
         xmlsitemap_link_save($link, array($link['type'] => $node));
       }
     }
     else {
-      dpm($link);
       $link = xmlsitemap_node_create_link($node, $node->language);
       xmlsitemap_link_save($link, array($link['type'] => $node));
     }

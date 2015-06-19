@@ -29,7 +29,7 @@ function osha_sitemap_get_all_sitemaps() {
     ->execute();
 
   $text = '<?xml version="1.0" encoding="UTF-8"?>';
-  $text .= '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9>';
+  $text .= '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
   while($site_map = $query->fetchAssoc()) {
     $context = unserialize($site_map['context']);
     $text .= '<sitemap>';

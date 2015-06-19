@@ -69,12 +69,10 @@ index 3d0e534..e961930 100644
 +    if (!empty($node->translations->data)) {
 +      foreach (array_keys($node->translations->data) as $lang) {
 +        $link = xmlsitemap_node_create_link($node, $lang);
-+        dpm($link);
 +        xmlsitemap_link_save($link, array($link['type'] => $node));
 +      }
 +    }
 +    else {
-+      dpm($link);
 +      $link = xmlsitemap_node_create_link($node, $node->language);
 +      xmlsitemap_link_save($link, array($link['type'] => $node));
 +    }
