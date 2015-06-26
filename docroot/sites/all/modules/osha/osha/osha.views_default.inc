@@ -2598,14 +2598,14 @@ function osha_views_default_views() {
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'HCW Data Export';
+  $view->human_name = 'HWC Data Export';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'HCW Data Export';
+  $handler->display->display_options['title'] = 'HWC Data Export';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -2713,9 +2713,64 @@ function osha_views_default_views() {
   $handler->display->display_options['filters']['field_contact_type_tid']['vocabulary'] = 'contact_type';
   $handler->display->display_options['filters']['field_contact_type_tid']['hierarchy'] = 1;
   $handler->display->display_options['path'] = 'export/presscontact';
+
+  /* Display: Additional resources */
+  $handler = $view->new_display('page', 'Additional resources', 'page_3');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['id'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['field'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['required'] = TRUE;
+  /* Relationship: Field: Tags (field_tags) */
+  $handler->display->display_options['relationships']['field_tags_tid_1']['id'] = 'field_tags_tid_1';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['field'] = 'field_tags_tid';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['relationship'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Code (field_tags_code) */
+  $handler->display->display_options['arguments']['field_tags_code_value']['id'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['table'] = 'field_data_field_tags_code';
+  $handler->display->display_options['arguments']['field_tags_code_value']['field'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['relationship'] = 'field_tags_tid_1';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tags_code_value']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'highlight' => 'highlight',
+    'news' => 'news',
+    'press_release' => 'press_release',
+    'publication' => 'publication',
+  );
+  $handler->display->display_options['path'] = 'export/list-additional-resources/%';
   $translatables['hcw_data_export'] = array(
     t('Master'),
-    t('HCW Data Export'),
+    t('HWC Data Export'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -2729,6 +2784,8 @@ function osha_views_default_views() {
     t('HCW Data Export - Note to editor'),
     t('Press Contact'),
     t('HCW Data Export - Press Contact'),
+    t('Additional resources'),
+    t('Content referencing Content from field_aditional_resources'),
   );
   $export['hcw_data_export'] = $view;
 
