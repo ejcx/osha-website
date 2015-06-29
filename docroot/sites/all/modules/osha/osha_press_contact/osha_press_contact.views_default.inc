@@ -1431,11 +1431,12 @@ function osha_press_contact_views_default_views() {
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['footer'] = FALSE;
-  /* Footer: Global: Unfiltered text */
-  $handler->display->display_options['footer']['area_text_custom']['id'] = 'area_text_custom';
-  $handler->display->display_options['footer']['area_text_custom']['table'] = 'views';
-  $handler->display->display_options['footer']['area_text_custom']['field'] = 'area_text_custom';
-  $handler->display->display_options['footer']['area_text_custom']['content'] = '<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">EU-OSHA Press kit</a>';
+  /* Footer: Global: PHP */
+  $handler->display->display_options['footer']['php']['id'] = 'php';
+  $handler->display->display_options['footer']['php']['table'] = 'views';
+  $handler->display->display_options['footer']['php']['field'] = 'php';
+  $handler->display->display_options['footer']['php']['empty'] = TRUE;
+  $handler->display->display_options['footer']['php']['php_output'] = '<?php print l(t(\'EU-OSHA Press kit\'), \'about-eu-osha/press-room/press-kit\', array(\'attributes\' => array(\'class\' => \'press-kit-link\'))); ?>';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Job title */
   $handler->display->display_options['fields']['field_press_contact_job_title']['id'] = 'field_press_contact_job_title';
@@ -1494,7 +1495,6 @@ function osha_press_contact_views_default_views() {
     t('Contact Name'),
     t('Email (field_press_contact_email)'),
     t('Block'),
-    t('<a class="press-kit-link" href="/inside-eu-osha/press-room/press-kit">EU-OSHA Press kit</a>'),
   );
   $export['press_contacts'] = $view;
 
