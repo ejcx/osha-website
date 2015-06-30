@@ -2495,7 +2495,6 @@ font-weight: normal;
 .view-osha-home-banner-top .views-field-title{
 	background: url("../images/background-banner-home.png") repeat-x scroll 0 110% rgba(0, 0, 0, 0);
     color: #ffffff;
-    font-size: 2em;
     height: auto;
     margin-top: 2em;
     position: absolute;
@@ -2505,10 +2504,12 @@ font-weight: normal;
 	font-weight:bold;
 }
 
-.view-osha-home-banner-top .views-field-title span{
+.view-osha-home-banner-top .views-field-title h1{
 	display: block;
     padding: 0.6em 0.5em 0.5em;
 	line-height:1.5em;
+	color:#FFF;
+	font-size: 2em;
 }
 
 .view-osha-home-banner-top .views-field-field-banner-link{
@@ -2538,18 +2539,20 @@ font-weight: normal;
 }
 
 
-#recommended_resources span{
+#recommended_resources h2{
     display: block;
     font-size: 1.2em;
     font-weight: bold;
-    margin-left: 2em;
-    margin-top: 3em;
+    margin-left: 1.5em;
+    margin-top: 2.5em;
     position: absolute;
     text-align: center;
     width: 62%;
     z-index: 2147483647;
 	font-family: "Open Sans Condensed",sans-serif;
 	color: #003399;
+	background-color: transparent;
+  	line-height: 20px;
 }
 
 		@media screen and (min-width: 971px) and (max-width: 1224px){
@@ -3477,6 +3480,11 @@ a.button-submit {
 .node-highlight ul.links.inline a{
 	border-bottom:0px!important
 
+}
+
+.node-highlight ul.links.inline .node-readmore{
+	margin-top:1.5em;
+	display: block;
 }
 
 /*END SHARE LINKS HIGHLIGHS*/
@@ -4478,7 +4486,7 @@ and (max-width: 1237px) {
 article.node-press-release{
 	background: url("../images/separator_home.jpg") repeat-x scroll 0% 100% rgba(0, 0, 0, 0);
 	padding-bottom:1em;
-	padding-top:0.5em;
+	padding-top:2.5em;
 	padding-left:0.8em;
 }
 
@@ -7693,6 +7701,7 @@ a.contextual-links-trigger{
 	text-align: right;
 	font-weight: bold;
 	font-size: 0.8em;
+	padding-top:17px;
 	
 }
 
@@ -8119,4 +8128,8 @@ body.page-entity-collection h1#page-title{
 
 #num_slides .node-publication .field-name-field-publication-bookshop-id span img{
 	margin-top: -32px
+}
+
+.page-about-eu-osha-procurement .view-header , .node-type-press-release .view-header{
+	  margin-top: 0em;
 }
