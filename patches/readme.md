@@ -7,6 +7,18 @@ When patching a contrib module, the following steps should be followed:
 
 List of patches (most recent first)
 
+* youtube
+  * Always return HTTPS version
+  * /patches/youtube/https-friendly.patch
+
+* entityreference
+ * Rendered entity is not language aware (https://www.drupal.org/node/1674792#comment-9304507)
+ * /patches/entityreference/entityreference-rendered-entity-is-not-language-aware-1674792-58.patch
+
+* xmlsitemap
+ * Support for translated nodes - store and export url of node translations.
+ * /patches/xmlsitemap/xmlsitemap-support-multilingual-nodes.patch
+
 * site_map
   * Page title translatable
   * https://www.drupal.org/files/issues/site_map-page_title_translation-2500421-1-D7.patch

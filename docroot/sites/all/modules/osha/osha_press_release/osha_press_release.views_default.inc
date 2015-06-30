@@ -80,6 +80,7 @@ function osha_press_release_views_default_views() {
   $handler->display->display_options['filters']['field_publication_date_value']['table'] = 'field_data_field_publication_date';
   $handler->display->display_options['filters']['field_publication_date_value']['field'] = 'field_publication_date_value';
   $handler->display->display_options['filters']['field_publication_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_publication_date_value']['granularity'] = 'second';
   $handler->display->display_options['filters']['field_publication_date_value']['default_date'] = 'now';
 
   /* Display: All press releases */
@@ -144,6 +145,7 @@ function osha_press_release_views_default_views() {
   $handler->display->display_options['filters']['field_publication_date_value']['table'] = 'field_data_field_publication_date';
   $handler->display->display_options['filters']['field_publication_date_value']['field'] = 'field_publication_date_value';
   $handler->display->display_options['filters']['field_publication_date_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_publication_date_value']['granularity'] = 'second';
   $handler->display->display_options['filters']['field_publication_date_value']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'about-eu-osha/press-room';
   $translatables['press_releases'] = array(
