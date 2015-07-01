@@ -2732,7 +2732,9 @@ font-weight: normal;
 .view-id-highlight .view-content table tbody tr td .views-field-title{
 	min-height: 4em;
 	display:block;
+	margin:0px;
 }
+
 
 .view-id-highlight .view-content table tbody tr td .views-field-field-summary{
 	height:7em;
@@ -2818,7 +2820,7 @@ font-weight: normal;
 .view-id-highlight .view-content  .views-field-title a{
 	color: #003399;
 	font-family: 'Open Sans Condensed',sans-serif;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	line-height: 1.1em;
 	text-decoration:none;
 	padding:0;
