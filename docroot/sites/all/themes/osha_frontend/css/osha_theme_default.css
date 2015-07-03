@@ -2542,9 +2542,14 @@ font-weight: normal;
     margin: 0 auto;
     position: relative;
 }
+
+#recommended_resources #num_slides{
+	width:90%;
+}
+
 #num_slides {
     cursor: move;
-    width: 91%;
+    width: 100%;
     top: 0;
     margin-left: 70px;
 }
