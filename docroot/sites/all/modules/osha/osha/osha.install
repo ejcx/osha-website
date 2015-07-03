@@ -282,3 +282,21 @@ function osha_update_7012() {
     ))
     ->execute();
 }
+
+/**
+ * Fixed broken translations for careers quicktabs.
+ */
+function osha_update_7013() {
+  db_query("update locales_source set location = 'quicktabs:tab:_careers_accordion-0:title', context='tab:_careers_accordion-0:title' where lid = 9240");
+  db_query("update locales_source set location = 'quicktabs:tab:_careers_accordion-1:title', context='tab:_careers_accordion-1:title' where lid = 9241");
+  db_query("update locales_source set location = 'quicktabs:tab:_careers_accordion-2:title', context='tab:_careers_accordion-2:title' where lid = 9242");
+  db_query("update locales_source set location = 'quicktabs:tab:_careers_accordion-3:title', context='tab:_careers_accordion-3:title' where lid = 9245");
+  db_query("update locales_source set location = 'quicktabs:tab:_careers_accordion-4:title', context='tab:_careers_accordion-4:title' where lid = 9680");
+  db_query("update locales_source set location = 'quicktabs:tab:_careers_accordion-5:title', context='tab:_careers_accordion-5:title' where lid = 9681");
+  db_query("update i18n_string set context='tab:_careers_accordion-3:title', objectid='_careers_accordion-3' WHERE lid=9245");
+  db_query("update i18n_string set context='tab:_careers_accordion-4:title', objectid='_careers_accordion-4' WHERE lid=9680");
+  db_query("update i18n_string set context='tab:_careers_accordion-5:title', objectid='_careers_accordion-5' WHERE lid=9681");
+  db_query("delete from i18n_string where lid in (9243, 9244)");
+  db_query("delete from locales_target where lid in (9243, 9244)");
+  db_query("delete from locales_source where lid in (9243, 9244)");
+}

@@ -44,18 +44,10 @@ function osha_short_messages_form($form, &$form_state){
   $node = osha_short_messages_node();
 
   //get the list of languages
-  $languages = language_list('enabled');
-  usort($languages[1], function ($a, $b) {
-    return strcmp($a->name, $b->name);
-  });
-
-  $languages = $languages[1];
+  $languages = osha_language_list(TRUE);
 
   // Get available languages.
   $available_lang = array_keys($node->translations->data);
-  // Hide some languages.
-  $hided_lng = array('ru', 'tr');
-  $available_lang = array_diff($available_lang, $hided_lng);
 
   foreach ($languages as $key => $language) {
     if (!in_array($language->language, $available_lang)) {

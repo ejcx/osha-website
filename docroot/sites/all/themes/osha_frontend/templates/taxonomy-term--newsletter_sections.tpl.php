@@ -15,7 +15,6 @@
         <?php
           if ($label == 'Blog') {
             $directory = drupal_get_path('module','osha_newsletter');
-            $site_url = variable_get('site_base_url', 'http://osha.europa.eu');
             print(theme('image', array(
               'path' => $directory . '/images/blog-callout.png',
               'width' => 18,

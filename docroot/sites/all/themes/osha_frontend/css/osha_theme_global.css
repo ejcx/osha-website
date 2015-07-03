@@ -348,8 +348,10 @@ body {
 	position: relative;
 	width: auto;
 }
-#block-views-highlight-block-2  table {
+#block-views-highlight-block-2 table {
 	margin-bottom: 0em;
+	margin-top: 3em;
+
 }
 /* One column */
 .view-id-highlight .view-content table tbody tr td {

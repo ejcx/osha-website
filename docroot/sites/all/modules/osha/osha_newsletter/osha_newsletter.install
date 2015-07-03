@@ -20,3 +20,47 @@ function osha_newsletter_enable() {
 function osha_newsletter_update_7001() {
   variable_set('htmlmail_postfilter', '0');
 }
+
+/**
+ * Renaming newsletters
+ */
+function osha_newsletter_update_7002() {
+  db_query("update entity_collection_collections set title='OSHmail 144', name='oshmail_144' where name = 'oshmail_144_june_2014'");
+  db_query("update entity_collection_storage set name='oshmail_144' where name = 'oshmail_144_june_2014'");
+
+  db_query("update entity_collection_collections set title='OSHmail 145', name='oshmail_145' where name = 'oshmail_145_july_2014'");
+  db_query("update entity_collection_storage set name='oshmail_145' where name = 'oshmail_145_july_2014'");
+
+  db_query("update entity_collection_collections set title='OSHmail 146', name='oshmail_146' where name = 'oshmail_146_august_2014'");
+  db_query("update entity_collection_storage set name='oshmail_146' where name = 'oshmail_146_august_2014'");
+
+  db_query("update entity_collection_collections set title='OSHmail 147', name='oshmail_147' where name = 'oshmail_147_september_2014'");
+  db_query("update entity_collection_storage set name='oshmail_147' where name = 'oshmail_147_september_2014'");
+
+  db_query("update entity_collection_collections set title='OSHmail 148', name='oshmail_148' where name = 'oshmail_148_october_2014'");
+  db_query("update entity_collection_storage set name='oshmail_148' where name = 'oshmail_148_october_2014'");
+
+  db_query("update entity_collection_collections set title='OSHmail 149', name='oshmail_149' where name = 'oshmail_149_november_2014'");
+  db_query("update entity_collection_storage set name='oshmail_149' where name = 'oshmail_149_november_2014'");
+
+  db_query("update entity_collection_collections set title='OSHmail 150', name='oshmail_150' where name = 'oshmail_150_december_2014'");
+  db_query("update entity_collection_storage set name='oshmail_150' where name = 'oshmail_150_december_2014'");
+
+  db_query("update entity_collection_collections set title='OSHmail 151', name='oshmail_151' where name = 'oshmail_151_january_2015'");
+  db_query("update entity_collection_storage set name='oshmail_151' where name = 'oshmail_151_january_2015'");
+
+  db_query("update entity_collection_collections set title='OSHmail 152', name='oshmail_152' where name = 'oshmail_153_february_2015'");
+  db_query("update entity_collection_storage set name='oshmail_152' where name = 'oshmail_153_february_2015'");
+
+  db_query("update entity_collection_collections set title='OSHmail 153', name='oshmail_153' where name = 'oshmail_153_march_2015'");
+  db_query("update entity_collection_storage set name='oshmail_153' where name = 'oshmail_153_march_2015'");
+
+  db_query("update entity_collection_collections set title='OSHmail 154', name='oshmail_154' where name = 'oshmail_154_april_2015'");
+  db_query("update entity_collection_storage set name='oshmail_154' where name = 'oshmail_154_april_2015'");
+
+  db_query("update entity_collection_collections set title='OSHmail 155', name='oshmail_155' where name = 'oshmail_155_may_2015'");
+  db_query("update entity_collection_storage set name='oshmail_155' where name = 'oshmail_155_may_2015'");
+
+  db_query("update entity_collection_collections set title='OSHmail 156', name='oshmail_156' where name = 'oshmail_155_june_2015'");
+  db_query("update entity_collection_storage set name='oshmail_156' where name = 'oshmail_155_june_2015'");
+}

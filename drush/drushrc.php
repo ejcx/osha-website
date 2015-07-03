@@ -375,6 +375,10 @@ $options['init-modules'] = array(
   'context_ui',
   'context_block_visibility',
   'site_map',
+  'xmlsitemap',
+  'xmlsitemap_node',
+  'xmlsitemap_menu',
+  'xmlsitemap_i18n',
   'smart_trim',
   'menu_attributes',
   'menu_item_visibility',
@@ -467,6 +471,7 @@ $options['init-modules'] = array(
   'osha_contact',
   'osha_fop_page',
   'osha_authentication',
+  'osha_sitemap',
 
   'linkchecker',
   'osha_linkchecker',

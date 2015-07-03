@@ -710,7 +710,7 @@ function osha_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_json';
-  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['plaintext_output'] = 0;
   $handler->display->display_options['style_options']['remove_newlines'] = 0;
   $handler->display->display_options['style_options']['jsonp_prefix'] = '';
   $handler->display->display_options['style_options']['content_type'] = 'text/json';
@@ -901,6 +901,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Summary */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
@@ -1071,6 +1072,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Organization */
   $handler->display->display_options['fields']['field_organization']['id'] = 'field_organization';
@@ -1335,6 +1337,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Summary */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
@@ -1513,6 +1516,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Cover image */
   $handler->display->display_options['fields']['field_cover_image']['id'] = 'field_cover_image';
@@ -1716,6 +1720,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Summary */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
@@ -1883,6 +1888,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Organization */
   $handler->display->display_options['fields']['field_organization']['id'] = 'field_organization';
@@ -2143,6 +2149,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Summary */
   $handler->display->display_options['fields']['field_summary']['id'] = 'field_summary';
@@ -2340,6 +2347,7 @@ function osha_views_default_views() {
   $handler->display->display_options['fields']['title_field']['label'] = 'title';
   $handler->display->display_options['fields']['title_field']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['title_field']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['title_field']['type'] = 'text_plain';
   $handler->display->display_options['fields']['title_field']['link_to_entity'] = 0;
   /* Field: Content: Cover image */
   $handler->display->display_options['fields']['field_cover_image']['id'] = 'field_cover_image';
