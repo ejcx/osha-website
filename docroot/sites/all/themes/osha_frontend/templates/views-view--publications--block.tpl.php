@@ -34,6 +34,7 @@ jQuery(document).ready(function ($) {
         $AutoPlay: false,
         $AutoPlaySteps: 1,
         $SlideDuration: 160,
+        $SlideWidth: 0,
         $SlideSpacing: 1,
         $DisplayPieces: 1,
 		$HWA: false,
