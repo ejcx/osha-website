@@ -71,9 +71,9 @@ jQuery(document).ready(function ($) {
 		if (window.innerWidth < 1220) numPieces = 4;
 
 		if (numberOfItems > numPieces) {			
-			document.write("<span u='arrowleft' class='jssora03l\' style='width: 55px; height: 55px; top: 115px; left: 8px;\'></span>");
+			document.write("<span u='arrowleft' class='jssora03l\'></span>");
 			
-			document.write("<span u='arrowright' class='jssora03r' style='width: 55px; height: 55px; top: 115px; right: 8px'></span>");
+			document.write("<span u='arrowright' class='jssora03r'></span>");
 		}
 	</script>
 </div>

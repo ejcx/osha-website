@@ -34,6 +34,7 @@ jQuery(document).ready(function ($) {
         $AutoPlay: false,
         $AutoPlaySteps: 1,
         $SlideDuration: 160,
+        $SlideWidth: 800,
         $SlideSpacing: 1,
         $DisplayPieces: 1,
 		$HWA: false,
@@ -63,7 +64,7 @@ $intNumberOfItems = substr_count($rows ,'<article');
     </div>
 	<?php if ($intNumberOfItems > 1): ?>
     <div u="navigator" class="jssorb03" style="position: absolute; bottom: 4px; right: 6px;">
-        <div u="prototype" style="position: absolute; width: 21px; height: 21px; text-align:center; line-height:21px; color:white; font-size:12px;"></div>
+      <div u="prototype" style="width: 21px; height: 21px; line-height:21px; color:white; font-size:12px;"></div>
     </div>	
 	<span u="arrowleft" class="jssora03l publications" style="width: 55px; height: 55px; top: 115px; left: 8px;"></span>
 	<span u="arrowright" class="jssora03r publications" style="width: 55px; height: 55px; top: 115px; right: 8px"></span>
