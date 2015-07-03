@@ -2472,9 +2472,7 @@ font-weight: normal;
     font-family: "Open Sans Condensed",sans-serif;
     font-size: 1.4em;
     font-weight: bold;
-    width: 20em;
-	width:95%;
-	padding:0.5em 1em 1em 0em;
+	padding:0.5em 0;
 	margin-left:0.8em;
 	margin-right:1em;
 }
@@ -2538,20 +2536,25 @@ font-weight: normal;
     margin-top: 0em;
 }
 
+.region-triptych-first .block-views {
+    padding: 0 1em;
+}
+
 #recommended_resources {
     margin: 0 auto;
     position: relative;
+    overflow: hidden;
 }
 
 #recommended_resources #num_slides{
-	width:90%;
+	width: 100%;
 }
 
 #num_slides {
     cursor: move;
     width: 100%;
     top: 0;
-    margin-left: 70px;
+    margin-left: 62px;
 }
 #recommended_resources > div > div,
 #num_slides,
@@ -2623,9 +2626,9 @@ font-weight: normal;
     color: #cbd9ec !important;
     display: block !important;
     height: 100% !important;
-    width: 60px !important;
+    width: 55px !important;
     top: 0 !important;
-    left: 15px !important;
+    left: 0 !important;
     z-index: 999999999 !important;
 }
 
@@ -2634,9 +2637,9 @@ font-weight: normal;
     color: #cbd9ec !important;
     display: block !important;
     height: 100% !important;
-    width: 60px !important;
+    width: 55px !important;
     top: 0 !important;
-    left: 15px !important;
+    left: 0 !important;
     z-index: 999999999 !important;
 }
 
@@ -2646,9 +2649,9 @@ font-weight: normal;
     display: block !important;
 
     height: 100% !important;
-    width: 60px !important;
+    width: 55px !important;
     top: 0 !important;
-    right: 15px !important;
+    right: 0 !important;
 }
 
 .jssora03rdn{
@@ -2656,9 +2659,9 @@ font-weight: normal;
     color: #cbd9ec !important;
     display: block !important;
     height: 100% !important;
-    width: 60px !important;
+    width: 55px !important;
     top: 0 !important;
-    right: 15px !important;
+    right: 0 !important;
     z-index: 999999999 !important;
 }
 
