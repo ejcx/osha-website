@@ -2459,7 +2459,6 @@ font-weight: normal;
 /* PAGE FRONT */
 
 .separator_recomended_resources_home{
-	border-top:5px solid #003399;
 	width:100%;
 	height:5px;
 	margin-top:2em;
@@ -2472,7 +2471,7 @@ font-weight: normal;
     font-family: "Open Sans Condensed",sans-serif;
     font-size: 1.4em;
     font-weight: bold;
-	padding:0.5em 0;
+	padding:0.5em 1em 1em 0em;
 	margin-right:1em;
 }
 
@@ -3425,13 +3424,12 @@ a.button-submit {
 }
 
 
-		/*block Home related resources*/
+/*block Home related resources*/
 
-		#block-views-0070c12a2761cd76e16f8eb8fc4e1de6{
-			clear:both;
-		}
-
-/* to do */
+#block-views-0070c12a2761cd76e16f8eb8fc4e1de6{
+    clear:both;
+    border-top:5px solid #003399;
+}
 
 #block-views-seminars-block .view-seminars ul li {
 	background: url("../images/separator_home.jpg") repeat-x scroll 0% 100% rgba(0, 0, 0, 0);

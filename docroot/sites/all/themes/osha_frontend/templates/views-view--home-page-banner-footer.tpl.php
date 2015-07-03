@@ -58,7 +58,6 @@ jQuery(document).ready(function ($) {
 });
 
 </script>
-<div class="separator_recomended_resources_home">&nbsp;</div>
 <div class="title_recomended_resources_home"><?php print t('Recommended resources'); ?></div>
 <div id="recommended_resources">
     <div id="num_slides" u="slides">
