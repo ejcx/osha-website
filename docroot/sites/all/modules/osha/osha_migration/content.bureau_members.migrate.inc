@@ -56,6 +56,7 @@ class MigrateOshaBureauMembers extends OSHADynamicMigration {
     $this->addFieldMapping('field_wg_role_1', 'field_wg_role_1');
     $this->addFieldMapping('field_wg_role_2', 'field_wg_role_2');
     $this->addFieldMapping('field_wg_category', 'field_wg_category');
+    $this->addFieldMapping('field_contact_uuid', 'field_contact_uuid');
     $this->addFieldMapping('field_contact_type', 'field_contact_type');
     $this->addFieldMapping('uid')->defaultValue(1);
 
@@ -99,6 +100,7 @@ class MigrateOshaBureauMembers extends OSHADynamicMigration {
       'field_press_contact_phone',
       'field_press_contact_location',
       'field_press_contact_organization',
+      'field_contact_uuid:language',
       'comment',
     ));
   }
@@ -118,8 +120,8 @@ class MigrateOshaBureauMembers extends OSHADynamicMigration {
    * {@inheritdoc}
    */
   public function prepareRow($row) {
-    if (empty($row->title)) {
-      $this->saveMessage('Skipping contact without name',
+    if (empty($row->field_contact_uuid)) {
+      $this->saveMessage('Skipping contact without uuid',
         MigrationBase::MESSAGE_WARNING);
       return FALSE;
     }
@@ -156,6 +158,14 @@ class MigrateOshaBureauMembers extends OSHADynamicMigration {
   }
 
   /**
+   * Executes after import.
+   */
+  public function postImport() {
+    parent::postImport();
+    $this->removeNeedsUpdateItems();
+  }
+
+  /**
    * Return the list of available source fields.
    *
    * @return array
@@ -164,6 +174,7 @@ class MigrateOshaBureauMembers extends OSHADynamicMigration {
   public function fields() {
     return array(
       'id' => 'Primary Key (URL pattern)',
+      'field_contact_uuid' => '',
       'path' => 'URL pattern without language',
       'language' => 'Row language',
       'workflow_state' => '',
@@ -215,7 +226,7 @@ class BoardBureauMembersListXML extends MigrateList {
     if (!is_readable($this->file)) {
       return;
     }
-    if ($xml = simplexml_load_file($this->file)) {
+    if ($xml = simplexml_load_file($this->file,  'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE)) {
       // To be used for board and bureau memebers, to merge the details.
       // Contact fields are attributes of Detail.
       foreach ($xml->xpath('//Detail') as $member) {
@@ -226,19 +237,11 @@ class BoardBureauMembersListXML extends MigrateList {
         $data->field_personal_title = (string) $attributes['Table0_Details1'];
         $data->field_wg_role_1 = (string) $attributes['Table0_Details3'];
         $data->field_wg_category = (string) $attributes['Table0_Details4'];
+        $data->field_contact_uuid = (string) $attributes['Textbox8'];
         $data->field_contact_type = 'Bureau of the Governing Board';
-        $id = $this->idFromName((string) $data->title);
-        self::$data[$id] = $data;
+        self::$data[$data->field_contact_uuid] = $data;
       }
     }
-  }
-
-
-  /**
-   * Convert to ID from contact name.
-   */
-  public function idFromName($name) {
-    return strtolower(str_replace(' ', '_', $name));
   }
 
   /**

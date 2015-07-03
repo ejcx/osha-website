@@ -86,7 +86,7 @@ function osha_alert_service_subscribe_form() {
   );
 
   $languages = array();
-  $alllanguages = language_list();
+  $alllanguages = osha_language_list(TRUE);
   unset($alllanguages['en']);
   foreach ($alllanguages as $code => $language) {
     $languages[$code] = $language->native;
@@ -210,7 +210,7 @@ function osha_alert_service_remove_alert_form($form, &$form_state) {
     );
   }
   else {
-    drupal_set_message(t("Invalid request, and I hope it's a test!"), 'error');
+    drupal_set_message(t('Invalid alert subscription token'), 'error');
   }
   return $form;
 }

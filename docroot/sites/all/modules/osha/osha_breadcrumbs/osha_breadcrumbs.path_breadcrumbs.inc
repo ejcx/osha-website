@@ -34,7 +34,7 @@ function osha_breadcrumbs_path_breadcrumbs_settings_info() {
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'calls_archive_view';
   $path_breadcrumb->name = 'Calls archive view';
-  $path_breadcrumb->path = 'inside-eu-osha/procurement/calls_archive';
+  $path_breadcrumb->path = 'about-eu-osha/procurement/calls_archive';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => '%site:current-page:menu-link:pb-join:name',
@@ -608,8 +608,8 @@ safety-and-health-legislation/european-guidelines',
       2 => '!page_title',
     ),
     'paths' => array(
-      0 => 'inside-eu-osha',
-      1 => 'inside-eu-osha/careers',
+      0 => 'about-eu-osha',
+      1 => 'about-eu-osha/careers',
       2 => '<none>',
     ),
     'home' => 1,
@@ -666,7 +666,7 @@ safety-and-health-legislation/european-guidelines',
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'press_releases_view';
   $path_breadcrumb->name = 'Press Releases view';
-  $path_breadcrumb->path = 'inside-eu-osha/press-releases';
+  $path_breadcrumb->path = 'about-eu-osha/press-releases';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => 'About EU-OSHA',
@@ -674,8 +674,8 @@ safety-and-health-legislation/european-guidelines',
       2 => '!page_title',
     ),
     'paths' => array(
-      0 => 'inside-eu-osha',
-      1 => 'inside-eu-osha/press-room',
+      0 => 'about-eu-osha',
+      1 => 'about-eu-osha/press-room',
       2 => '<none>',
     ),
     'home' => 1,
@@ -690,7 +690,7 @@ safety-and-health-legislation/european-guidelines',
   $path_breadcrumb->api_version = 1;
   $path_breadcrumb->machine_name = 'press_room_view';
   $path_breadcrumb->name = 'Press Room view';
-  $path_breadcrumb->path = 'inside-eu-osha/press-room';
+  $path_breadcrumb->path = 'about-eu-osha/press-room';
   $path_breadcrumb->data = array(
     'titles' => array(
       0 => '%site:current-page:menu-link:pb-join:name',
@@ -916,7 +916,7 @@ emerging-risks
 surveys-and-statistics-osh
 safety-and-health-legislation
 tools-and-publications
-inside-eu-osha',
+about-eu-osha',
           ),
           'context' => 'empty',
           'not' => FALSE,

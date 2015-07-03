@@ -180,7 +180,8 @@ function osha_press_release_default_fe_block_settings() {
     'i18n_mode' => 0,
     'module' => 'views',
     'node_types' => array(),
-    'pages' => 'inside-eu-osha/press-room',
+    'pages' => 'about-eu-osha/press-room
+inside-eu-osha/press-room',
     'roles' => array(),
     'themes' => array(
       'bartik' => array(

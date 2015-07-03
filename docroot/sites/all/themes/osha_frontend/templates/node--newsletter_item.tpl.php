@@ -17,7 +17,7 @@
     ?>
       <tr>
         <td colspan="2" style="font-family: Arial, sans-serif; font-size: 14px; padding-left: 14px;">
-          <span class="item-date"><?php print date('M d, Y',$date);?></span>
+          <span class="item-date"><?php print format_date($date, 'custom', 'M d, Y');?></span>
         </td>
       </tr>
     <?php
@@ -28,7 +28,7 @@
       ?>
       <tr>
         <td colspan="2" style="font-family: Arial, sans-serif; font-size: 14px; padding-left: 14px;">
-          <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print date('M d, Y',$date);}?></span>
+          <span class="item-date"><?php if (trim($country_location) != '' && trim($city_location) != '') { echo $country_location . ' ' . $city_location . ', ';} if (trim($date) != '') { print format_date($date, 'custom', 'M d, Y');}?></span>
         </td>
       </tr>
     <?php
@@ -38,14 +38,14 @@
       <td align="left" width="5%" style="padding-left: 0px; padding-right: 0px; vertical-align: top; padding-top: 5px;">
         <?php
           $directory = drupal_get_path('module','osha_newsletter');
-          $site_url = variable_get('site_base_url', 'http://osha.europa.eu');
+          global $base_url; // TODO: should link to node
           print l(theme('image', array(
           'path' => $directory . '/images/link-arrow.png',
           'width' => 7,
           'height' => 11,
           'alt' => 'link arrow',
           'attributes' => array('style' => 'border: 0px;')
-          )), $site_url, array(
+          )), $base_url, array(
           'html' => TRUE,
           'external' => TRUE
         ));

@@ -18,13 +18,14 @@
           }
           $directory = drupal_get_path('module','osha_newsletter');
           global $base_url;
+          global $language;
           print l(theme('image', array(
           'path' => $directory . '/images/Osha-EU-logos.png',
           'width' => 256,
           'height' => 60,
           'alt' => 'Osha logo',
           'attributes' => array('style' => 'border: 0px;')
-          )), $base_url, array(
+          )), $base_url.'/'.$language->language, array(
           'html' => TRUE,
           'external' => TRUE,
           'query' => $url_query
@@ -32,11 +33,7 @@
         ?>
       </td>
       <td>
-        <?php
-        $newsletter_ready_date = date('F Y');
-        if($newsletter_date) {
-          $newsletter_ready_date = date('F Y', strtotime($newsletter_date));
-        }?>
+        <?php $newsletter_ready_date = format_date(strtotime($newsletter_date), 'custom', 'F Y'); ?>
         <div class="newsletter-month" style="color: #DC2F82; font-size: 26px; text-align: right;"><?php print $newsletter_ready_date?></div>
         <div class="newsletter-number" style="color: #003399; font-size: 24px; font-weight: 300; text-align: right;"><?php print $newsletter_title?></div>
       </td>
@@ -54,7 +51,7 @@
               <td style="background-color:#003399; width: 100%; height: 4px;"></td>
             </tr>
             <tr>
-              <td style="background-color: #A6B8DB; width: 100%; height: 36px; text-align: center; font-size: 24px; font-weight: 300; color: #003399; font-family: Oswald, Arial,sans-serif;">Occupational Safety and Health News - Europe</td>
+              <td style="background-color: #A6B8DB; width: 100%; height: 36px; text-align: center; font-size: 24px; font-weight: 300; color: #003399; font-family: Oswald, Arial,sans-serif;"><?php print t("Occupational Safety and Health News &ndash; Europe");?></td>
             </tr>
             <tr>
               <td>
@@ -71,8 +68,8 @@
                              }
                            }
                            $last_lang = array_pop($newsletter_languages);
-                           foreach ($newsletter_languages as $language):?>
-                             <a href="<?php echo url('entity-collection/' . $newsletter_id, array('absolute' => TRUE, 'language' => $language, 'query' => $url_query));?>" style="text-decoration: none; color: #003399;"><?php print $language->native . ' | ';?></a>
+                           foreach ($newsletter_languages as $l):?>
+                             <a href="<?php echo url('entity-collection/' . $newsletter_id, array('absolute' => TRUE, 'language' => $l, 'query' => $url_query));?>" style="text-decoration: none; color: #003399;"><?php print $l->native . ' | ';?></a>
                            <?php endforeach; ?>
                            <a href="<?php echo url('entity-collection/' . $newsletter_id, array('absolute' => TRUE, 'language' => $last_lang, 'query' => $url_query));?>" style="text-decoration: none; color: #003399;"><?php print $last_lang->native;?></a>
                          <?php

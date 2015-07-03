@@ -80,15 +80,15 @@ function hoverSlideHome() {
 
 	jQuery("#num_slides div").each(function() {
 		jQuery(this).mouseover(function() {
-		jQuery("span",this).addClass('text_white');
-		jQuery("span",this).removeClass('text_blue');
+		jQuery("h2",this).addClass('text_white');
+		jQuery("h2",this).removeClass('text_blue');
 		});
 	});
 	
 	jQuery("#num_slides div").each(function() {
 		jQuery(this).mouseout(function() {
-		jQuery("span",this).addClass('text_blue');
-		jQuery("span",this).removeClass('text_white');
+		jQuery("h2",this).addClass('text_blue');
+		jQuery("h2",this).removeClass('text_white');
 		});
 	});	
 	
@@ -196,16 +196,6 @@ jQuery(document).ready(function() {
 	}).closest('.block-facetapi').find('h2.block-title').click(function() {
 		jQuery(this).closest('.block-facetapi').find("div.item-list").slideToggle();
 		jQuery(this).toggleClass("expand");
-    });
-});
-
-/* Show searcher in responsive menu */
-jQuery(document).ready(function() {
-	var menuExpanded = false;
-    // Click event: show language and search box
-	jQuery("a[href$='#nav']").click(function() {		
-		!menuExpanded?showSearcher():hideSearcher();		
-		menuExpanded = !menuExpanded;
     });
 });
 

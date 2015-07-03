@@ -105,6 +105,8 @@ el.remove();
   $strongarm->value = array(
     'article' => 'article',
     'blog' => 'blog',
+    'dvs_survey' => 'dvs_survey',
+    'events' => 'events',
     'highlight' => 'highlight',
     'news' => 'news',
     'press_release' => 'press_release',
@@ -113,7 +115,6 @@ el.remove();
     'calls' => 0,
     'press_contact' => 0,
     'directive' => 0,
-    'events' => 0,
     'external_url' => 0,
     'file' => 0,
     'flickr' => 0,
@@ -149,6 +150,13 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_anonymous_dvs_survey';
+  $strongarm->value = '0';
+  $export['comment_anonymous_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_page';
   $strongarm->value = 0;
   $export['comment_anonymous_page'] = $strongarm;
@@ -177,6 +185,13 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_mode_dvs_survey';
+  $strongarm->value = 1;
+  $export['comment_default_mode_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_page';
   $strongarm->value = 1;
   $export['comment_default_mode_page'] = $strongarm;
@@ -198,6 +213,13 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_default_per_page_dvs_survey';
+  $strongarm->value = '50';
+  $export['comment_default_per_page_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_per_page_page';
   $strongarm->value = 50;
   $export['comment_default_per_page_page'] = $strongarm;
@@ -212,9 +234,23 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_dvs_survey';
+  $strongarm->value = '1';
+  $export['comment_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_form_location_article';
   $strongarm->value = 1;
   $export['comment_form_location_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_form_location_dvs_survey';
+  $strongarm->value = 1;
+  $export['comment_form_location_dvs_survey'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -247,6 +283,13 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'comment_preview_dvs_survey';
+  $strongarm->value = '1';
+  $export['comment_preview_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'comment_preview_page';
   $strongarm->value = 1;
   $export['comment_preview_page'] = $strongarm;
@@ -264,6 +307,13 @@ el.remove();
   $strongarm->name = 'comment_subject_field_article';
   $strongarm->value = 1;
   $export['comment_subject_field_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'comment_subject_field_dvs_survey';
+  $strongarm->value = 1;
+  $export['comment_subject_field_dvs_survey'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -833,6 +883,75 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'field_bundle_settings_node__dvs_survey';
+  $strongarm->value = array(
+    'view_modes' => array(
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'osha_slideshow' => array(
+        'custom_settings' => TRUE,
+      ),
+      'highlights_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'newsletter_item' => array(
+        'custom_settings' => TRUE,
+      ),
+      'osha_resources' => array(
+        'custom_settings' => TRUE,
+      ),
+      'osha_wiki' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_index' => array(
+        'custom_settings' => FALSE,
+      ),
+      'search_result' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
+    'extra_fields' => array(
+      'form' => array(
+        'metatags' => array(
+          'weight' => '40',
+        ),
+        'title' => array(
+          'weight' => '-5',
+        ),
+        'path' => array(
+          'weight' => '30',
+        ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
+        'workbench_access' => array(
+          'weight' => '0',
+        ),
+      ),
+      'display' => array(),
+    ),
+  );
+  $export['field_bundle_settings_node__dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_node__page';
   $strongarm->value = array(
     'view_modes' => array(
@@ -952,6 +1071,13 @@ el.remove();
   $strongarm->name = 'language_content_type_article';
   $strongarm->value = '4';
   $export['language_content_type_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'language_content_type_dvs_survey';
+  $strongarm->value = '0';
+  $export['language_content_type_dvs_survey'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1085,6 +1211,15 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_dvs_survey';
+  $strongarm->value = array(
+    0 => 'main-menu',
+  );
+  $export['menu_options_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_page';
   $strongarm->value = array(
     0 => 'main-menu',
@@ -1106,6 +1241,13 @@ el.remove();
   $strongarm->name = 'menu_parent_article';
   $strongarm->value = 'main-menu:0';
   $export['menu_parent_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_dvs_survey';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_dvs_survey'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1197,6 +1339,15 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_dvs_survey';
+  $strongarm->value = array(
+    0 => 'status',
+  );
+  $export['node_options_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_options_page';
   $strongarm->value = array(
     0 => 'status',
@@ -1222,6 +1373,13 @@ el.remove();
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_dvs_survey';
+  $strongarm->value = '1';
+  $export['node_preview_dvs_survey'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_page';
   $strongarm->value = 1;
   $export['node_preview_page'] = $strongarm;
@@ -1239,6 +1397,13 @@ el.remove();
   $strongarm->name = 'node_submitted_article';
   $strongarm->value = 0;
   $export['node_submitted_article'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_dvs_survey';
+  $strongarm->value = 0;
+  $export['node_submitted_dvs_survey'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -1349,7 +1514,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_calls_pattern';
-  $strongarm->value = 'inside-eu-osha/procurement/[node:title]';
+  $strongarm->value = 'about-eu-osha/procurement/[node:title]';
   $export['pathauto_node_calls_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1405,7 +1570,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_job_vacancies_pattern';
-  $strongarm->value = 'inside-eu-osha/careers/[node:title]';
+  $strongarm->value = 'about-eu-osha/careers/[node:title]';
   $export['pathauto_node_job_vacancies_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1426,7 +1591,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_note_to_editor_pattern';
-  $strongarm->value = 'inside-eu-osha/press-room/note-to-editor/[node:title]';
+  $strongarm->value = 'about-eu-osha/press-room/note-to-editor/[node:title]';
   $export['pathauto_node_note_to_editor_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1454,7 +1619,7 @@ el.remove();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_press_release_pattern';
-  $strongarm->value = 'inside-eu-osha/press-room/[node:title]';
+  $strongarm->value = 'about-eu-osha/press-room/[node:title]';
   $export['pathauto_node_press_release_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1519,6 +1684,46 @@ el.remove();
   $strongarm->name = 'pathauto_update_action';
   $strongarm->value = '0';
   $export['pathauto_update_action'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'piwik_custom_var';
+  $strongarm->value = array(
+    'slots' => array(
+      1 => array(
+        'slot' => 1,
+        'name' => 'Activity',
+        'value' => '[node:field-activity]',
+        'scope' => 'page',
+      ),
+      2 => array(
+        'slot' => 2,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      3 => array(
+        'slot' => 3,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      4 => array(
+        'slot' => 4,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+      5 => array(
+        'slot' => 5,
+        'name' => '',
+        'value' => '',
+        'scope' => 'visit',
+      ),
+    ),
+  );
+  $export['piwik_custom_var'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

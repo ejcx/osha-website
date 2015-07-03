@@ -189,7 +189,7 @@ class MigrateOshaCalls extends OSHADynamicMigration {
       $tmp_path = $row->path;
       $languages = array_keys($entity->translations->data);
       foreach($languages as $language){
-        $row->path[$language] = 'inside-eu-osha/procurement/' . $matches[2];
+        $row->path[$language] = 'about-eu-osha/procurement/' . $matches[2];
       }
       MigrationUtil::createAliases($entity, $row, 'node', 'nid');
       $row->path = $tmp_path;

@@ -46,7 +46,8 @@ function osha_press_release_fe_nodequeue_export_fields() {
     'i18n' => 0,
     'subqueues' => 1,
     'types' => array(
-      0 => 'press_release',
+      0 => 'highlight',
+      1 => 'press_release',
     ),
     'roles' => array(),
     'count' => 0,

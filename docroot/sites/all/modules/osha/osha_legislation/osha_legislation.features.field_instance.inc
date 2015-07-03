@@ -1167,9 +1167,11 @@ function osha_legislation_field_default_field_instances() {
           'more_text' => 'Read more',
           'summary_handler' => 'full',
           'trim_length' => 300,
+          'trim_link' => FALSE,
           'trim_options' => array(
             'text' => 'text',
           ),
+          'trim_preserve_tags' => '',
           'trim_suffix' => '...',
           'trim_type' => 'chars',
         ),
@@ -2378,7 +2380,6 @@ function osha_legislation_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Activity');
-  t('Archived');
   t('Available in languages');
   t('Body');
   t('Character count');
@@ -2390,6 +2391,7 @@ function osha_legislation_field_default_field_instances() {
   t('External URL');
   t('Guideline Category Code');
   t('Legislation category');
+  t('Marked as outdated');
   t('Nace');
   t('Page count');
   t('Publication date');

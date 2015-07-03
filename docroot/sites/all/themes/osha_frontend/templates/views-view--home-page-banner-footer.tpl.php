@@ -38,7 +38,6 @@ jQuery(document).ready(function ($) {
         $AutoPlaySteps: 1,
         $SlideDuration: 160,
         $SlideWidth: 200,
-        $SlideHeight: 150,
         $SlideSpacing: 3,
         $DisplayPieces: numPieces,
 		$HWA: false,
@@ -60,19 +59,13 @@ jQuery(document).ready(function ($) {
 
 </script>
 <div class="separator_recomended_resources_home">&nbsp;</div>
-<?php 
-	$intNumberOfItems = substr_count($rows ,'<img typeof=');	
-	setcookie('numberOfItems', $intNumberOfItems, time() + 3600);
-?>
 <div class="title_recomended_resources_home"><?php print t('Recommended resources'); ?></div>
-<div id="recommended_resources" style="position: relative; top: 0px; left: 0px; width: 1138px; height: 160px; overflow: hidden;">
-    <div id="num_slides" u="slides" style="cursor: move; position: absolute; left: 5em; top: 0px; width: 1138px; height: 160px; overflow: hidden;">
-		<?php print $rows ?>		
+<div id="recommended_resources">
+    <div id="num_slides" u="slides">
+    <?php print $rows ?>
     </div>
-	
-	
 	<script>
-		var numberOfItems = jQuery.cookie("numberOfItems");		
+		var numberOfItems = jQuery('#num_slides > div').length;
 		var numPieces = 5;
 		
 		if (window.innerWidth < 1220) numPieces = 4;

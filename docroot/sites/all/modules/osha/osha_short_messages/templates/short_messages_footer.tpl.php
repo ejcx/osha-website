@@ -19,8 +19,8 @@
     <tr>
       <td style="padding-top: 15px; padding-bottom: 15px; text-align: center; font-family: Arial,sans-serif; font-size: 12px; color: #333333;">
         <span><?php print t('Occupational Safety and Health News &ndash; Europe'); ?></span>
-        <?php print t('Brought to you by EU-OSHA. Visit us at: <a href="@url" style="@style">http://osha.europa.eu</a>',
-                    array('@style' => 'color: #003399; border-bottom-color: #DC2F82; border-bottom-style: solid; border-bottom-width: 1px; text-decoration: none;', '@url' => 'https://osha.europa.eu/en')); ?>
+        <?php global $base_url; print lcfirst(t('Brought to you by EU-OSHA. Visit us at: <a href="@base_url" style="@style">@base_url</a>',
+                    array('@style' => 'color: #003399; border-bottom-color: #DC2F82; border-bottom-style: solid; border-bottom-width: 1px; text-decoration: none;', '@base_url' => $base_url))); ?>
       </td>
     </tr>
   </tbody>

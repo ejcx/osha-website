@@ -1,3 +1,16 @@
+29.05.2015 - Upgrade instructions
+=================================
+
+Background: Configure HTTPS for administrative purposes
+
+1. Visit /admin/config/system/securepages
+    * Enable Secure Pages: Enabled
+    * Switch back to http pages when there are no matches: Checked
+    * Non-secure Base URL: http://osha-corp.mainstrat.com
+    * Secure Base URL: https://osha-corp.mainstrat.com
+
+
+
 24.04.2015 - Upgrade instructions
 ==================================
 

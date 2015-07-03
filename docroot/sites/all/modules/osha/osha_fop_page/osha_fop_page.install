@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Set language und for field_link and fop_link_section.
+ */
+function osha_fop_page_update_7001() {
+  db_update('field_data_field_link')
+    ->fields(array('language' => 'und'))
+    ->execute();
+  db_update('field_revision_field_link')
+    ->fields(array('language' => 'und'))
+    ->execute();
+  db_update('field_data_field_fop_link_section')
+    ->fields(array('language' => 'und'))
+    ->execute();
+  db_update('field_revision_field_fop_link_section')
+    ->fields(array('language' => 'und'))
+    ->execute();
+}

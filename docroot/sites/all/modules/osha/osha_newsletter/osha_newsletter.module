@@ -454,7 +454,8 @@ function _osha_newsletter_latest_block_content(){
         $item = $collections[$i];
         $items[$item->name]['title'] = $item->title;
         $items[$item->name]['url'] = 'entity-collection/'.$item->eid;
-
+        $publication_date = $item->field_publication_date[LANGUAGE_NONE][0]['value'];
+        $items[$item->name]['publication_date'] = format_date(strtotime($publication_date), 'custom', 'F Y');
         // retrive elements from collection if needed
         if ($newsletter_items_no>0) {
           $elements = entity_collection_load_content($item->bundle, $item)->children;
@@ -477,7 +478,6 @@ function _osha_newsletter_latest_block_content(){
       }
     }
   }
-
   return theme('latest_newsletters_block', array('items' => $items, 'newsletter_items_no' => $newsletter_items_no));
 }
 

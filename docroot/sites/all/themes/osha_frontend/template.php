@@ -431,6 +431,18 @@ function osha_frontend_preprocess_block(&$vars) {
 }
 
 /**
+ * Implements theme_pager().
+ */
+function osha_frontend_pager($variables) {
+  // Overwrite pager links.
+  $variables['tags'][0] = '«';
+  $variables['tags'][1] = '‹';
+  $variables['tags'][3] = '›';
+  $variables['tags'][4] = '»';
+  return theme_pager($variables);
+}
+
+/**
  * @todo @Ivan: Edit only below
  */
 

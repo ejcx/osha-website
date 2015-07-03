@@ -79,8 +79,12 @@ body {
     margin-top: 1em!important;
     position: absolute;
     vertical-align: middle;
+	
  }
 
+@media screen and (max-width: 809px) {
+	#languagesAndSearch img { padding-left: 13px;}
+}
 /* END HEADER */
 
 
@@ -213,7 +217,7 @@ body {
 .mean-container #block-search-form , 
 .mean-container #block-lang-dropdown-language-content, 
 .mean-container #languagesAndSearch {
-	display: none;
+	display: block;
 }
 
 /* -------- */
@@ -344,8 +348,10 @@ body {
 	position: relative;
 	width: auto;
 }
-#block-views-highlight-block-2  table {
+#block-views-highlight-block-2 table {
 	margin-bottom: 0em;
+	margin-top: 3em;
+
 }
 /* One column */
 .view-id-highlight .view-content table tbody tr td {
@@ -951,14 +957,15 @@ article.node-events.view-mode-full {
 	padding-right: 0em!important;
 }
 .view-press-releases ul.links.inline {
-	background: url("../images/flecha.png") no-repeat scroll right 75% rgba(0, 0, 0, 0)!important;
+	background: none!important;
 	border-top: none!important;
 	border-bottom: none!important;	
 	text-align: right!important;	
 	width: inherit!important;
+	margin-top:1em;
 }
 .view-press-releases ul.links.inline a {
-	padding-right: 0em;
+	padding-right: 1.5em;
 }
 
 .view-press-contacts {
@@ -1518,7 +1525,7 @@ body.page-search-publications aside.sidebars_first {
 	float: none;
 	height: auto;	
 	max-width: 987px;
-	width: 100%;
+	width: auto;
 }
 
 
@@ -1794,6 +1801,7 @@ a {
 		.accesibility_table td {
 		font-size: 0.7em;
 	    padding: 0.5em;
+	    display: table-cell;
 		}
 	}
 
@@ -1845,9 +1853,21 @@ a {
     width: 0 !important;
 }
 
+#label_question .chosen-single{
+	width:100%!important;
+
+}
+
+#visualizationTitleSection{
+	margin-top:3em;
+}
+
 /*End styles for Esener*/
 
-
+#block_newsletter_image_text{
+	font-size: 1em;
+	margin-top:-10em;
+}
 
 
 }

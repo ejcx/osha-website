@@ -2,6 +2,7 @@
 
 include_once 'osha.features.inc';
 include_once 'osha.utils.inc';
+include_once 'osha.pathauto.inc';
 
 define('OSHA_ARTICLE_CONTENT_TYPE_ARTICLE', 'article');
 define('OSHA', 'OSHA');
@@ -38,6 +39,48 @@ function osha_menu() {
 //    'type' => MENU_CALLBACK,
 //  );
   return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function osha_menu_alter(&$items) {
+  if (isset($items['aggregator/sources/%aggregator_feed'])) {
+    $items['aggregator/sources/%aggregator_feed']['page callback'] = 'osha_aggregator_page_source';
+  }
+}
+
+/**
+ * Override aggregator_page_source to localize the title.
+ */
+function osha_aggregator_page_source($feed) {
+  drupal_set_title(t($feed->title));
+  $feed_source = theme('aggregator_feed_source', array('feed' => $feed));
+
+  // It is safe to include the fid in the query because it's loaded from the
+  // database by aggregator_feed_load.
+  $items = aggregator_feed_items_load('source', $feed);
+
+  return _aggregator_page_list($items, arg(3), $feed_source);
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function osha_node_update($node) {
+  osha_expire_node_page($node);
+}
+
+/**
+ * Implements hook_nodequeue_sort_alter().
+ */
+function osha_nodequeue_sort_alter(&$nodes, $sqid) {
+  if ($sqid == 4 || $sqid == 5) {
+    osha_expire_view_page('about-eu-osha/press-room');
+  }
+  if ($sqid == 6) {
+    osha_expire_view_page('tools-and-publications/publications');
+  }
 }
 
 /**
@@ -879,4 +922,85 @@ function osha_export_taxonomy_term($term) {
   $export = json_encode($term, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE);
   print $export;
   drupal_exit();
+}
+
+function osha_expire_node_page($node) {
+  $node_url = 'node/' . $node->nid;
+  $paths = array('/' . $node_url);
+
+  // Translations
+  $handler = entity_translation_get_handler('node', $node);
+  $translations = $handler->getTranslations();
+  if (!empty($translations->data) && is_array($translations->data)) {
+    foreach ($translations->data as $language => $t) {
+      $paths[] = '/' . $language . '/node/' . $node->nid;
+    }
+  }
+
+  // Redirects
+  $redirects = db_select('redirect')->fields(NULL, array('rid', 'source', 'language'))->condition('redirect', $node_url)->execute()->fetchAllAssoc('rid');
+  foreach($redirects as $row) {
+    if ($row->language == LANGUAGE_NONE) {
+      $url = '/' . $row->source;
+    }
+    else {
+      $url = '/' . $row->source . '/' . $row->source;
+    }
+    $paths[] = $url;
+  }
+
+  // Aliases
+  $aliases = db_select('url_alias')->fields(NULL, array('pid', 'alias', 'language'))->condition('source', $node_url)->execute()->fetchAllAssoc('pid');
+  foreach($aliases as $row) {
+    if ($row->language == LANGUAGE_NONE) {
+      $url = '/' . $row->alias;
+    }
+    else {
+      $url = '/' . $row->language . '/' . $row->alias;
+    }
+    $paths[] = $url;
+  }
+  if (!empty($paths)) {
+    foreach($paths as $path) {
+      osha_expire_page($path);
+    }
+  }
+}
+
+/**
+ * Expire a single path pattern from DrupalDatabaseCache and Varnish.
+ *
+ * @param string $path
+ *   Absolute path (ex. path/to/view) - no prefix slash!
+ */
+function osha_expire_view_page($path) {
+  if (module_exists('varnish')) {
+    global $base_root;
+    $host = _varnish_get_host();
+    /* Explicit expire of affected pages in cache_page */
+    // http://my.domain.com/LANG/path/to/page
+    foreach(language_list() as $language => $ob) {
+      cache_clear_all($base_root . '/' . $language . '/' . $path, 'cache_page');
+    }
+    // path/to/page
+    varnish_purge($host, $path);
+  }
+}
+
+/**
+ * Expire a single path pattern from DrupalDatabaseCache and Varnish.
+ *
+ * @param string $path
+ *   Absolute path (ex. /fr/node/1234)
+ */
+function osha_expire_page($path) {
+  if (module_exists('varnish')) {
+    global $base_root;
+    $host = _varnish_get_host();
+    /* Explicit expire of affected pages in cache_page */
+    // http://my.domain.com/path/to/page
+    cache_clear_all($base_root . $path, 'cache_page');
+    // /path/to/page
+    varnish_purge($host, $path);
+  }
 }

@@ -7,6 +7,43 @@ When patching a contrib module, the following steps should be followed:
 
 List of patches (most recent first)
 
+* youtube
+  * Always return HTTPS version
+  * /patches/youtube/https-friendly.patch
+
+* entityreference
+ * Rendered entity is not language aware (https://www.drupal.org/node/1674792#comment-9304507)
+ * /patches/entityreference/entityreference-rendered-entity-is-not-language-aware-1674792-58.patch
+
+* xmlsitemap
+ * Support for translated nodes - store and export url of node translations.
+ * /patches/xmlsitemap/xmlsitemap-support-multilingual-nodes.patch
+
+* site_map
+  * Page title translatable
+  * https://www.drupal.org/files/issues/site_map-page_title_translation-2500421-1-D7.patch
+
+* addtoany
+  * Always return HTTPS version
+  * /patches/addtoany/https-friendly.patch
+
+* ldap_user
+  * Disable the watchdog successful messages
+  * /patches/ldap/ldap_user/disable-watchdg.patch
+
+* flickr
+  * Applied patch for HTTPS font error
+  * /patches/flickr/ssl-font-error.patch
+
+* drupal
+  * Applied patch to allow HTTPS
+  * /patches/drupal/471970_0.patch
+  * /patches/drupal/961508-20.patch
+
+* varnish
+  * req.http.host not correct when using custom port for varnish.
+  * /patches/varnish/parse_url_fix.patch
+
 * workbench_access
   * read-only screen for editorrial management
   * /patches/workbench_access/read_only_root_section.patch
