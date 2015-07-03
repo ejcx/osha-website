@@ -34,8 +34,6 @@ jQuery(document).ready(function ($) {
         $AutoPlay: false,
         $AutoPlaySteps: 1,
         $SlideDuration: 160,
-        $SlideWidth: 800,
-        $SlideHeight: 230,
         $SlideSpacing: 1,
         $DisplayPieces: 1,
 		$HWA: false,
@@ -59,8 +57,8 @@ jQuery(document).ready(function ($) {
 $intNumberOfItems = substr_count($rows ,'<article');
 ?>
 
-<div id="publication_slideshow" style="position: relative; top: 0px; left: 0px; width: 1138px; height: 230px; overflow: hidden;">
-    <div id="num_slides" u="slides" style="cursor: move; position: absolute; left: 1em; top: 1px; width: 1138px; height: 230px; overflow: hidden;">
+<div id="publication_slideshow">
+    <div id="num_slides" u="slides">
         <?php print $rows ?>
     </div>
 	<?php if ($intNumberOfItems > 1): ?>
