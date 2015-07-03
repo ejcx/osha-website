@@ -4180,12 +4180,6 @@ and (max-width: 1237px) {
     z-index: 999999999 !important;
 }
 
-#block-views-publications-slidehow .jssorb03{
-	display:block!important;
-	height:31px!important;
-	left: 379.5px!important;
-}
-
 #block-views-publications-slidehow #num_slides{
 	 /*width: 733px!important;*/
 	 height:220px!important;
@@ -7526,7 +7520,20 @@ a.contextual-links-trigger{
     height: 220px;
     width: 100% !important;
 }
-
+#publication_slideshow .jssorb03 {
+    width: 100% !important;
+    text-align: center;
+    height:31px !important;
+    display: block !important;
+    left: 0 !important;
+    right: 0 !important;
+}
+#publication_slideshow .jssorb03 > div {
+     position: relative !important;
+     display: inline-block !important;
+     top: 0 !important;
+     left: 0 !important;
+}
 #publication_slideshow > div > div {
     height: 220px;
 }
