@@ -18,13 +18,13 @@ function osha_metatag_export_default() {
         'value' => '[current-page:title] - [site:name]',
       ),
       'description' => array(
-        'value' => 'Safety and health at work - EU-OSHA',
+        'value' => 'EU OSHA information about occupational health and safety across EU countries. Find surveys, regulations and standards, risk assessment tools, frequent hazards at work and more about workplace safety and health.',
       ),
       'abstract' => array(
         'value' => '',
       ),
       'keywords' => array(
-        'value' => 'OSH, OSHA, EU-OSHA, Occupational safety, Occupational health, European Agency',
+        'value' => 'eu osha, eu-osha, osha, regulations, standards, legislation, surveys, risk assessment, accident prevention, european agency, safety and health, health at work, safety at work, statistics, workplace safety, frequent hazards, occupational health and safety, assessment tools, eu, esener, napo, oshwiki, oira, healthy workplaces, information, emerging risks',
       ),
       'robots' => array(
         'value' => array(

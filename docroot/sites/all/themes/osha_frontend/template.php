@@ -116,7 +116,7 @@ function osha_frontend_menu_link__menu_block__menu_footer_menu($variables) {
 
   if (!empty($element['#localized_options']['content']['image'])
     && $image_url = file_create_url($element['#localized_options']['content']['image'])) {
-    $image = '<img src="' . $image_url . '"/>';
+    $image = '<img src="' . $image_url . '" alt="'.$element['#title'].'"/>';
     $output_image = l($image, $element['#href'],
       array('html' => TRUE, 'attributes' => $element['#localized_options']['attributes']));
     return '<li' . drupal_attributes($element['#attributes']) . '>' . $output_image . '</li>';
