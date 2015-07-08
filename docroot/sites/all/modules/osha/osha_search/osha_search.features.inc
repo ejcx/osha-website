@@ -40,9 +40,18 @@ function osha_search_default_search_api_index() {
       "search_api_et" : { "include" : "incomplete", "fallback language" : "en" },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
-          "status" : 0,
+          "status" : 1,
           "weight" : "-10",
-          "settings" : { "default" : "1", "bundles" : [] }
+          "settings" : {
+            "default" : "1",
+            "bundles" : {
+              "banner" : "banner",
+              "press_contact" : "press_contact",
+              "dvs_survey" : "dvs_survey",
+              "newsletter_article" : "newsletter_article",
+              "note_to_editor" : "note_to_editor"
+            }
+          }
         },
         "search_api_alter_node_access" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
