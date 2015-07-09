@@ -442,6 +442,7 @@ $options['init-modules'] = array(
   'fapi_validation',
 
   'osha_taxonomies',
+  'osh_image_gallery',
   'osha',
   'osha_migration',
   'osha_news',
