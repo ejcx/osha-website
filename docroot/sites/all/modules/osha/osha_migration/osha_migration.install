@@ -31,3 +31,32 @@ function osha_migration_update_7001() {
     osha_press_contact_migrate($migration);
   }
 }
+
+/**
+ * CW-1749 Create redirects for some PDF files in case studies
+ */
+function osha_migration_update_7002() {
+    $data_path = drupal_realpath(drupal_get_path('module', 'osha_migration') . '/data/case_studies_aliases.json');
+    $data = json_decode(file_get_contents($data_path));
+    foreach ($data as $row) {
+      $result = db_select('file_managed', 'f')
+        ->fields('f', array('fid'))
+        ->condition('filename', $row->filename)
+        ->execute()->fetchAll();
+      if (count($result) != 1) {
+        print(count($result).' rows found: '.$row->filename."\n");
+        continue;
+      }
+      $fid = $result[0]->fid;
+      $redirect = new stdClass();
+      $redirect->source = substr($row->alias,1);
+      $redirect->source_options = array();
+      $redirect->redirect = 'file/' . $fid;
+      $redirect->redirect_options = array();
+      $redirect->status_code = 0;
+      $redirect->type = 'redirect';
+      $redirect->language = LANGUAGE_NONE;
+      // Create the redirect
+      redirect_save($redirect);
+    }
+}
