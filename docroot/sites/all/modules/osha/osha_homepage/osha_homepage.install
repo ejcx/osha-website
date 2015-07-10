@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * CW-1774: Learn how as a taxonomy term.
+ */
+function osha_homepage_update_7001() {
+    // create taxonomy
+    $vocabulary = new stdClass();
+    $vocabulary->machine_name = 'banner_links';
+    $vocabulary->name = 'Banner links';
+    $vocabulary->description = 'Learn how and similar links';
+    $vocabulary->i18n_mode = 1;
+    taxonomy_vocabulary_save($vocabulary);
+    // add name_field
+    field_create_instance(array(
+      'bundle' => 'banner_links',
+      'default_value' => NULL,
+      'deleted' => 0,
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'name_field',
+      'label' => 'Name',
+      'required' => 1,
+      'settings' => array(
+        'entity_translation_sync' => FALSE,
+        'hide_label' => array(
+          'entity' => 0,
+          'page' => 0,
+        ),
+        'text_processing' => 0,
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => 60,
+        ),
+        'type' => 'text_textfield',
+        'weight' => -1,
+      ),
+    ));
+    // create term
+    $term = new stdClass();
+    $term->vid = $vocabulary->vid;
+    $term->name = $term->name_field['en'][0]['value'] = 'Learn how'; 
+    $term->language = 'en';
+    taxonomy_term_save($term);
+    // add translations
+    $translation_handler = entity_translation_get_handler('taxonomy_term', $term);
+    $term_names = array(
+        'bg' => 'Научете как',
+        'cs' => 'Zjistěte jak',
+        'da' => 'Lær hvordan',
+        'de' => 'Erfahren Sie mehr über das Thema',
+        'el' => 'Μάθε πώς',
+        'es' => 'Cómo hacerlo',
+        'et' => 'Juhend',
+        'fi' => 'Opi, miten',
+        'fr' => 'Apprendre comment',
+        'hr' => 'Doznajte kako',
+        'hu' => 'Tudnivalók',
+        'is' => 'Fræðast um',
+        'it' => 'Informazioni pratiche',
+        'lt' => 'Sužinokite kaip',
+        'lv' => 'Uzziniet',
+        'mt' => 'Sir af kif',
+        'nl' => 'Lees over',
+        'no' => 'Finn ut hvordan',
+        'pl' => 'Dowiedz się, w jaki sposób',
+        'pt' => 'Saiba como',
+        'ro' => 'Aflați cum',
+        'sk' => 'Ako na to',
+        'sl' => 'Več informacij o tem',
+        'sv' => 'Lär dig mer',
+    );
+    foreach ($term_names as $lang => $name) {
+      $translation_handler->setTranslation(
+        array(
+          'translate' => 0,
+          'status' => 1,
+          'uid' => 1,
+          'language' => $lang,
+          'source' => 'en',
+        ),
+        array(
+          'name_field' => array('en' => array('0' => array('value' => $name)))
+        )
+      );
+      $term->name_field[$lang][0]['value'] = $name;
+    }
+    taxonomy_term_save($term);
+    // feature revert, to have the new term reference field
+    features_revert_module('osha_homepage');
+    //$tid = $term->tid;
+    $nids = array(2436, 2439, 2443, 2444);
+    foreach ($nids as $nid) {
+      $node = new stdClass();
+      $node->nid = $nid;
+      $node->type = 'banner';
+      $node->field_banner_link_title[LANGUAGE_NONE][0] = array('tid' => $term->tid);
+      field_attach_update('node', $node);
+    }
+}

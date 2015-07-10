@@ -122,6 +122,9 @@ function osha_homepage_strongarm() {
         'language' => array(
           'weight' => '0',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

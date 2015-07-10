@@ -63,6 +63,7 @@ function osha_homepage_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
+        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => 'default',
@@ -79,8 +80,8 @@ function osha_homepage_field_default_field_instances() {
         'profile' => '',
       ),
       'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_label_use_field_label' => FALSE,
+      'title' => 'none',
+      'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -94,6 +95,48 @@ function osha_homepage_field_default_field_instances() {
       'type' => 'link_field',
       'weight' => 3,
     ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-banner-field_banner_link_title'
+  $field_instances['node-banner-field_banner_link_title'] = array(
+    'bundle' => 'banner',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'i18n_taxonomy',
+        'settings' => array(),
+        'type' => 'i18n_taxonomy_term_reference_link',
+        'weight' => 10,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_banner_link_title',
+    'label' => 'Link title',
+    'required' => 0,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => 0,
+      ),
+      'type' => 'options_select',
+      'weight' => 3,
+    ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-banner-field_character_count'
@@ -565,6 +608,44 @@ function osha_homepage_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'taxonomy_term-banner_links-name_field'
+  $field_instances['taxonomy_term-banner_links-name_field'] = array(
+    'bundle' => 'banner_links',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'name_field',
+    'label' => 'Name',
+    'required' => 1,
+    'settings' => array(
+      'entity_translation_sync' => FALSE,
+      'hide_label' => array(
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => -1,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Automatically calculated when saving. The count of characters found in the default language text (English).');
@@ -572,6 +653,8 @@ function osha_homepage_field_default_field_instances() {
   t('Banner Link');
   t('Character count');
   t('Image');
+  t('Link title');
+  t('Name');
   t('Page count');
   t('Show in footer');
   t('Show in top banner');
