@@ -4,50 +4,9 @@
  * CW-1774: Learn how as a taxonomy term.
  */
 function osha_homepage_update_7001() {
-    // create taxonomy
-    $vocabulary = new stdClass();
-    $vocabulary->machine_name = 'banner_links';
-    $vocabulary->name = 'Banner links';
-    $vocabulary->description = 'Learn how and similar links';
-    $vocabulary->i18n_mode = 1;
-    taxonomy_vocabulary_save($vocabulary);
-    // add name_field
-    field_create_instance(array(
-      'bundle' => 'banner_links',
-      'default_value' => NULL,
-      'deleted' => 0,
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'name_field',
-      'label' => 'Name',
-      'required' => 1,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'hide_label' => array(
-          'entity' => 0,
-          'page' => 0,
-        ),
-        'text_processing' => 0,
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => 60,
-        ),
-        'type' => 'text_textfield',
-        'weight' => -1,
-      ),
-    ));
+    // feature revert, to have the new taxonomy and term reference field
+    features_revert_module('osha_homepage');
+    $vocabulary = taxonomy_vocabulary_machine_name_load('banner_links');
     // create term
     $term = new stdClass();
     $term->vid = $vocabulary->vid;
@@ -98,8 +57,7 @@ function osha_homepage_update_7001() {
       $term->name_field[$lang][0]['value'] = $name;
     }
     taxonomy_term_save($term);
-    // feature revert, to have the new term reference field
-    features_revert_module('osha_homepage');
+
     //$tid = $term->tid;
     $nids = array(2436, 2439, 2443, 2444);
     foreach ($nids as $nid) {
