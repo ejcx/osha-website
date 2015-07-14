@@ -603,10 +603,16 @@ function osha_tmgmt_job_item_validators_form_validate($form, &$form_state) {
  */
 function osha_tmgmt_job_item_validators_form_submit($form, &$form_state) {
   if (!empty($form_state['values']['rows'])) {
-    osha_tmgmt_remove_current_translation_validators($form_state['jobItem']);
     $validators = array();
+    $removed_validators = osha_tmgmt_load_validators_by_job_item($form_state['jobItem']);
     foreach ($form_state['values']['rows'] as $row) {
       $validators[$row['weight']] = $row;
+      unset($removed_validators[$row['uid']]);
+    }
+    osha_tmgmt_remove_current_translation_validators($form_state['jobItem']);
+    foreach ($removed_validators as $removed_validator) {
+        // CW-1766: Notify content validators that are no longer required to do anything
+        OshaWorkflowNotifications::notifyTranslationValidatorsRemoved($removed_validator, $form_state['jobItem']);
     }
     ksort($validators);
     $idx = 0;
@@ -619,6 +625,7 @@ function osha_tmgmt_job_item_validators_form_submit($form, &$form_state) {
       $idx++;
       $validators_name[] = $form_state['rows'][$validator['uid']]->name;
       osha_tmgmt_add_translation_validator($validator['uid'], $form_state['jobItem'], $validator['weight'], $next);
+      // TODO: but no notification is received (only new validators should receive it!)
     }
 
     // Save message to job item.

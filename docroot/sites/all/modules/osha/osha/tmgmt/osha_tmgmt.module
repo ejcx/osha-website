@@ -2290,7 +2290,17 @@ function osha_tmgmt_mail($key, &$message, $params) {
       Thank you,'
     );
   }
+  elseif ($key == 'osha_tmgmt_content_validator_removed') {
+    $subject = variable_get('osha_mail_template_content_validator_removed_subject', '[OSHA Website] CMW: [tmgmt_job_item:tjid:label]');
+    $body = variable_get('osha_mail_template_content_validator_removed_body',
+      'Dear [user:name],
+      The website administrator decided that your review of translation task <a href="[tmgmt_job_item:url]">[tmgmt_job_item:tjid:label]</a> is no longer needed.
+
+      Thank you,'
+    );
+  }
   elseif (isset($params['tmgmt_job_item'])) {
+    // osha_workflow_notification
     $subject = variable_get('osha_mail_template_translation_job_item_subject', '[OSHA Website] CMW: [tmgmt_job_item:tjid:label]');
     $body = variable_get('osha_mail_template_translation_job_item_body',
       'Dear [user:name],
