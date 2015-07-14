@@ -35,7 +35,6 @@ jQuery(document).ready(function ($) {
         $AutoPlaySteps: 1,
         $SlideDuration: 160,
         $SlideWidth: 800,
-        $SlideHeight: 230,
         $SlideSpacing: 1,
         $DisplayPieces: 1,
 		$HWA: false,
@@ -59,13 +58,13 @@ jQuery(document).ready(function ($) {
 $intNumberOfItems = substr_count($rows ,'<article');
 ?>
 
-<div id="publication_slideshow" style="position: relative; top: 0px; left: 0px; width: 1138px; height: 230px; overflow: hidden;">
-    <div id="num_slides" u="slides" style="cursor: move; position: absolute; left: 1em; top: 1px; width: 1138px; height: 230px; overflow: hidden;">
+<div id="publication_slideshow">
+    <div id="num_slides" u="slides">
         <?php print $rows ?>
     </div>
 	<?php if ($intNumberOfItems > 1): ?>
     <div u="navigator" class="jssorb03" style="position: absolute; bottom: 4px; right: 6px;">
-        <div u="prototype" style="position: absolute; width: 21px; height: 21px; text-align:center; line-height:21px; color:white; font-size:12px;"></div>
+      <div u="prototype" style="width: 21px; height: 21px; line-height:21px; color:white; font-size:12px;"></div>
     </div>	
 	<span u="arrowleft" class="jssora03l publications" style="width: 55px; height: 55px; top: 115px; left: 8px;"></span>
 	<span u="arrowright" class="jssora03r publications" style="width: 55px; height: 55px; top: 115px; right: 8px"></span>
