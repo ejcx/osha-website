@@ -22,32 +22,23 @@ function osha_lingua_tools_form_alter(&$form, &$form_state, $form_id) {
 }
 
 function form_lingua_form($form, &$form_state) {
-  $struri = $_SERVER['REQUEST_URI'];
-  $strurisplit = explode("/", $struri);
-  $lenuri = count($strurisplit) - 2;
-  $idnode = $strurisplit[$lenuri];
-
-  $node = node_load($idnode);
+  $node = menu_get_object();
   $numlen = count($node->translations->data);
 
-  if ($numlen == 1) {
+  if ($numlen <= 1) {
     //echo ("There are no translations for this node");
     $form['header_text'] = array(
       '#markup' => '<p class="linguaheader">There are no translations for this node.</p>',
       '#fieldintname' => '0'
     );
-    return $form;
   }
   else {
     //Get the node id, what we want translate.
 
     $type = $node->type;
-    $disabled = "";
     $fields = field_info_instances("node", $type);
-    $disabled = '';
     $countfields = 1;
     $ispublished = $node->workbench_moderation['current']->published;
-    $idrev = $node->workbench_moderation['current']->vid;
 
     foreach ($fields as $field) {
       $fieldname = $field['label'];
@@ -83,12 +74,35 @@ function form_lingua_form($form, &$form_state) {
       '#type' => 'submit',
       '#value' => t('Spread data'),
       '#numfields' => $countfields,
-      '#nodeid' => $idnode,
-      '#noderevid' => $idrev,
+      '#nodeid' => $node->nid,
+      '#noderevid' => $node->workbench_moderation['current']->vid,
       '#ispublished' => $ispublished,
     );
-    return $form;
   }
+
+  $languages = tmgmt_available_languages();
+  unset($languages[$node->translations->original]);
+  foreach ($node->translations->data as $lang => $translation) {
+    unset($languages[$lang]);
+  }
+  $selected_languages = array_intersect_key($languages, osha_language_list_options());
+
+  $form['target_language'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Add translations for'),
+    '#multiple' => TRUE,
+    '#options' => $languages,
+    '#default_value' => array_keys($selected_languages),
+    '#weight' => array('#weight' => 6)
+  );
+  $form['create_translations_submit_button'] = array(
+    '#type' => 'submit',
+    '#value' => t('Create translations'),
+    '#submit' => array('osha_lingua_tools_create_translations'),
+    '#weight' => array('#weight' => 7),
+  );
+
+  return $form;
 }
 
 
@@ -116,6 +130,10 @@ function istranslatable($idfield) {
 }
 
 function form_lingua_form_validate($form, &$form_state) {
+  if ($form_state['triggering_element']['#id'] == 'edit-create-translations-submit-button') {
+    return;
+  }
+
   foreach ($form_state['values'] as $values) {
 
     if ($values == 1) {
@@ -231,4 +249,37 @@ function propage_url($intnodeid) {
     ->execute();
 
   drupal_set_message(t("URL Alias updated"), 'status');
+}
+
+function osha_lingua_tools_create_translations($form, &$form_state) {
+  $languages = $form_state['values']['target_language'];
+  $node = menu_get_object();
+  $source_lang = $node->translations->original;
+  $translation_handler = entity_translation_get_handler('node', $node);
+
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      $translation_handler->setTranslation(
+        array(
+          'translate' => 0,
+          'status' => 1,
+          'uid' => 1,
+          'language' => $lang_code,
+          'source' => $source_lang,
+        )
+      );
+    }
+  }
+  $translation_handler->saveTranslations();
+  // clone url_aliases
+  foreach ($languages as $lang_code => $value) {
+    if ($value) {
+      $args = array(
+        'source' => 'node/' . $node->nid,
+        'alias' => $node->path['alias'],
+        'language' => $lang_code,
+      );
+      path_save($args);
+    }
+  }
 }
