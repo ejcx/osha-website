@@ -80,11 +80,11 @@ function search_and_replace_schema() {
 }
 
 /**
- * Add nid field to search_and_replace.
+ * Create table search_and_replace
  */
 function search_and_replace_update_7001() {
-  if (!db_field_exists('search_and_replace', 'nid')) {
-    $schema = search_and_replace_schema();
-    db_add_field('search_and_replace', 'nid', $schema['search_and_replace']['fields']['nid']);
-  }
+  db_create_table(
+    'search_and_replace',
+    drupal_get_schema_unprocessed('search_and_replace', 'search_and_replace')
+  );
 }
