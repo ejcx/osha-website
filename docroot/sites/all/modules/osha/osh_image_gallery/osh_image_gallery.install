@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Set module weight larger than views'.
+ */
+function osh_image_gallery_update_7001() {
+  db_update('system')
+    ->fields(array('weight' => 11))
+    ->condition('name', 'osh_image_gallery')
+    ->execute();
+}
