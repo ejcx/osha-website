@@ -1164,7 +1164,7 @@ function osha_events_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'shs',
+      'module' => 'multiple_selects',
       'settings' => array(
         'apply_chosen' => '',
         'shs' => array(
@@ -1175,7 +1175,7 @@ function osha_events_field_default_field_instances() {
           'use_chosen' => 'chosen',
         ),
       ),
-      'type' => 'taxonomy_shs',
+      'type' => 'multiple_selects',
       'weight' => 18,
     ),
   );
