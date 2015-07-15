@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Implements hook_install().
+ */
+function osh_image_gallery_install() {
+  osh_image_gallery_update_7001();
+}
+
+/**
  * Set module weight larger than views'.
  */
 function osh_image_gallery_update_7001() {
