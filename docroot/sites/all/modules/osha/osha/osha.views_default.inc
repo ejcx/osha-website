@@ -2601,5 +2601,489 @@ function osha_views_default_views() {
   );
   $export['data_export'] = $view;
 
+  $view = new view();
+  $view->name = 'hcw_data_export';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'HWC Data Export';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'HWC Data Export';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'items';
+  $handler->display->display_options['style_options']['top_child_object'] = 'item';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 1;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  /* Relationship: Field: Tags (field_tags) */
+  $handler->display->display_options['relationships']['field_tags_tid']['id'] = 'field_tags_tid';
+  $handler->display->display_options['relationships']['field_tags_tid']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['relationships']['field_tags_tid']['field'] = 'field_tags_tid';
+  $handler->display->display_options['relationships']['field_tags_tid']['required'] = TRUE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Updated date */
+  $handler->display->display_options['sorts']['changed']['id'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['table'] = 'node';
+  $handler->display->display_options['sorts']['changed']['field'] = 'changed';
+  $handler->display->display_options['sorts']['changed']['order'] = 'DESC';
+  /* Contextual filter: Content: Type */
+  $handler->display->display_options['arguments']['type']['id'] = 'type';
+  $handler->display->display_options['arguments']['type']['table'] = 'node';
+  $handler->display->display_options['arguments']['type']['field'] = 'type';
+  $handler->display->display_options['arguments']['type']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['type']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['type']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['type']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['type']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['type']['limit'] = '0';
+  /* Contextual filter: Taxonomy term: Code (field_tags_code) */
+  $handler->display->display_options['arguments']['field_tags_code_value']['id'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['table'] = 'field_data_field_tags_code';
+  $handler->display->display_options['arguments']['field_tags_code_value']['field'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['relationship'] = 'field_tags_tid';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tags_code_value']['limit'] = '0';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'export/list';
+
+  /* Display: Note to editor */
+  $handler = $view->new_display('page', 'Note to editor', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HCW Data Export - Note to editor';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'note_to_editor' => 'note_to_editor',
+  );
+  $handler->display->display_options['path'] = 'export/notetoeditor';
+
+  /* Display: Press Contact */
+  $handler = $view->new_display('page', 'Press Contact', 'page_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HCW Data Export - Press Contact';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'press_contact' => 'press_contact',
+  );
+  /* Filter criterion: Content: Type (field_contact_type) */
+  $handler->display->display_options['filters']['field_contact_type_tid']['id'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['table'] = 'field_data_field_contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['field'] = 'field_contact_type_tid';
+  $handler->display->display_options['filters']['field_contact_type_tid']['value'] = array(
+    2969 => '2969',
+  );
+  $handler->display->display_options['filters']['field_contact_type_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_contact_type_tid']['vocabulary'] = 'contact_type';
+  $handler->display->display_options['filters']['field_contact_type_tid']['hierarchy'] = 1;
+  $handler->display->display_options['path'] = 'export/presscontact';
+
+  /* Display: Additional resources */
+  $handler = $view->new_display('page', 'Additional resources', 'page_3');
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Entity Reference: Referencing entity */
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['id'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['table'] = 'node';
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['field'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['relationships']['reverse_field_aditional_resources_node']['required'] = TRUE;
+  /* Relationship: Field: Tags (field_tags) */
+  $handler->display->display_options['relationships']['field_tags_tid_1']['id'] = 'field_tags_tid_1';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['field'] = 'field_tags_tid';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['relationship'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['relationships']['field_tags_tid_1']['required'] = TRUE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = '';
+  $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Taxonomy term: Code (field_tags_code) */
+  $handler->display->display_options['arguments']['field_tags_code_value']['id'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['table'] = 'field_data_field_tags_code';
+  $handler->display->display_options['arguments']['field_tags_code_value']['field'] = 'field_tags_code_value';
+  $handler->display->display_options['arguments']['field_tags_code_value']['relationship'] = 'field_tags_tid_1';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_tags_code_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tags_code_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tags_code_value']['limit'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['relationship'] = 'reverse_field_aditional_resources_node';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'highlight' => 'highlight',
+    'news' => 'news',
+    'press_release' => 'press_release',
+    'publication' => 'publication',
+  );
+  $handler->display->display_options['path'] = 'export/list-additional-resources/%';
+  $translatables['hcw_data_export'] = array(
+    t('Master'),
+    t('HWC Data Export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('term from field_tags'),
+    t('All'),
+    t('Page'),
+    t('Note to editor'),
+    t('HCW Data Export - Note to editor'),
+    t('Press Contact'),
+    t('HCW Data Export - Press Contact'),
+    t('Additional resources'),
+    t('Content referencing Content from field_aditional_resources'),
+  );
+  $export['hcw_data_export'] = $view;
+
+  $view = new view();
+  $view->name = 'hcw_taxonomy_export';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'taxonomy_term_data';
+  $view->human_name = 'HCW taxonomy export';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'HCW taxonomy export';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_json';
+  $handler->display->display_options['style_options']['root_object'] = 'items';
+  $handler->display->display_options['style_options']['top_child_object'] = 'item';
+  $handler->display->display_options['style_options']['plaintext_output'] = 1;
+  $handler->display->display_options['style_options']['remove_newlines'] = 0;
+  $handler->display->display_options['style_options']['jsonp_prefix'] = '';
+  $handler->display->display_options['style_options']['using_views_api_mode'] = 0;
+  $handler->display->display_options['style_options']['object_arrays'] = 0;
+  $handler->display->display_options['style_options']['numeric_strings'] = 0;
+  $handler->display->display_options['style_options']['bigint_string'] = 0;
+  $handler->display->display_options['style_options']['pretty_print'] = 1;
+  $handler->display->display_options['style_options']['unescaped_slashes'] = 0;
+  $handler->display->display_options['style_options']['unescaped_unicode'] = 0;
+  $handler->display->display_options['style_options']['char_encoding'] = array();
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['label'] = 'tid';
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  /* Contextual filter: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['arguments']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['arguments']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['arguments']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['arguments']['machine_name']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['machine_name']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['machine_name']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['machine_name']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['machine_name']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['machine_name']['limit'] = '0';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'export/taxonomy';
+  $translatables['hcw_taxonomy_export'] = array(
+    t('Master'),
+    t('HCW taxonomy export'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('tid'),
+    t('.'),
+    t('All'),
+    t('Page'),
+  );
+  $export['hcw_taxonomy_export'] = $view;
+
+  $view = new view();
+  $view->name = 'media_browser_osha';
+  $view->description = 'Default view for the media browser library tab.';
+  $view->tag = 'media, default';
+  $view->base_table = 'file_managed';
+  $view->human_name = 'Media browser OSHA';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['group_by'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view files';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_tags'] = array(
+    0 => 'media_browser',
+  );
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['autosubmit_hide'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '25';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['style_plugin'] = 'media_browser';
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['content'] = 'No files available.';
+  $handler->display->display_options['empty']['area']['format'] = 'plain_text';
+  /* Field: File: Name */
+  $handler->display->display_options['fields']['filename']['id'] = 'filename';
+  $handler->display->display_options['fields']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['fields']['filename']['field'] = 'filename';
+  $handler->display->display_options['fields']['filename']['label'] = '';
+  $handler->display->display_options['fields']['filename']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['filename']['alter']['ellipsis'] = FALSE;
+  /* Sort criterion: File: Upload date */
+  $handler->display->display_options['sorts']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['table'] = 'file_managed';
+  $handler->display->display_options['sorts']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['sorts']['timestamp']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['timestamp']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['timestamp']['expose']['label'] = 'Upload date';
+  /* Sort criterion: SUM(File Usage: Use count) */
+  $handler->display->display_options['sorts']['count']['id'] = 'count';
+  $handler->display->display_options['sorts']['count']['table'] = 'file_usage';
+  $handler->display->display_options['sorts']['count']['field'] = 'count';
+  $handler->display->display_options['sorts']['count']['group_type'] = 'sum';
+  $handler->display->display_options['sorts']['count']['exposed'] = TRUE;
+  $handler->display->display_options['sorts']['count']['expose']['label'] = 'Use count';
+  /* Filter criterion: File: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: File: Name */
+  $handler->display->display_options['filters']['filename']['id'] = 'filename';
+  $handler->display->display_options['filters']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['filename']['field'] = 'filename';
+  $handler->display->display_options['filters']['filename']['operator'] = 'contains';
+  $handler->display->display_options['filters']['filename']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['filename']['expose']['operator_id'] = 'filename_op';
+  $handler->display->display_options['filters']['filename']['expose']['label'] = 'File name';
+  $handler->display->display_options['filters']['filename']['expose']['operator'] = 'filename_op';
+  $handler->display->display_options['filters']['filename']['expose']['identifier'] = 'filename';
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  /* Filter criterion: Field: Nace (field_nace_codes) */
+  $handler->display->display_options['filters']['field_nace_codes_tid']['id'] = 'field_nace_codes_tid';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['table'] = 'field_data_field_nace_codes';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['field'] = 'field_nace_codes_tid';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['operator_id'] = 'field_nace_codes_tid_op';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['label'] = 'Nace';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['operator'] = 'field_nace_codes_tid_op';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['identifier'] = 'field_nace_codes_tid';
+  $handler->display->display_options['filters']['field_nace_codes_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_nace_codes_tid']['vocabulary'] = 'nace_codes';
+  /* Filter criterion: Field: Tags (field_tags) */
+  $handler->display->display_options['filters']['field_tags_tid']['id'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['filters']['field_tags_tid']['field'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_tags_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['operator_id'] = 'field_tags_tid_op';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['operator'] = 'field_tags_tid_op';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['identifier'] = 'field_tags_tid';
+  $handler->display->display_options['filters']['field_tags_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_tags_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_tags_tid']['vocabulary'] = 'tags';
+  /* Filter criterion: Field: Thesaurus (field_thesaurus) */
+  $handler->display->display_options['filters']['field_thesaurus_tid']['id'] = 'field_thesaurus_tid';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['table'] = 'field_data_field_thesaurus';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['field'] = 'field_thesaurus_tid';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['operator_id'] = 'field_thesaurus_tid_op';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['label'] = 'Thesaurus';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['operator'] = 'field_thesaurus_tid_op';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['identifier'] = 'field_thesaurus_tid';
+  $handler->display->display_options['filters']['field_thesaurus_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+  );
+  $handler->display->display_options['filters']['field_thesaurus_tid']['vocabulary'] = 'thesaurus';
+
+  /* Display: Media browser */
+  $handler = $view->new_display('media_browser', 'Media browser', 'media_browser_osha');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'OSHA Library ';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+
+  /* Display: My files */
+  $handler = $view->new_display('media_browser', 'My files', 'media_browser_osha_my_files');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'My files (OSHA)';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['access'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'view own files';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: File: User who uploaded */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'file_managed';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: File: Status */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = array(
+    1 => '1',
+  );
+  /* Filter criterion: File: Name */
+  $handler->display->display_options['filters']['filename']['id'] = 'filename';
+  $handler->display->display_options['filters']['filename']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['filename']['field'] = 'filename';
+  $handler->display->display_options['filters']['filename']['operator'] = 'contains';
+  $handler->display->display_options['filters']['filename']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['filename']['expose']['operator_id'] = 'filename_op';
+  $handler->display->display_options['filters']['filename']['expose']['label'] = 'File name';
+  $handler->display->display_options['filters']['filename']['expose']['operator'] = 'filename_op';
+  $handler->display->display_options['filters']['filename']['expose']['identifier'] = 'filename';
+  /* Filter criterion: File: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'file_managed';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  /* Filter criterion: User: Current */
+  $handler->display->display_options['filters']['uid_current']['id'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['table'] = 'users';
+  $handler->display->display_options['filters']['uid_current']['field'] = 'uid_current';
+  $handler->display->display_options['filters']['uid_current']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid_current']['value'] = '1';
+  $translatables['media_browser_osha'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('No files available.'),
+    t('Upload date'),
+    t('Use count'),
+    t('File name'),
+    t('Type'),
+    t('Nace'),
+    t('Tags'),
+    t('Thesaurus'),
+    t('Media browser'),
+    t('OSHA Library '),
+    t('My files'),
+    t('My files (OSHA)'),
+    t('User who uploaded'),
+  );
+  $export['media_browser_osha'] = $view;
+
   return $export;
 }
