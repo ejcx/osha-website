@@ -118,8 +118,7 @@ function osha_blocks_default_fe_block_settings() {
       3 => 'fop_page',
       4 => 'infographic',
       5 => 'press_release',
-      6 => 'publication',
-      7 => 'seminar',
+      6 => 'seminar'
     ),
     'pages' => '',
     'roles' => array(),
