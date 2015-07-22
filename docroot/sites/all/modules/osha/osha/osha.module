@@ -474,17 +474,13 @@ function osha_entity_info_alter(&$entity_info) {
   );
 }
 
+function osha_enabled_language_list() {
+  return array('en','bg','cs','da','de','el','es','et','fi','hr','fr','hu','is','it','lv','lt','nl','mt','no','pl','pt','ro','sk','sl','sv');
+}
+
 function osha_disabled_language_list() {
-  $disabled = array(
-    'ru',
-    'tr',
-    'sq',
-    'bs',
-    'sr',
-    'mk',
-    'sh',
-  );
-  return drupal_map_assoc($disabled);
+  $disabled = array_diff_key(language_list(), drupal_map_assoc(osha_enabled_language_list()));
+  return drupal_map_assoc(array_keys($disabled));
 }
 
 /**
@@ -497,13 +493,7 @@ function osha_disabled_language_list() {
  *   of language objects.
  */
 function osha_language_list($osha_sorted = FALSE) {
-  $languages = language_list();
-  $disabled_lang = osha_disabled_language_list();
-  foreach ($languages as $lang => $language) {
-    if (in_array($lang, $disabled_lang)) {
-      unset($languages[$lang]);
-    }
-  }
+  $languages = array_intersect_key(language_list(), drupal_map_assoc(osha_enabled_language_list()));
   if ($osha_sorted) {
     $languages = osha_sort_language_list($languages);
   }
