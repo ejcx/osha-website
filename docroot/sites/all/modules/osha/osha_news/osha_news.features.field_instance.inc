@@ -175,6 +175,7 @@ function osha_news_field_default_field_instances() {
         'module' => 'entityreference',
         'settings' => array(
           'links' => 0,
+          'use_content_language' => TRUE,
           'view_mode' => 'osha_resources',
         ),
         'type' => 'entityreference_entity_view',
@@ -232,7 +233,10 @@ function osha_news_field_default_field_instances() {
         'allow_duplicates' => 0,
         'close_modal' => 0,
         'pass_argument' => 0,
+        'pass_arguments' => '',
+        'rendered_entity' => FALSE,
         'view' => 'aditional_resources|entityreference_view_widget_1',
+        'view_mode' => FALSE,
       ),
       'type' => 'entityreference_view_widget',
       'weight' => 23,
@@ -820,9 +824,11 @@ function osha_news_field_default_field_instances() {
           'more_text' => 'Read more',
           'summary_handler' => 'full',
           'trim_length' => 250,
+          'trim_link' => FALSE,
           'trim_options' => array(
             'text' => 'text',
           ),
+          'trim_preserve_tags' => '',
           'trim_suffix' => '...',
           'trim_type' => 'chars',
         ),
@@ -1112,13 +1118,13 @@ function osha_news_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Activity');
   t('Additional resources');
-  t('Archived');
   t('Automatically calculated when saving. The count of characters found in the default language text (English).');
   t('Automatically calculated when saving. The count of pages of text in the default language (English).');
   t('Body');
   t('Character count');
   t('Expiration date');
   t('Image');
+  t('Marked as outdated');
   t('Page count');
   t('Publication date');
   t('Summary');
