@@ -14,7 +14,9 @@
 #edit-changed-wrapper label:first-child {
   display: block;
 }
-
+form.node-external_url-form #edit-field-external-url div.form-type-link-field > div.description {
+  color: #F00;
+}
 
 .view-id-tmgmt_node_selection_view div.sort-by-wrapper {
   clear: both;

@@ -62,7 +62,7 @@ function osha_resources_field_default_field_instances() {
     'bundle' => 'external_url',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Please make sure to add translations and change the title and URL in other languages, if needed.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -118,6 +118,7 @@ function osha_resources_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
+        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => '_blank',
@@ -135,7 +136,7 @@ function osha_resources_field_default_field_instances() {
       ),
       'rel_remove' => 'default',
       'title' => 'optional',
-      'title_label_use_field_label' => FALSE,
+      'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -149,6 +150,7 @@ function osha_resources_field_default_field_instances() {
       'type' => 'link_field',
       'weight' => 42,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-external_url-field_page_count'
@@ -1198,6 +1200,7 @@ function osha_resources_field_default_field_instances() {
   t('File');
   t('Flickr');
   t('Page count');
+  t('Please make sure to add translations and change the title and URL in other languages, if needed.');
   t('Slideshare');
   t('Title');
   t('Youtube');
