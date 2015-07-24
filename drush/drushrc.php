@@ -399,6 +399,7 @@ $options['init-modules'] = array(
   'workbench',
   'workbench_access',
   'workbench_moderation',
+  'node_revision_delete',
 
   // print and generate pdf - per node action
   'print',
