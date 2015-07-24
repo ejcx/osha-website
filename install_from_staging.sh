@@ -11,7 +11,7 @@ if [ ${ecode} != 0 ]; then
 fi
 
 pre_update=  post_update=
-while getopts b:a: opt; do
+while getopts b:a:f opt; do
   case $opt in
   b)
       pre_update=$OPTARG
@@ -19,6 +19,7 @@ while getopts b:a: opt; do
   a)
       post_update=$OPTARG
       ;;
+  f) files="files"
   esac
 done
 
@@ -69,7 +70,7 @@ fi
 
 if [ ! -z "$files" ]; then
 echo "Run drush rsync"
-drush rsync @napo.staging:%files @self:%files -y
+drush rsync @osha.staging:%files @self:%files -y
 fi
 
 if [ ! -z "$post_update" ]; then

@@ -527,6 +527,22 @@ $options['disable-modules'] = array(
   'varnish', 'memcache_storage'
 );
 
+$command_specific['sql-sync'] = array(
+  'structure-tables-list' => 'cache*,history,sessions,watchdog,ctools_css_cache,ctools_object_cache'
+);
+
+$command_specific['sql-dump'] = array(
+  'structure-tables-list' => 'cache*,history,sessions,watchdog,ctools_css_cache,ctools_object_cache'
+);
+
+$command_specific['core-rsync'] = array(
+);
+
+// Exclude domains symlinks from archive-dump
+$command_specific['archive-dump'] = array(
+  'tar-options' => ' --exclude=sites/default/files',
+);
+
 // Add specific settings for development or demo.
 $command_specific['devify'] = array(
   'enable-modules' => array(
