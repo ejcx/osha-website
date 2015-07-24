@@ -61,6 +61,17 @@ if [ ${ecode} != 0 ]; then
   exit ${ecode};
 fi
 
+drush devify_ldap
+if [ ${ecode} != 0 ]; then
+  echo "devify_ldap has returned an error"
+  exit ${ecode};
+fi
+
+if [ ! -z "$files" ]; then
+echo "Run drush rsync"
+drush rsync @napo.staging:%files @self:%files -y
+fi
+
 if [ ! -z "$post_update" ]; then
   echo "Run post update"
   ../$post_update
