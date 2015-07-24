@@ -501,6 +501,10 @@ function osha_alert_service_token_info() {
     'name' => t('Unsubscribe Link'),
     'description' => t('Link to unsubscribe confirmation page.'),
   );
+  $alert['alert_edit_link'] = array(
+    'name' => t('Alert edit link'),
+    'description' => t('Link to edit alert page.'),
+  );
   $alert['alert_content'] = array(
     'name' => t('Content of the alert'),
     'description' => t('The html list of content.'),

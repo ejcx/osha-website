@@ -128,6 +128,30 @@ function osha_alert_service_subscribe_form() {
     '#type' => 'item',
     '#markup' => t('If you would like to unsubscribe, please use the unsubscribe link from the footer of an alert sent to you.'),
   );
+
+  if (!empty($_GET['token'])) {
+    $alert = osha_alert_service_osha_alert_service_load_by_token($_GET['token']);
+    if (!empty($alert)) {
+      // Set stored values.
+      $filters = json_decode($alert->filters, TRUE);
+      $form['section']['#default_value'] = $filters['section'];
+      $form['languages']['#default_value'] = $filters['languages'];
+      $form['type']['#default_value'] = $filters['type'];
+      $form['schedule']['#default_value'] = $alert->schedule;
+      $form['email']['#default_value'] = $alert->email;
+      $form['email']['#attributes']['readonly'] = 'readonly';
+
+      $form['token'] = array(
+        '#type' => 'hidden',
+        '#value' => $_GET['token'],
+      );
+    }
+    else {
+      drupal_set_message(t('Alert not found. Please create one!'), 'warning');
+      drupal_goto('alertservice');
+    }
+  }
+
   return $form;
 }
 
@@ -156,33 +180,46 @@ function osha_alert_service_subscribe_form_submit($form, $form_state) {
   );
   $created = time();
   $email = $values['email'];
-  $token = sha1('TIMESTAMP:' . $created);
-  $entity = entity_create(
-    'osha_alert_service',
-    array(
-      'email' => $email,
-      'filters' => json_encode($filters),
-      'schedule' => $values['schedule'],
-      'created' => $created,
-      'token' => $token,
-      'confirmed' => 0,
-      'last_alert' => $created,
-    )
-  );
-  entity_save('osha_alert_service', $entity);
-  drupal_set_message(t('Your request has been registered. Please check your email for further instructions'));
+  // If token present, than try find the existing alert.
+  if (!empty($values['token']) && $entity = osha_alert_service_osha_alert_service_load_by_token($values['token'])) {
+    $token = $values['token'];
+    $entity->filters = json_encode($filters);
+    $entity->schedule = $values['schedule'];
+    $entity->changed = time();
+    entity_save('osha_alert_service', $entity);
+    drupal_set_message(t('Your alert settings have been changed.'));
+  }
+  else {
+    // Create alert
+    $token = sha1('TIMESTAMP:' . $created);
+    $entity = entity_create(
+      'osha_alert_service',
+      array(
+        'email' => $email,
+        'filters' => json_encode($filters),
+        'schedule' => $values['schedule'],
+        'created' => $created,
+        'token' => $token,
+        'confirmed' => 0,
+        'last_alert' => $created,
+      )
+    );
+    entity_save('osha_alert_service', $entity);
+    drupal_set_message(t('Your request has been registered. Please check your email for further instructions'));
 
-  global $language;
-  $params = array(
-    'osha_alert_service' => $entity,
-    'language' => $language->language,
-  );
-  drupal_mail('osha_alert_service', 'subscribe', $email, $language->language, $params);
+    global $language;
+    $params = array(
+      'osha_alert_service' => $entity,
+      'language' => $language->language,
+    );
+    drupal_mail('osha_alert_service', 'subscribe', $email, $language->language, $params);
+  }
+
   // Subscribe to OSHMail
   if ($values['newsletter']) {
     osha_newsletter_block_subscribe_captcha_form_submit($form, $form_state);
   }
-  drupal_goto('<front>');
+  drupal_goto('alertservice', array('query' => array('token' => $token)));
 }
 
 /**
