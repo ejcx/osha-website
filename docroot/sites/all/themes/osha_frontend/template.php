@@ -442,10 +442,49 @@ function osha_frontend_pager($variables) {
   return theme_pager($variables);
 }
 
-/**
- * @todo @Ivan: Edit only below
- */
+function osha_frontend_node_bundle($row) {
+    if (!empty($row->_entity_properties['entity object']->type)) {
+        return $row->_entity_properties['entity object']->type;
+    }
+    return NULL;
+}
 
-/**
- * @todo @Ivan: Do not go below this line
- */
+function osha_frontend_node_title($row) {
+    return _osha_frontend_get_field_value($row, 'title_field', 'value');
+}
+
+function osha_frontend_external_resource_url($row) {
+    $bundle = osha_frontend_node_bundle($row);
+    if ($bundle == 'slideshare') {
+        return _osha_frontend_get_field_value($row, 'field_slideshare', 'slide_url');
+    } else if ($bundle == 'youtube') {
+        return _osha_frontend_get_field_value($row, 'field_youtube', 'input');
+    } else if ($bundle == 'external_url') {
+        return _osha_frontend_get_field_value($row, 'field_external_url', 'url');
+    } else if ($bundle == 'flickr') {
+        $type = _osha_frontend_get_field_value($row, 'field_flickr', 'type');
+        $id = _osha_frontend_get_field_value($row, 'field_flickr', 'id');
+        if ($type == 'photo_id') {
+            $photo_data = flickr_photo_get_info($id);
+            return $photo_data['urls']['url'][0]['_content'];
+        } else if ($type == 'id') {
+            $photo_data = flickr_photoset_get_info($id);
+            return flickr_photoset_page_url($photo_data['owner'], $photo_data['id']);
+        }
+    }
+    return NULL;
+}
+
+function _osha_frontend_get_field_value($row, $field1, $field2) {
+    if (!empty($row->_entity_properties['entity object']->$field1)) {
+        $field_obj = $row->_entity_properties['entity object']->$field1;
+        global $language;
+        $lang = $language->language;
+        if (!empty($field_obj[$language->language][0][$field2])) {
+          return $field_obj[$language->language][0][$field2];
+        } else if (!empty($field_obj['en'][0][$field2])) {
+          return $field_obj['en'][0][$field2];
+        }
+    }
+    return NULL;
+}
