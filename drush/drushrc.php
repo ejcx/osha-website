@@ -501,6 +501,7 @@ $options['init-modules'] = array(
   'captcha',
   'recaptcha',
   'image_captcha',
+  'eu_captcha',
   'spamspan',
 
   // Social share
