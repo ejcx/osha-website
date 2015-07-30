@@ -14,7 +14,7 @@ function osha_seminar_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_seminar';
-  $strongarm->value = 0;
+  $strongarm->value = '0';
   $export['comment_anonymous_seminar'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -220,6 +220,20 @@ function osha_seminar_strongarm() {
   $strongarm->name = 'node_preview_seminar';
   $strongarm->value = '1';
   $export['node_preview_seminar'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_revision_delete_number_seminar';
+  $strongarm->value = '50';
+  $export['node_revision_delete_number_seminar'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_revision_delete_track_seminar';
+  $strongarm->value = 1;
+  $export['node_revision_delete_track_seminar'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
