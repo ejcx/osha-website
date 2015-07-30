@@ -46,3 +46,21 @@ function osha_legislation_add_menu_position_search() {
     osha_add_menu_position_rule('Directive Menu Rule', $parent_menu, $condition);
   }
 }
+
+
+/**
+ * Configure info block for legislation
+ */
+function osha_legislation_update_7003() {
+  db_delete('context_visibility_context')
+    ->condition('delta', 'osha_legislation_notification')
+    ->execute();
+
+  // CW-1077
+  db_insert('context_visibility_context')
+    ->fields(array(
+      'module' => 'osha_blocks',
+      'delta' => 'osha_legislation_notification',
+      'context' => 'context_legislation',
+    ))->execute(); 
+}
