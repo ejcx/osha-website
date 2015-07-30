@@ -1003,7 +1003,6 @@ function osha_expire_page($path) {
  */
 function osha_pathologic_alter(&$url_params, $parts, $settings) {
   if (preg_match('/^fop\//m', $url_params['path'])) {
-    dpm($url_params['path']);
     $url_params['options']['use_original'] = TRUE;
   }
 }
