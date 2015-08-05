@@ -106,7 +106,6 @@ function osha_nodequeue_workbench_moderation_transition($node, $previous_state, 
       $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
       $subqueue = array_shift($subqueues);
       if($new_state != 'published' && count($nodes)) {
-        //nodequeue_subqueue_add($queue, $subqueue, $node->nid);
         nodequeue_subqueue_remove_node($subqueue->sqid, $node->nid);
       }
     }
