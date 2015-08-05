@@ -99,7 +99,7 @@ function osha_nodequeue_node_insert($node) {
 function osha_nodequeue_workbench_moderation_transition($node, $previous_state, $new_state){
   $qids = _osha_nodequeue_get_auto_qids($node->type, FALSE);
   $nodes = _osha_nodequeue_get_auto_qids($node->type, $node->nid);
-
+  
   if(!empty($qids)) {
     $queues = nodequeue_load_queues($qids);
     foreach ($queues as $queue) {
@@ -107,9 +107,22 @@ function osha_nodequeue_workbench_moderation_transition($node, $previous_state, 
       $subqueue = array_shift($subqueues);
       if($new_state != 'published' && count($nodes)) {
         nodequeue_subqueue_remove_node($subqueue->sqid, $node->nid);
+      }elseif($new_state == 'published' && !_osha_nodequeue_node_has_published($node) && !count($nodes)){
+        nodequeue_subqueue_add($queue, $subqueue, $node->nid);
       }
     }
   }
+}
+
+function _osha_nodequeue_node_has_published($node){
+  $query = db_select('workbench_moderation_node_history', 'W');
+  $query->fields('W', array('nid'));
+  $query->condition('nid', $node->nid);
+  $query->condition('state', 'published');
+  $query->condition('current', 0);
+  $results = $query->execute()->fetchAssoc();
+
+  return $results;
 }
 
 /**
