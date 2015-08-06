@@ -65,33 +65,25 @@ function osha_nodequeue_nodequeue_edit_queue_form_submit($form, &$form_state) {
  * Add nodes to any queue they're assigned to on insertion
  */
 function osha_nodequeue_node_insert($node) {
-  if (isset($node->queues)) {
-    $qids = array();
-    foreach ($node->queues as $qid => $checked) {
-      if ($checked) {
-        $qids[] = $qid;
-      }
-    }
-
-    if (count($qids)) {
-      $queues = nodequeue_load_queues($qids);
-      foreach ($queues as $queue) {
-        if ($queue->owner == 'smartqueue_taxonomy') {
-          if (module_exists('smartqueue')) {
-            $refs = smartqueue_taxonomy_nodequeue_subqueues($queue, $node);
-            $references = array($queue->qid => $refs);
-            $smartqueues = nodequeue_load_subqueues_by_reference($references);
-            foreach ($smartqueues as $smartqueue) {
-              nodequeue_subqueue_add($queue, $smartqueue, $node->nid);
-            }
+  $qids = _osha_nodequeue_get_auto_qids($node->type, 0);
+  if (count($qids)) {
+    $queues = nodequeue_load_queues($qids);
+    foreach ($queues as $queue) {
+      if ($queue->owner == 'smartqueue_taxonomy') {
+        if (module_exists('smartqueue')) {
+          $refs = smartqueue_taxonomy_nodequeue_subqueues($queue, $node);
+          $references = array($queue->qid => $refs);
+          $smartqueues = nodequeue_load_subqueues_by_reference($references);
+          foreach ($smartqueues as $smartqueue) {
+            nodequeue_subqueue_add($queue, $smartqueue, $node->nid);
           }
         }
-        else {
-          $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
-          $subqueue = array_shift($subqueues);
-          if($node->status == 1) { // Add to queue only the published nodes
-            nodequeue_subqueue_add($queue, $subqueue, $node->nid);
-          }
+      }
+      else {
+        $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
+        $subqueue = array_shift($subqueues);
+        if($node->status == 1) { // Add to queue only the published nodes
+          nodequeue_subqueue_add($queue, $subqueue, $node->nid);
         }
       }
     }
@@ -113,13 +105,39 @@ function osha_nodequeue_workbench_moderation_transition($node, $previous_state, 
     foreach ($queues as $queue) {
       $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
       $subqueue = array_shift($subqueues);
-      if($new_state == 'published' && !count($nodes)) {
-        nodequeue_subqueue_add($queue, $subqueue, $node->nid);
-      }else {
+      if ($previous_state == 'published' && count($nodes) && !_osha_nodequeue_node_is_published($node)) {
+        // if the node is published (has a live revision), remove it from queue
         nodequeue_subqueue_remove_node($subqueue->sqid, $node->nid);
+      } else if ($new_state == 'published' && !_osha_nodequeue_node_has_been_published($node) && !count($nodes)){
+        nodequeue_subqueue_add($queue, $subqueue, $node->nid);
       }
     }
   }
+}
+
+/**
+ * Returns non-empty array if the node has been published at least once
+ */
+function _osha_nodequeue_node_has_been_published($node){
+  $query = db_select('workbench_moderation_node_history', 'W');
+  $query->fields('W', array('nid'));
+  $query->condition('nid', $node->nid);
+  $query->condition('state', 'published');
+  $query->condition('current', 0);
+  $results = $query->execute()->fetchAssoc();
+
+  return $results;
+}
+
+/**
+ * Returns the number of published revisions for this node
+ */
+function _osha_nodequeue_node_is_published($node){
+  $query = db_select('workbench_moderation_node_history', 'W');
+  $query->fields('W', array('vid'));
+  $query->condition('nid', $node->nid);
+  $query->condition('published', 1);
+  return $query->execute()->rowCount();
 }
 
 /**
