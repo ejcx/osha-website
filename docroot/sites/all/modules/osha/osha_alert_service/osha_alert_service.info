@@ -36,4 +36,5 @@ features[views_view][] = latest_items_rss_
 features_exclude[dependencies][context] = context
 features_exclude[dependencies][osha_blog] = osha_blog
 files[] = osha_alert_service.translate.inc
+files[] = osha_alert_service.forms.inc
 mtime = 1424888658

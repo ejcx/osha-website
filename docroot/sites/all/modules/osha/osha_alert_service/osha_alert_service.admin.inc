@@ -52,6 +52,27 @@ EOT
     )
   );
 
+  $form['osha_alert_service_mail']['osha_alert_service_edit_info_subject'] = array(
+    '#title' => 'Edit alerts email subject',
+    '#type' => 'textfield',
+    '#default_value' => variable_get('osha_alert_service_edit_info_subject',
+      'Information about your subscriptions to EU-OSHA alert service'),
+  );
+  $form['osha_alert_service_mail']['osha_alert_service_edit_info_body'] = array(
+    '#title' => t('Edit alerts email body'),
+    '#type' => 'textarea',
+    '#default_value' => variable_get('osha_alert_service_edit_info_body',
+<<<EOT
+<p>You have requested information about alerts registered for <strong>[osha_alert_service:email]</strong>.</p>
+[osha_alert_service:subscriptions]
+<p>If you did not initiate this request or believe it was sent in error you can safely ignore this message.</p>
+
+<p>Thanks,</p>
+<p><strong>The EU-OSHA alerts Team</strong></p>
+EOT
+    )
+  );
+
   if (module_exists('token')) {
     $form['tokens'] = array(
       '#title' => 'Replacement tokens',

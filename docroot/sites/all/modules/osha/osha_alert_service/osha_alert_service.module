@@ -49,6 +49,27 @@ function osha_alert_service_osha_alert_service_load_by_token($token) {
 }
 
 /**
+ * Load a single entity of type osha_alert_service by its token.
+ *
+ * @param string $email
+ *   Email.
+ *
+ * @return mixed
+ *   An array of entity objects indexed by their ids. When no results are
+ *   found, an empty array is returned.
+ */
+function osha_alert_service_osha_alert_service_load_by_email($email) {
+  $query = db_select('osha_alert_service', 's')
+    ->fields('s', array('id'))
+    ->condition('email', $email);
+  $ids = $query->execute()->fetchCol(0);
+  if (!empty($ids)) {
+    return entity_load('osha_alert_service', $ids);
+  }
+  return NULL;
+}
+
+/**
  * Implements hook_menu().
  */
 function osha_alert_service_menu() {
@@ -60,6 +81,14 @@ function osha_alert_service_menu() {
     'access arguments' => array('access content'),
     'type' => MENU_LOCAL_TASK,
     'weight' => -12,
+    'file' => 'osha_alert_service.forms.inc',
+  );
+  $menu['alertservice/edit'] = array(
+    'title' => 'Edit your subscription',
+    'description' => 'Edit subscription',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('osha_alert_service_edit_form'),
+    'access arguments' => array('access content'),
     'file' => 'osha_alert_service.forms.inc',
   );
   $menu['alertservice/remove_alert'] = array(
@@ -312,6 +341,20 @@ EOT;
       $message['subject'] = variable_get('osha_alert_service_alert_subject', 'EU-OSHA alert');
       $body = variable_get('osha_alert_service_alert_body', 'EU-OSHA alert');
       break;
+
+    case 'edit':
+      $message['subject'] = variable_get('osha_alert_service_edit_info_subject', 'Information about your subscriptions to EU-OSHA alert service');
+      $body = variable_get('osha_alert_service_edit_info_body',
+        <<<EOT
+        <p>You have requested information about alerts registered for <strong>[osha_alert_service:email]</strong>.</p>
+        [osha_alert_service:subscriptions]
+<p>If you did not initiate this request or believe it was sent in error you can safely ignore this message.</p>
+
+<p>Thanks,</p>
+<p><strong>The EU-OSHA alerts Team</strong></p>
+EOT
+      );
+      break;
   }
   $message['subject'] = token_replace($message['subject'], $params);
   $message['body'][] = token_replace($body, $params);
@@ -513,6 +556,10 @@ function osha_alert_service_token_info() {
     'name' => t('URL to Privacy Policy Page'),
     'description' => t('URL to Privacy Policy Page'),
   );
+  $alert['osha_subscriptions'] = array(
+    'name' => t('Subscriptions'),
+    'description' => t('Alerts registered for a specified email address.'),
+  );
   $info['tokens']['osha_alert_service'] = $alert;
   return $info;
 }
@@ -529,17 +576,23 @@ function osha_alert_service_tokens($type, $tokens, array $data = array(), array 
       switch ($name) {
         // Simple key values on the node.
         case 'subscribe_conf_link':
-          $replacements[$original] = $base_url
-            . '/en/alertservice/verify_alert?token=' . $entity->token;
+          $replacements[$original] = url('alertservice/verify_alert', array('query' => array('token' => $entity->token), 'absolute' => TRUE));
           break;
 
         case 'unsubscribe_link':
-          $replacements[$original] = $base_url
-            . '/en/alertservice/remove_alert?token=' . $entity->token;
+          $replacements[$original] = url('alertservice/remove_alert', array('query' => array('token' => $entity->token), 'absolute' => TRUE));
           break;
 
         case 'alert_content':
           $replacements[$original] = $data['view'];
+          break;
+
+        case 'alert_edit_link':
+          $replacements[$original] = url('alertservice', array('query' => array('token' => $entity->token), 'absolute' => TRUE));
+          break;
+
+        case 'subscriptions':
+          $replacements[$original] = osha_alert_service_subscriptions_text($data['osha_subscriptions']);
           break;
 
         case 'privacy_policy_url':
@@ -586,4 +639,51 @@ if (!function_exists('entity_bundle_label')) {
     }
     return $labels[$entity_type][$bundle_name];
   }
+}
+
+function osha_alert_service_subscriptions_text($alerts) {
+  $texts = array();
+  foreach ($alerts as $alert) {
+    $texts[] = l(osha_alert_service_alert_summary($alert), 'alertservice', array('query' => array('token' => $alert->token), 'absolute' => TRUE));
+  }
+  $variables = array(
+    'title' => '',
+    'items' => $texts,
+    'type' => 'ul',
+    'attributes' => array(),
+  );
+
+  return theme_item_list($variables);
+}
+
+function osha_alert_service_alert_summary($alert) {
+  $text = array();
+  $text []= t('!schedule alert created on !created', array('!schedule' => $alert->schedule, '!created' => date('d-m-Y', $alert->created)));
+
+  $filters = json_decode($alert->filters, TRUE);
+
+  $all_types = node_type_get_types();
+  foreach ($filters['type'] as $machine_name) {
+    $types[$machine_name] = t($all_types[$machine_name]->name);
+  }
+  if (!empty($types)) {
+    $text []= t('for types: !types', array('!types' => implode(', ', $types)));
+  }
+  $tags = taxonomy_term_load_multiple($filters['section']);
+  if (!empty($tags)) {
+    $terms = array();
+    foreach ($tags as $tag) {
+      $terms[] = $tag->name;
+    }
+    $text []= t('with subjects: !subjects', array('!subjects' => implode(', ', $terms)));
+  }
+
+  if (!empty($alert->changed)) {
+    $text []= t('changed on !changed', array('!changed' => date('d-m-Y', $alert->changed)));
+  }
+  if (!empty($alert->last_alert)) {
+    $text []= t('last sent on !sent', array('!sent' => date('d-m-Y', $alert->last_alert)));
+  }
+
+  return implode(', ', $text);
 }
