@@ -99,22 +99,26 @@ function osha_nodequeue_node_insert($node) {
 function osha_nodequeue_workbench_moderation_transition($node, $previous_state, $new_state){
   $qids = _osha_nodequeue_get_auto_qids($node->type, FALSE);
   $nodes = _osha_nodequeue_get_auto_qids($node->type, $node->nid);
-  
+
   if(!empty($qids)) {
     $queues = nodequeue_load_queues($qids);
     foreach ($queues as $queue) {
       $subqueues = nodequeue_load_subqueues_by_queue($queue->qid);
       $subqueue = array_shift($subqueues);
-      if($new_state != 'published' && count($nodes)) {
+      if ($previous_state == 'published' && count($nodes) && !_osha_nodequeue_node_is_published($node)) {
+        // if the node is published (has a live revision), remove it from queue
         nodequeue_subqueue_remove_node($subqueue->sqid, $node->nid);
-      }elseif($new_state == 'published' && !_osha_nodequeue_node_has_published($node) && !count($nodes)){
+      } else if ($new_state == 'published' && !_osha_nodequeue_node_has_been_published($node) && !count($nodes)){
         nodequeue_subqueue_add($queue, $subqueue, $node->nid);
       }
     }
   }
 }
 
-function _osha_nodequeue_node_has_published($node){
+/**
+ * Returns non-empty array if the node has been published at least once
+ */
+function _osha_nodequeue_node_has_been_published($node){
   $query = db_select('workbench_moderation_node_history', 'W');
   $query->fields('W', array('nid'));
   $query->condition('nid', $node->nid);
@@ -123,6 +127,17 @@ function _osha_nodequeue_node_has_published($node){
   $results = $query->execute()->fetchAssoc();
 
   return $results;
+}
+
+/**
+ * Returns the number of published revisions for this node
+ */
+function _osha_nodequeue_node_is_published($node){
+  $query = db_select('workbench_moderation_node_history', 'W');
+  $query->fields('W', array('vid'));
+  $query->condition('nid', $node->nid);
+  $query->condition('published', 1);
+  return $query->execute()->rowCount();
 }
 
 /**
