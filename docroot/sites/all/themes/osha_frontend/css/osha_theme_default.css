@@ -3044,7 +3044,7 @@ font-weight: normal;
     color: #003399;
     float: none;
     font-family: "Open Sans Condensed",sans-serif;
-    font-size: 1.2em;
+    font-size: 1.5em;
     font-weight: bold;
     margin-top: 0.5em;
     padding-bottom: 0.2em;
@@ -4238,6 +4238,10 @@ and (max-width: 1237px) {
 	width:100%;
 }
 
+#block-views-exp-search-directives-page .form-item.form-type-select.form-item-f-0 select{
+	width: 93%!important;
+}
+
 .node-seminar header h2 {
 	background: none repeat scroll 0 0 #FFFFFF!important;
 	padding-left:0;
@@ -4626,10 +4630,11 @@ article.node-press-release .field-name-body.field-type-text-with-summary p{
 	color: #003399!important;
 	font-family: 'Open Sans Condensed',sans-serif!important;
 	border-bottom: 0px!important;
-	font-size: 1.4em;
+	font-size: 1.5em;
 	font-weight: 300;
 	letter-spacing: -0.75px;
 	padding-bottom: 0.5em;
+	font-weight: bold;
 }
 
 
@@ -4725,7 +4730,7 @@ article.node-guideline ul li{
 	padding:0em;
 }
 
-article.node-guideline ul li a{
+article.node-guideline ul li.node-readmore a{
 	background: url("../images/flecha.png") no-repeat scroll right 50% transparent;
 	color: #003399;
 	float: right;
@@ -8170,4 +8175,59 @@ body.page-entity-collection h1#page-title{
 
 .page-about-eu-osha-procurement .view-header , .node-type-press-release .view-header{
 	  margin-top: 0em;
+}
+
+
+
+
+/*NEW CAPTCHA*/
+
+.captcha .form-type-textfield label{
+	clear:both;
+	font-weight: normal;
+}
+ .captchaContainer .captchaReadAudio{
+	margin-top: 0px!important;
+	border-bottom: 0px!important;
+}
+
+ .captchaContainer .captchaRefresh{
+	margin-top: -7px!important;
+	border-bottom: 0px!important;
+	display: block;
+}
+
+/*NEW CAPTCHA HOME*/
+#block-osha-newsletter-osha-newsletter-subscribe .captchaContainer .captchaReadAudio{
+	float: left;
+    margin-top: 10px!important;
+    border-bottom: 0px!important;
+    margin-right: 5px!important;
+}
+
+#block-osha-newsletter-osha-newsletter-subscribe .captchaContainer .captchaRefresh{
+	float: left;
+    margin-top: 10px!important;
+    border-bottom: 0px!important;
+}
+
+#block-osha-newsletter-osha-newsletter-subscribe .captcha .form-type-textfield input{
+	margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#block-osha-newsletter-osha-newsletter-subscribe .captcha .form-type-textfield label{
+	font-size: 1.3em!important;
+}
+
+#block-osha-newsletter-osha-newsletter-subscribe .captcha .form-type-textfield .description{
+ 	font-size: 1.3em!important;
+}
+
+
+/*NOTES TO EDITOR*/
+
+.field-name-field-pr-notes-to-editor .field-items .field-item span{
+	color:#003399;
+	font-weight: bold;
 }

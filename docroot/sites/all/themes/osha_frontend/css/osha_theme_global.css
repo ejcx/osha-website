@@ -368,6 +368,7 @@ body {
 /* Title of the news */
 .view-id-highlight .view-content table tbody tr td .views-field-title {
 	height: auto;
+	min-height: auto;
 }
 /* Summary of the news */
 .view-id-highlight .view-content table tbody tr td .views-field-field-summary {
