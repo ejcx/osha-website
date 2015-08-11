@@ -173,6 +173,9 @@ function osha_publication_strongarm() {
         'metatags' => array(
           'weight' => '22',
         ),
+        'xmlsitemap' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
