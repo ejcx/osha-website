@@ -41,7 +41,7 @@ function osha_alert_service_subscribe_form($form, &$form_state) {
 
   $form['edit_alerts'] = array(
     '#type' => 'item',
-    '#markup' => t('If you are already subscribe and you want to edit your subscription, please use <a href="!link">this edit link</a>.', array('!link' => url('alertservice/edit'))),
+    '#markup' => t('If you are already subscribed and you want to edit your subscription, please use <a href="@link">this edit link</a>.', array('@link' => url('alertservice/edit'))),
   );
 
   $form['email'] = array(
@@ -154,11 +154,16 @@ function osha_alert_service_subscribe_form($form, &$form_state) {
       $form['actions']['submit']['#value'] = t('Update subscription');
       $form['actions']['cancel'] = array(
         '#type' => 'markup',
-        '#markup' => l(t('Cancel'), 'alertservice'),
+        '#markup' => l(t('Cancel'), 'alertservice', array(
+            'attributes' => array('class' => array('alert-service-cancel'))
+        )),
       );
       $form['actions']['unsubscribe'] = array(
         '#type' => 'markup',
-        '#markup' => l(t('Unsubscribe'), 'alertservice/remove_alert', array('query' => array('token' => $alert->token))),
+        '#markup' => l(t('Unsubscribe'), 'alertservice/remove_alert', array(
+            'query' => array('token' => $alert->token),
+            'attributes' => array('class' => array('alert-service-unsubscribe')),
+        ))
       );
 
       // Hide the unsubscribe message.
