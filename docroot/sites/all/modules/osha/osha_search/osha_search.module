@@ -78,6 +78,9 @@ function osha_search_search_api_solr_query_alter(array &$call_args, SearchApiQue
   // Replace % with * to handle requested widlcard % (non-existing in solr).
   if (!empty($call_args['query'])) {
     $call_args['query'] = str_replace('%', '*', $call_args['query']);
+  }else{
+    // Sort by publication date for empty query
+    $call_args['params']['sort'] = 'ds_field_publication_date desc';
   }
   // Handle special chars query.
   $special_chars = variable_get('search_solr_custom_special_chars',
@@ -403,6 +406,41 @@ function osha_search_facetapi_widgets() {
       ),
     ),
   );
+}
+
+function osha_search_facet_items_alter(&$build, &$settings) {
+  if ($settings->facet == "type") {
+    $adapter = facetapi_adapter_load($settings->searcher);
+    $facet = facetapi_facet_load($settings->facet, $settings->searcher);
+    $items = $adapter->getActiveItems($facet);
+
+    $count = 0;
+    foreach($build as $facet_item){
+      $count += $facet_item['#count'];
+    }
+
+    $item_values = array();
+
+    foreach ($items as $item) {
+      $item_values[] = $item['value'];
+    }
+
+    $is_all_link_active = count($items) == 0;
+    $all_link_path = $adapter->getFacetPath($facet, $item_values, TRUE);
+    $all_link_query = $adapter->getQueryString($facet, $item_values, TRUE);
+
+    $build['All'] = array(
+        '#markup' => t('All'),
+        '#path' => $all_link_path,
+        '#html' => FALSE,
+        '#count' => $count,
+        '#indexed_value' => 'All',
+        '#active' => '',
+        '#item_parents' => array(),
+        '#item_children' => array(),
+        '#query' => $all_link_query,
+    );
+  }
 }
 
 /**

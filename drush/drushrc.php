@@ -480,6 +480,7 @@ $options['init-modules'] = array(
   'osha_reminders',
 
   'facetapi',
+  'facetapi_bonus',
   'search_api_facetapi',
   'search_autocomplete',
   'search_api_et',
