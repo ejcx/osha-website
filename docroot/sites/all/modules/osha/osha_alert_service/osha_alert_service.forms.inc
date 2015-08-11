@@ -10,7 +10,7 @@
  * @return array
  *   Form to subscribe
  */
-function osha_alert_service_subscribe_form() {
+function osha_alert_service_subscribe_form($form, &$form_state) {
   $form = array(
     '#tree' => FALSE,
   );
@@ -38,6 +38,11 @@ function osha_alert_service_subscribe_form() {
     }
     return $form;
   }
+
+  $form['edit_alerts'] = array(
+    '#type' => 'item',
+    '#markup' => t('If you are already subscribe and you want to edit your subscription, please use <a href="!link">this edit link</a>.', array('!link' => url('alertservice/edit'))),
+  );
 
   $form['email'] = array(
     '#type' => 'textfield',
@@ -128,6 +133,75 @@ function osha_alert_service_subscribe_form() {
     '#type' => 'item',
     '#markup' => t('If you would like to unsubscribe, please use the unsubscribe link from the footer of an alert sent to you.'),
   );
+
+  if (!empty($_GET['token'])) {
+    $alert = osha_alert_service_osha_alert_service_load_by_token($_GET['token']);
+    if (!empty($alert)) {
+      // Set stored values.
+      $filters = json_decode($alert->filters, TRUE);
+      $form['section']['#default_value'] = $filters['section'];
+      $form['languages']['#default_value'] = $filters['languages'];
+      $form['type']['#default_value'] = $filters['type'];
+      $form['schedule']['#default_value'] = $alert->schedule;
+      $form['email']['#default_value'] = $alert->email;
+      $form['email']['#attributes']['readonly'] = 'readonly';
+
+      $form['token'] = array(
+        '#type' => 'hidden',
+        '#value' => $_GET['token'],
+      );
+
+      $form['actions']['submit']['#value'] = t('Update subscription');
+      $form['actions']['cancel'] = array(
+        '#type' => 'markup',
+        '#markup' => l(t('Cancel'), 'alertservice'),
+      );
+      $form['actions']['unsubscribe'] = array(
+        '#type' => 'markup',
+        '#markup' => l(t('Unsubscribe'), 'alertservice/remove_alert', array('query' => array('token' => $alert->token))),
+      );
+
+      // Hide the unsubscribe message.
+      unset($form['unsubscribe']);
+      // Hide the edit alerts message.
+      unset($form['edit_alerts']);
+    }
+    else {
+      drupal_set_message(t('Subscription not found. Please create one!'), 'warning');
+      drupal_goto('alertservice');
+    }
+  }
+
+  return $form;
+}
+
+function osha_alert_service_edit_form($form, &$form_state) {
+  global $user;
+  $email = '';
+  if (!empty($user->mail)) {
+    $email = $user->mail;
+  }
+
+  $form['email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('E-mail'),
+    '#default_value' => $email,
+    '#required' => TRUE,
+  );
+
+  if (user_is_anonymous()) {
+    $form['captcha'] = array(
+      '#type' => 'captcha',
+      '#captcha_type' => 'default',
+    );
+  }
+
+  $form['actions']['submit'] = array(
+    '#type' => 'submit',
+    '#name' => 'subscribe',
+    '#value' => t('Edit your alerts'),
+    '#attributes' => array('class' => array('container-inline')),
+  );
   return $form;
 }
 
@@ -156,33 +230,72 @@ function osha_alert_service_subscribe_form_submit($form, $form_state) {
   );
   $created = time();
   $email = $values['email'];
-  $token = sha1('TIMESTAMP:' . $created);
-  $entity = entity_create(
-    'osha_alert_service',
-    array(
-      'email' => $email,
-      'filters' => json_encode($filters),
-      'schedule' => $values['schedule'],
-      'created' => $created,
-      'token' => $token,
-      'confirmed' => 0,
-      'last_alert' => $created,
-    )
-  );
-  entity_save('osha_alert_service', $entity);
-  drupal_set_message(t('Your request has been registered. Please check your email for further instructions'));
+  // If token present, than try find the existing alert.
+  if (!empty($values['token']) && $entity = osha_alert_service_osha_alert_service_load_by_token($values['token'])) {
+    $token = $values['token'];
+    $entity->filters = json_encode($filters);
+    $entity->schedule = $values['schedule'];
+    $entity->changed = time();
+    entity_save('osha_alert_service', $entity);
+    drupal_set_message(t('Your alert settings have been changed.'));
+  }
+  else {
+    // Create alert
+    $token = sha1('TIMESTAMP:' . $created);
+    $entity = entity_create(
+      'osha_alert_service',
+      array(
+        'email' => $email,
+        'filters' => json_encode($filters),
+        'schedule' => $values['schedule'],
+        'created' => $created,
+        'token' => $token,
+        'confirmed' => 0,
+        'last_alert' => $created,
+      )
+    );
+    entity_save('osha_alert_service', $entity);
+    drupal_set_message(t('Your request has been registered. Please check your email for further instructions'));
 
-  global $language;
-  $params = array(
-    'osha_alert_service' => $entity,
-    'language' => $language->language,
-  );
-  drupal_mail('osha_alert_service', 'subscribe', $email, $language->language, $params);
+    global $language;
+    $params = array(
+      'osha_alert_service' => $entity,
+      'language' => $language->language,
+    );
+    drupal_mail('osha_alert_service', 'subscribe', $email, $language->language, $params);
+  }
+
   // Subscribe to OSHMail
   if ($values['newsletter']) {
     osha_newsletter_block_subscribe_captcha_form_submit($form, $form_state);
   }
-  drupal_goto('<front>');
+  drupal_goto('alertservice', array('query' => array('token' => $token)));
+}
+
+function osha_alert_service_edit_form_validate($form, $form_state) {
+  osha_alert_service_subscribe_form_validate($form, $form_state);
+  if (!empty($form_state['values']['email']) && valid_email_address($form_state['values']['email'])) {
+    $alerts = osha_alert_service_osha_alert_service_load_by_email($form_state['values']['email']);
+    if (empty($alerts)) {
+      form_set_error('email', t('No alerts registered for this email address.'));
+    }
+  }
+}
+
+function osha_alert_service_edit_form_submit($form, &$form_state) {
+  $values = $form_state['values'];
+  $email = $values['email'];
+  $alerts = osha_alert_service_osha_alert_service_load_by_email($email);
+  if (!empty($alerts)) {
+    global $language;
+    $params = array(
+      'osha_alert_service' => current($alerts),
+      'osha_subscriptions' => $alerts,
+      'language' => $language->language,
+    );
+    drupal_mail('osha_alert_service', 'edit', $email, $language->language, $params);
+    drupal_set_message(t('Your subscription\'s information has been sent to your email.'));
+  }
 }
 
 /**
