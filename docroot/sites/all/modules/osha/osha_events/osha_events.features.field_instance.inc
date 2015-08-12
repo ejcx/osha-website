@@ -15,7 +15,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Mandatory when published',
+    'description' => 'Mandatory',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -69,6 +69,11 @@ function osha_events_field_default_field_instances() {
     'settings' => array(
       'display_summary' => 0,
       'entity_translation_sync' => FALSE,
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
+      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -82,6 +87,7 @@ function osha_events_field_default_field_instances() {
       'type' => 'text_textarea_with_summary',
       'weight' => 24,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-field_activity'
@@ -532,7 +538,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Mandatory when published',
+    'description' => 'Mandatory',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -603,6 +609,7 @@ function osha_events_field_default_field_instances() {
       'type' => 'text_textfield',
       'weight' => 7,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-field_color'
@@ -726,7 +733,7 @@ function osha_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_comments_summary_after_eve',
-    'label' => 'Comments / Summary after event',
+    'label' => 'Comments',
     'required' => 0,
     'settings' => array(
       'entity_translation_sync' => FALSE,
@@ -742,11 +749,12 @@ function osha_events_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 120,
       ),
       'type' => 'text_textfield',
       'weight' => 22,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-field_country_code'
@@ -754,7 +762,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Mandatory when published',
+    'description' => 'Mandatory',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -819,6 +827,7 @@ function osha_events_field_default_field_instances() {
       'type' => 'options_select',
       'weight' => 6,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-field_event_in_amp'
@@ -1185,7 +1194,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Mandatory when published',
+    'description' => 'Mandatory',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1254,6 +1263,7 @@ function osha_events_field_default_field_instances() {
       'type' => 'text_textarea',
       'weight' => 5,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-field_related_documents'
@@ -1498,7 +1508,7 @@ function osha_events_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_start_date',
-    'label' => 'Start date',
+    'label' => 'Date',
     'required' => 0,
     'settings' => array(
       'default_value' => 'now',
@@ -1522,6 +1532,7 @@ function osha_events_field_default_field_instances() {
       'type' => 'date_popup',
       'weight' => 8,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-field_tags'
@@ -1529,7 +1540,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Mandatory when published',
+    'description' => 'Mandatory',
     'display' => array(
       'default' => array(
         'label' => 'inline',
@@ -1592,6 +1603,7 @@ function osha_events_field_default_field_instances() {
       'type' => 'options_select',
       'weight' => 14,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-field_unit_ref'
@@ -1669,7 +1681,7 @@ function osha_events_field_default_field_instances() {
     'bundle' => 'events',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Mandatory when published',
+    'description' => 'Mandatory',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1755,6 +1767,7 @@ function osha_events_field_default_field_instances() {
       'type' => 'link_field',
       'weight' => 10,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-events-title_field'
@@ -1827,24 +1840,31 @@ function osha_events_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'title_field',
     'label' => 'Title',
-    'required' => TRUE,
+    'required' => 1,
     'settings' => array(
       'entity_translation_sync' => FALSE,
       'hide_label' => array(
-        'entity' => FALSE,
-        'page' => FALSE,
+        'entity' => 0,
+        'page' => 0,
+      ),
+      'linkit' => array(
+        'button_text' => 'Search',
+        'enable' => 0,
+        'profile' => '',
       ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
-        'size' => 60,
+        'size' => 120,
       ),
       'type' => 'text_textfield',
       'weight' => 0,
     ),
+    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'taxonomy_term-organised_by-description_field'
@@ -1934,19 +1954,19 @@ function osha_events_field_default_field_instances() {
   t('Category');
   t('City');
   t('Color');
-  t('Comments / Summary after event');
+  t('Comments');
   t('Country');
+  t('Date');
   t('Description');
   t('Event in AMP');
   t('For the web');
-  t('Mandatory when published');
+  t('Mandatory');
   t('Name');
   t('Number of attendees');
   t('Organised by');
   t('Organization');
   t('Related documents');
   t('Satisfaction rate');
-  t('Start date');
   t('Title');
   t('Type');
   t('Unit Ref');
