@@ -7733,6 +7733,10 @@ a.contextual-links-trigger{
 	height: 95px!important; /*minimum height*/
 }
 
+#sliding-popup .popup-content #popup-text {
+	max-width: 62%;
+}
+
 #sliding-popup .popup-content #popup-text h2, #sliding-popup .popup-content #popup-text p{
 	background: #575958!important;
 }
@@ -8231,3 +8235,17 @@ body.page-entity-collection h1#page-title{
 	color:#003399;
 	font-weight: bold;
 }
+
+/*CALLS el lanuage problem*/
+
+[lang=el] .node-type-calls .view-header.back{
+	clear: both;
+    float: right;
+    padding-top: 2.5em;
+    padding-bottom: 0.5em;
+    width: 100%;
+    text-align: right;
+}
+
+
+
