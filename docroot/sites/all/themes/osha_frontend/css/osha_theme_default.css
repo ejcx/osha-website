@@ -8248,4 +8248,15 @@ body.page-entity-collection h1#page-title{
 }
 
 
+/*How to reach us - table*/
+
+.page-node-1436 table tr td:first-child{
+	padding-top: 15px;
+    vertical-align: top;
+    padding-left: 0;
+}
+
+.page-node-1436 p#tmgmt-20{
+	clear:both;
+}
 
